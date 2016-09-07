@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+	<style type="text/css">
+		.shadow_border{
+    		background:#FFFEFE;
+    		box-shadow:1px 2px 1px #BAB9B9;
+    	}
+    	.margin_border{
+    		margin-top:.5rem;
+    	}
+    	.bottom_border{
+    		border-bottom: 1px solid #c1c0c0;
+    		padding:.7rem;
+    		font-size:1rem;
+    	}
+    	.yang_title{
+    		font-size:0;
+    	}
+    	.yang_title .title_child{
+    		display: inline-block;
+    		width:49.5%;
+    	}
+    	.title_child:nth-child(2){
+    		border-left:1px solid #c1c0c0
+    	}
+    	.yang_title .title_child .title_word{
+    		padding:.8rem;
+    	}
+    	.title_child_word{
+    		margin:0;
+    		font-size:.7rem;
+    		color:#000000;
+    	}
+    	#pinlv,#next{
+    		margin:0;
+    		font-size:.7rem;
+    		color:red;
+    	}
+    	.changqi_test .bottom_border .after_btn_word,.shangwei_test .bottom_border .after_btn_word{
+    		display: inline-block;
+    		vertical-align: middle;
+    		margin-left: 5%;
+    		width: 70%;
+    	}
+    	.changqi_test .bottom_border img,.shangwei_test .bottom_border img{
+    		width:15%;
+    		vertical-align: middle;
+    	}
+    	.after_btn_word h4{
+    		margin:0;
+    		font-size:1.2rem;
+    		font-weight: normal;
+    	}
+    	.after_btn_word p{
+    		font-size:.5rem;
+    		color:#878686;
+    		margin-top:.2rem
+    	}
+    	#daijin p{
+    		display: inline-block;
+    		vertical-align: middle;
+    	}
+    	#daijin_btn{
+    		background: #FF6D3A;
+    		padding:.3rem 1rem;
+    		color:#ffffff;
+    		border-radius:15px;
+    		text-shadow: none;
+    	}
+	</style>
+  </head>
+  
+  <body>
+  	<div data-role="page" style="background:#F6F5F5;">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">检后提示</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:.8rem">
+	  	  <div class="yang_title shadow_border">
+	  	      <div class="title_child">
+	  	      	  <div class="title_word">
+	  	      	  	  <span class="title_child_word">您的体检频率：</span>
+	  	      	  	  <span id="pinlv"></span>
+	  	      	  </div>
+	  	      </div>
+	  	      <div class="title_child">
+	  	      	  <div class="title_word">
+	  	      	  	  <span class="title_child_word">下次体检时间：</span>
+	  	      	  	  <span id="next"></span>
+	  	      	  </div>
+	  	      </div>
+	  	  </div>
+	  	  <div class="margin_border shadow_border">
+	  	  	  <div class="bottom_border">
+	  	  		 <p>长期关注的检项：</p>
+	  	  	  </div>
+	  	  	  <div class="changqi_test">
+		  	  	  <div class="bottom_border">
+		  	  		<img src="../long.png">
+			  		<div class="after_btn_word">
+			  			<h4 style="color:red">盆腔积液</h4>
+			  			<p>阿萨德法师打发士大夫的鬼地方和认同和任何的风格认同和认同和认同和认同和</p>
+			  		</div>
+		  	  	  </div>
+	  	  	  </div>
+	  	  </div>
+	  	  <div class="margin_border shadow_border">
+	  	  	  <div class="bottom_border">
+	  	  		 <p>您未检查的检项：</p>
+	  	  	  </div>
+	  	  	  <div class="shangwei_test">
+		  	  	 <!--  <div class="bottom_border">
+		  	  		<img src="../long.png">
+			  		<div class="after_btn_word">
+			  			<h4 style="color:red">血压</h4>
+			  			<p>高血压是动脉粥样硬化和冠心病的重要危险因素</p>
+			  		</div>
+		  	  	  </div> -->
+	  	  	  </div>
+	  	  </div>
+	  	  <div id="daijin" class="margin_border shadow_border bottom_border">
+	  	  	<p style="width:65%">体检代金券</p><p id="daijin_btn">领取</p>
+	  	  </div>
+	  	  <div id="siren" class="margin_border shadow_border bottom_border">
+	  	  	 <p>私人订制咨询</p>
+	  	  </div>
+	  </div>
+	  </div>
+	  <script type="text/javascript">
+	  	$(document).ready(function(){
+	  		var checknum = GetQueryString("checknum");
+	  		$.ajax({
+				type: "post",
+				url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/getTip",
+				//contentType: "application/json",
+				data: {
+						"checknum":checknum
+				      },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:8000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code == "100"){
+							//当返回data不为空时，进行处理
+							if(json.data != null){
+								var mydata = json.data;
+								var nextlist = mydata.next.split("-");
+								var nexttime = nextlist[0]+"."+nextlist[1]+"."+nextlist[2];
+								//体检频率与体检时间的赋值
+								$("#pinlv").text(mydata.pinlv);
+								$("#next").text(nexttime);
+								
+								//长期注意事项赋值
+								if(mydata.long != null){
+									var longdata = mydata.long;
+									var len = longdata.length;
+									var longHtml = "";
+									for(var i=0;i<len;i++){
+										longHtml += "<div class='bottom_border'>"+
+											  	  		"<img src='"+longdata[i].img+"'>"+
+												  		"<div class='after_btn_word'>"+
+												  			"<h4 style='color:red'>"+longdata[i].name+"</h4>"+
+												  			"<p>"+longdata[i].describe+"</p>"+
+												  		"</div>"+
+											  	  	  "</div>";
+									}
+									$(".changqi_test").append(longHtml);
+								}else{
+									$(".changqi_test").append("<h4>您没有需要长期注意的事项</h4>");
+								}
+								//未检查的项目
+								if(mydata.none != null){
+									var nonedata = mydata.none;
+									var len = nonedata.length;
+									var noneHtml = "";
+									for(var i=0;i<len;i++){
+										noneHtml += "<div class='bottom_border'>"+
+											  	  		"<img src='"+nonedata[i].img+"'>"+
+												  		"<div class='after_btn_word'>"+
+												  			"<h4 style='color:red'>"+nonedata[i].name+"</h4>"+
+												  			"<p>"+nonedata[i].describe+"</p>"+
+												  		"</div>"+
+											  	  	  "</div>";
+									}
+									$(".shangwei_test").append(noneHtml);
+								}else{
+									$(".shangwei_test").append("<h4>您没有需要其他检查项</h4>");
+								}
+							}
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				  if(status=='timeout'){//超时,status还有success,error等值的情况
+				     // ajaxTimeoutTest.abort();
+				     alert("网络状态不好诶~~");
+				  };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					//alert(errormessage);	
+				} 	
+			});
+			return false;
+		});
+		$("#daijin_btn").click(function(){
+	  		var checknum = GetQueryString("checknum");
+	  		///var openid = localStorage.openID;
+			$.ajax({
+				type: "post",
+				url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/listCoupon",
+				//contentType: "application/json",
+				data: {
+						"checknum":checknum,
+						"openid":localStorage.openID
+				      },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:8000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code == "100"){
+							//当返回data不为空时，进行处理
+							if(json.data != null){
+								if(json.data.used == "1"){
+									location.href = "../BTafterTest.html?checknum="+checknum;
+								}else{
+									location.href = "BTafterDaijin.html?value="+json.data.value+"&limit="+json.data.limit+"&id="+json.data.id;
+								}
+							}
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				  if(status=='timeout'){//超时,status还有success,error等值的情况
+				     // ajaxTimeoutTest.abort();
+				     alert("网络状态不好诶~~");
+				  };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					//alert(errormessage);	
+				} 	
+			});
+			return false;
+		});
+		$("#siren").click(function(){
+			var checknum = GetQueryString("checknum");
+			location.href = "BTphoneNum.html?checknum="+checknum;
+		});
+		//获取参数
+		function GetQueryString(key){
+		  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		   	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+	  </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+  </head>
+  <body>
+  	<div data-role="page" class="djk_page">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">我的留言</h2>
+	  	</div>
+		<div data-role="main" class="ui-content">
+			<textarea onkeyup="this.value = this.value.slice(0, 150)" onfocus="if(value=='限150字以内'){value=''}"
+      onblur="if (value==''){value='限150字以内'}" data-role="none" style="min-height:5rem;resize: none;border-radius:10px;width:90%;padding:1rem;outline: none">限150字以内</textarea>
+			<a id="check_cash" class="button_a" data-role="button" data-ajax="false" data-theme="f">确认提交</a>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#check_cash").click(function(){
+				var message = $("textarea").val();
+				var url = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/message";
+				 	$.ajax({
+						type: "post",
+						url: url,
+						//contentType: "application/json",
+						data: {
+								"openid":localStorage.openID,
+								"message":message
+						  },
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+								if(json != null){
+									if(json.code == "100"){
+										alert("提交成功");
+										$("textarea").val("限150字以内");
+									}else{
+										alert("提交失败，请重新提交");
+									}
+								}							
+							},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+							if(status=='timeout'){//超时,status还有success,error等值的情况
+							ajaxTimeoutTest.abort();
+						alert("网络状态不好诶~~");
+						};
+					},
+					error: function(err) {
+						errormessage = "错啦！";
+						alert(errormessage);	
+					} 
+					});
+					return false;
+				});
+			});
+		</script>
+	</div>
+  </body>
+</html>

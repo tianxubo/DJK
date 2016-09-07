@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    @media screen and (min-width:320px) and (max-width:360px){
+		html{
+			font-size:12px;
+		}
+	}
+	 @media screen and (min-width:360px) and (max-width:385px){
+		html{
+			font-size:14px;
+		}
+	}
+    	.menu_item{
+			margin-top: .5em;
+		    border-bottom: 1px solid #cccccc;
+		    border-top: 1px solid #cccccc;
+		    padding:.5em .8em;
+		    background:#ffffff;
+		    color:#000;
+		    font-size:0
+    	}
+    	.quan_list{
+			padding-top: 1.5em;
+    	}
+    	.menu_item img{
+    		width:50%;
+    		vertical-align: middle;
+    	}
+    	.djk_quan{
+    		display: inline-block;
+    		width:50%;
+    		padding: 1rem 0;
+    		vertical-align: middle;
+    		margin-left:10%;
+    	}
+    	.djk_quan p{
+    		font-size: 1.2rem;
+			margin: .5rem 0;
+			color: #19AFC7;
+			text-shadow: none;
+			vertical-align: middle;
+    	}
+    	.harf_item{
+    		display: inline-block;
+    		vertical-align: middle;
+    		text-align: center;
+    		width:40%;
+    	}
+    	.harf_item a{
+    		color:#ffffff;
+    		text-decoration: none;
+    		text-shadow: none;
+    		font-weight: normal;
+    	}
+    	.harf_item a:FOCUS{
+    		color:#ffffff;
+    	}
+    	.harf_item a:VISITED{
+    		color:#ffffff;
+    	}
+    	.harf_item p{
+    		background:#19AFC7;
+    		color:#ffffff;
+    		text-shadow: none;
+    		padding: .5rem;
+	    	margin: 0 auto;
+	    	width: 50%;
+	   		border-radius: 20px;
+	   		font-size:1.1rem;
+    	}
+    </style>
+  </head>
+  <body>
+    <div data-role="page" class="djk_page" id="djk_team">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">我的订制</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="dingzhi_list">
+				<!-- <div class="menu_item">
+					<div class="djk_quan">
+						<p>我的订制</p>
+						<p>￥250</p>
+					</div>
+					<div class="harf_item">
+						<a data-role="none" data-ajax="false" href="">
+							<p>购买</p>
+						</a>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+  			//var URL = "http://192.168.0.31/Source/DJK_2/mndjk/weixin.php/GTHcheckout/getDiyList";
+  			var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/getDiyList";
+  			//localStorage.openID = "123456789";
+		  	$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+					"openid":localStorage.openID
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null && json != ""){
+						if(json.code == "100"){
+							var dataCon = json.data;
+							var len = dataCon.length;
+							var conHtml = "";
+							for(var i=0;i<len;i++){
+								conHtml += "<div class='menu_item'>"+
+												"<div class='djk_quan'>"+
+													"<p>"+dataCon[i].name+"</p>"+
+													"<p>￥"+dataCon[i].price+"</p>"+
+												"</div>"+
+												"<div class='harf_item'>"+
+													"<a data-role='none' data-ajax='false' href='testTable.html?taocanid="+dataCon[i].id+"&type=gj'>"+
+													"<p>购买</p>"+
+													"</a>"+
+												"</div>"+
+											"</div>";
+							}
+							$(".dingzhi_list").append(conHtml);
+						}else if(json.code == "-401"){
+							alert("登录失效，请返回公众号重新登录");
+						}else{
+							$(".dingzhi_list").append("<h4>您目前还没有订制项目</h4>");
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      ajaxTimeoutTest.abort();
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+  		});
+		</script>
+	</div>
+  </body>
+</html>

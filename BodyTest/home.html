@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../src/js/jquery.min.js"></script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <link rel="stylesheet" href="../src/css/BodyTest/home.css">
+    <link rel="stylesheet" href="../src/css/JoinActivity/joinActivity.css">
+    <link rel="stylesheet" href="../src/css/Myself/Myself.css">
+    <title>都健康</title>
+    <style type="text/css">
+    	*{
+    		font-family: '微软雅黑'
+    	}
+    	.ui-content .button_a{
+			border-radius: 40px;
+			font-size:.7em;
+			padding: 0.5em 0.9em;
+			text-shadow: none;
+			font-weight: normal;
+			width: 30%;
+			margin: 0.7em auto 0.3em;
+		}
+		#djk_page1,#djk_page2,#djk_page3,#djk_page4{
+			    background-color: #0C8DA2 /*{a-active-background-color};*/;
+			    border-color: #0C8DA2 /*{a-active-border};*/;
+			    color: #fff /*{a-active-color}*/;
+		}
+		.test_message p{
+			margin:0;
+		}
+    </style>
+</head>
+<body>
+   	<!-- 我要体检 -->
+    <div data-role="page" id="home_page" style="background: #F5F4F4">
+        <div data-role="main" class="ui-content" style="padding: 0px;">
+        	<img src="../src/images/bodyTest/home_title.png" style="width:100%">
+        	<div class="home_middle">
+        		<div class="home_middle_div">
+        			<a href="BThealthTest/BThealthTest.html" data-ajax="false">
+        				<img src="../src/images/bodyTest/home_tjjc.png">
+        				<p>体检检测</p>
+        			</a>
+        		</div>
+        		<div class="home_middle_div">
+        			<a href="BTcustomTest/BTcustomTest.html" data-ajax="false">
+        				<img src="../src/images/bodyTest/home_dztj.png">
+        				<p>定制体检</p>
+        			</a>
+        		</div>
+        		<div class="home_middle_div">
+        			<a href="BTbijiaqu/BTbijiaqu.html?status=2" data-ajax="false">
+        				<img src="../src/images/bodyTest/home_bjq.png">
+        				<p>比价区</p>
+        			</a>
+        		</div>
+        	</div>
+        	
+        	<div class="home_bottom" style="margin-bottom:70px">
+        		<div class="bottom_col">
+        			<div class="bottom_cow">
+        				<a href="BTtestMall/BTtestMall.html" data-ajax="false">
+	        				<img src="../src/images/Home/tjsc.png">
+	        				<p>体检商城</p>
+	        				<p>TiJian ShangCheng</p>
+        				</a>
+        			</div>
+        			<div class="bottom_cow">
+        				<a href="BTgroupTest/BTgroupTest.html" data-ajax="false">
+	        				<img src="../src/images/Home/3rzt.png">
+	        				<p>3人组团</p>
+	        				<p>Sanren Zutuan</p>
+        				</a>
+        			</div>
+        		</div>
+        		<div class="bottom_col">
+        			<div class="bottom_cow">
+        				<a href="BTafterTest/BTLogin.html" data-ajax="false">
+	        				<img src="../src/images/Home/jhgl.png">
+	        				<p>检后管理</p>
+	        				<p>Jianhou Guanli</p>
+        				</a>
+        			</div>
+        			<div class="bottom_cow">
+        				<a id="busientry" href="" data-ajax="false">
+	        				<img src="../src/images/Home/qiyeruk.png">
+	        				<p>企业入口</p>
+	        				<p>Qiye Rukou</p>
+	        			</a>
+        			</div>
+        		</div>
+        	</div>
+			<!-- <div class="djk_test_menu background_img" style="background:-webkit-radial-gradient(50% 55%,#FEFFFF,#A6E1F5);overflow: hidden">
+				<div class="home_menu" style="text-align: center;margin-top:2rem">
+					<a href="BThealthTest/BThealthTest.html" data-ajax="false" class="menu_a" style="display:block;float:left;margin-left:9%"><img alt="体检检测" src="../src/images/bodyTest/tjjc.png"></a>
+					<a href="BTcustomTest/BTcustomTest.html" data-ajax="false" class="menu_a" style="display:block;float:left;margin-left:4%"><img alt="定制体检" src="../src/images/bodyTest/dztj.png"></a>
+					<a href="BTtestMall/BTtestMall.html" data-ajax="false" class="menu_a" style="display:block;float:left;margin-left:4%"><img alt="体检商城" src="../src/images/bodyTest/tjsc.png"></a>
+					<img alt="都健康" src="../src/images/bodyTest/home_center.png" style="width:80%;display: block;margin:0 auto">
+					<a href="BTgroupTest/BTgroupTest.html" data-ajax="false" class="menu_a" style="margin-left: 1%"><img alt="组团体检" src="../src/images/bodyTest/zttj.png"></a>
+					<a href="BTafterTest/BTLogin.html" data-ajax="false" class="menu_a marginL"><img alt="检后管理" src="../src/images/bodyTest/mbgl.png"></a>
+					<a id="busientry" href="" data-ajax="false" class="menu_a marginL"><img alt="企业入口" src="../src/images/bodyTest/qyrk.png"></a>
+				</div>
+			</div> -->
+        </div>
+        <!-- 导航栏 -->
+        <div class="djk-footer" data-role="footer" data-theme="f">
+            <div data-role="navbar" class="home_footer">
+                <ul>
+                    <li><a href="#" id="djk_page1" class="img-bottom ui-btn-active"><img src="../src/images/Home/bodytest.png"></a></li>
+                    <li><a href="#activity_page" data-transition="slide" class="img-bottom"><img src="../src/images/Home/activity.png"></a></li>
+                    <li><a href="#health_page" data-transition="slide" class="img-bottom"><img src="../src/images/Home/healthyper.png"></a></li>
+                    <li><a href="#self_page" data-transition="slide" class="img-bottom"><img src="../src/images/Home/self.png"></a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- 参与活动 -->
+    <div data-role="page" id="activity_page" style="background: #FEEFCE">
+        <div data-role="main" class="ui-content" style="padding: 0px;">
+        	<img src="../src/images/JoinActivity/ja_title.png" style="width:100%;"> 
+        	<div class="health_body" style="margin-bottom:70px">
+		  	    	<div class="test_list">
+		  	    		<div class="test_type">
+							<a href="../HealthPer/HPhealthPer.html" data-ajax="false" data-role="none">
+							<div class="test_border">
+								<div class="test_message">
+									<img src="../src/images/JoinActivity/djk_jksz.png">
+									<p class="p2">健康使者</p>
+									<div class="border-line"></div>
+									<p>赚外快</p>
+								</div>
+							</div>
+							</a>
+						</div>
+						<div class="test_type">
+							<a href="../JoinActivity/JAcurrentActivity/JAindex.html" data-ajax="false" data-role="none">
+							<div class="test_border">
+								<div class="test_message">
+									<img src="../src/images/JoinActivity/djk_dqhd.png">
+									<p class="p2">当前活动</p>
+									<div class="border-line"></div>
+									<p>最新优惠</p>
+								</div>
+							</div>
+							</a>
+						</div>
+					</div>
+					<div class="test_list">
+		  	    		<div class="test_type">
+							<a href="../JoinActivity/JAhealthPK/JAhealthPK.html" data-ajax="false" data-role="none">
+							<div class="test_border">
+								<div class="test_message">
+									<img src="../src/images/JoinActivity/djk_jkpk.png">
+									<p class="p2">健康pk</p>
+									<div class="border-line"></div>
+									<p>参与竞赛 更健康 更省钱</p>
+								</div>
+							</div>
+							</a>
+						</div>
+						<div class="test_type">
+							<a href="../JoinActivity/JAtobeMember/JAmember.html" data-ajax="false" data-role="none">
+							<div class="test_border">
+								<div class="test_message">
+									<img src="../src/images/JoinActivity/djk_cwhy.png">
+									<p class="p2">成为会员</p>
+									<div class="border-line"></div>
+									<p>6折专区 任你挑</p>
+								</div>
+							</div>
+							</a>
+						</div>
+					</div>
+	  	    	</div>
+        </div>
+        <!-- 导航栏 -->
+        <div class="djk-footer" data-role="footer" data-theme="f">
+            <div data-role="navbar" class="home_footer">
+                <ul>
+                    <li><a href="#home_page" data-transition="slide" data-direction="reverse" class="img-bottom"><img src="../src/images/Home/bodytest.png"></a></li>
+                    <li><a href="#" id="djk_page2" class="img-bottom ui-btn-active"><img src="../src/images/Home/activity.png"></a></li>
+                    <li><a href="#health_page" data-transition="slide" class="img-bottom"><img src="../src/images/Home/healthyper.png"></a></li>
+                    <li><a href="#self_page" data-transition="slide" class="img-bottom"><img src="../src/images/Home/self.png"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 健康使者-->
+    <div data-role="page" id="health_page" style="background: #FEEFCE">
+    <div data-role="main" class="ui-content" style="padding:0">
+	 <!--  <p id="tian" style="position: absolute;top:50;color:#fff;left:0;width:80%"></p> -->
+	  		<img src="../src/images/HealthPer/title.png" style="width:100%;">
+	  	    	<div class="health_body" style="margin-bottom:70px">
+		  	    	<div class="test_list">
+		  	    		<div class="test_type">
+							<div class="test_border" id="health_group">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/health_group.png">
+									<p>组团</p>
+									<div class="border-line"></div>
+									<p class="p2">6人成组</p>
+								</div>
+							</div>
+						</div>
+						<div class="test_type">
+							<div class="test_border" id="join_healthper">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/join_healthper.png">
+									<p>申请</p>
+									<div class="border-line"></div>
+									<p class="p2">加入健康使者</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="test_list">
+		  	    		<div class="test_type">
+							<div class="test_border" id="get_chit">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/daijin.png">
+									<p>代金券</p>
+									<div class="border-line"></div>
+									<p class="p2">领取好友代金券</p>
+								</div>
+							</div>
+						</div>
+						<div class="test_type">
+							<div class="test_border" id="fenxiao">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/health_coin.png">
+									<p>健康币</p>
+									<div class="border-line"></div>
+									<p class="p2">查看健康知识</p>
+								</div>
+							</div>
+						</div>
+					</div>
+	  	    	</div>
+        	<script type="text/javascript">
+        	var _w = window.innerWidth,
+        		_h = window.innerHeight;
+	        $(".background_imgs").css({"width":_w+"px","height":_h-50.1875+"px"});
+	        //var status = localStorage.healPer;
+	        	//加入健康使者;
+	        	$("#join_healthper").click(function(){
+	        		if(localStorage.healPer == "0"){
+	        			location.href="../HealthPer/HPjoinHealthPer/HPjoinhealPer.html";
+	        		}else{
+	        			location.href="../HealthPer/HPjoinHealthPer/HPjoinsuccess.html";
+	        		}
+	        	});
+	        	
+	        	//六人团
+	        	$("#health_group").click(function(){
+	        		if(localStorage.healPer == "0"){
+	        			alert("您还不是健康使者,请先是申请成为健康使者");
+	        		}else{
+	        			location.href="../HealthPer/HPgroupTest/HPgroupTest.html";
+	        		}
+	        	});
+	        	
+	        	//领代金券；
+	        	$("#get_chit").click(function(){
+	        		if(localStorage.healPer == "0"){
+	        			alert("您还不是健康使者,请先是申请成为健康使者");
+	        		}else{
+	        			location.href="../HealthPer/HPdaijin.html";
+	        		}
+	        	});
+	        	
+	        	//三级分销
+	        	$("#fenxiao").click(function(){
+	        		location.href="../HealthPer/HPzixun.html";
+	        	});
+        	</script>
+	  </div>
+        <!-- 导航栏 -->
+        <div class="djk-footer" data-role="footer" data-theme="f">
+            <div data-role="navbar" class="home_footer">
+                <ul>
+                    <li><a href="#home_page" data-transition="slide" data-direction="reverse" class="img-bottom"><img src="../src/images/Home/bodytest.png"></a></li>
+                    <li><a href="#activity_page" data-transition="slide" data-direction="reverse" class="img-bottom"><img src="../src/images/Home/activity.png"></a></li>
+                    <li><a href="#" id="djk_page3" class="img-bottom ui-btn-active"><img src="../src/images/Home/healthyper.png"></a></li>
+                    <li><a href="#self_page" data-transition="slide" class="img-bottom"><img src="../src/images/Home/self.png"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- 我 -->
+    <div data-role="page" id="self_page" style="background: #EBE9EA">
+        <div data-role="main" class="ui-content" style="padding:0">
+        	 <div class="djk_self_head">
+        	 	<img src="">
+        	 	<h4></h4>
+        	 	<p></p>
+        	 	<span>健康币:</span><span id="health_money">0</span>
+        	 	<span>推荐人:</span><span id="recommend_per"></span>
+        	 </div>
+        	 <div class="djk_self_money">
+        	 	<div class="djk_self_crash">
+        	 		<div class="self_crash" id="count_money">
+        	 			<h3>0元</h3>
+        	 			<p>累计收入</p>
+        	 		</div>
+        	 		<div class="self_crash" id="remainder_money">
+        	 			<h3>0</h3>
+        	 			<p>余额</p>
+        	 		</div>
+        	 	</div>
+        	 	<div class="djk_crash_btn">
+        	 		<a href="../Myself/MygetCash.html" data-ajax="false" class="crash_btn" style="border-right: 1px solid #cccccc;" data-role="none">提现</a>
+        	 		<a href="../Myself/MypayMoney.html" data-ajax="false" class="crash_btn" data-role="none">充值</a>
+        	 	</div>
+        	 </div>
+        	 <div class="djk_self_other" style="margin-top: 9em;">
+        	 	<div class="self_testform">
+        	 		<a class="testform">体检订单</a>
+        	 		<div>
+        	 			<span><a href="../Myself/MynotPay.html" data-role="none" data-ajax="false" style="text-decoration: none">待支付</a></span>
+        	 			<span><a href="../Myself/Mynotdate.html" data-role="none" data-ajax="false" style="text-decoration: none">待预约</a></span>
+        	 			<span><a href="../Myself/MyhaveDate.html" data-role="none" data-ajax="false" style="text-decoration: none">已预约</a></span>
+        	 		</div>
+        	 	</div>
+        	 	<div class="menu_item" id="self_team">
+        	 		<a data-role="none" data-ajax="false" style="text-decoration: none" href="../Myself/Myteam.html">我的团队</a>
+        	 	</div>
+        	 	<div class="menu_item" id="self_chit">
+        	 		<a data-role="none" data-ajax="false" style="text-decoration: none" href="../Myself/Myselfchit.html">我的优惠券</a>
+        	 	</div>
+        	 	<div class="menu_item" id="self_dingzhi">
+        	 		<a data-role="none" data-ajax="false" style="text-decoration: none" href="../Myself/Myselfdingzhi.html">私人订制</a>
+        	 	</div>
+        	 	<div class="menu_item" id="self_words">
+        	 		<a data-role="none" data-ajax="false" style="text-decoration: none" href="../Myself/Myadvice.html">我的留言</a>
+        	 	</div>
+        	 </div>
+        	 <div style="height:77px;width:100%"></div>
+        </div>
+        <!-- 导航栏 -->
+        <div class="djk-footer" data-role="footer" data-theme="f">
+            <div data-role="navbar" class="home_footer">
+                <ul>
+                    <li><a href="#home_page" data-transition="slide" data-direction="reverse" class="img-bottom"><img src="../src/images/Home/bodytest.png"></a></li>
+                    <li><a href="#activity_page" data-transition="slide" data-direction="reverse" class="img-bottom"><img src="../src/images/Home/activity.png"></a></li>
+                    <li><a href="#health_page" data-transition="slide" data-direction="reverse" class="img-bottom"><img src="../src/images/Home/healthyper.png"></a></li>
+                    <li><a href="#" id="djk_page4" class="img-bottom ui-btn-active"><img src="../src/images/Home/self.png"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- <script type="text/javascript">
+    	$('.home_footer ul li').click(function(){
+			$(this).addClass('ui-btn-active').siblings().removeClass('ui-btn-active');
+			$('#home_page>div:eq('+$(this).index()+')').show().siblings().hide();
+			$('.djk-footer').show();
+		});	
+    </script> -->
+    <script type="text/javascript">
+        	window.onload = function(){
+        		var doc = document;
+        		var busiA = doc.getElementById("busientry");
+        			/* Myself = doc.querySelector(".djk_self_head"),
+        			countMoney = doc.querySelector("#count_money"),
+        			remainderMoney = doc.querySelector("#remainder_money"),
+        			healthMoney = doc.querySelector("#health_money"); */
+        		/* alert(dataJson.zutuan);
+        		localStorage.openID = s; */
+        		//获取企业入口申请信息；
+        		var states = localStorage.bisumsg;
+                
+        		if(states == "1"){
+        			busiA.setAttribute("href", "BTbusiEntry/BTImproveInfo.html#djk_zzshenhe");
+        		}else if(states == "2"){
+        			busiA.setAttribute("href", "BTbusiEntry/BTImproveInfo.html#djk_wsqiye");
+        		}else if(states == "3"){
+        			busiA.setAttribute("href", "BTbusiEntry/BTbusiTest.html?businame="+localStorage.businame+"&busicode="+localStorage.busicode);
+        		}else{
+        			busiA.setAttribute("href", "BTbusiEntry/BTbusiApply.html");
+        		} 
+        	}
+        		//个人信息添加
+        		var chatStr = localStorage.countMoney.split(".");
+        		var len = chatStr.length;
+        		if(len == 1){
+            		$("#remainder_money h3").html(localStorage.countMoney);
+        		}else{
+        			var seconeStr = "."+chatStr[1].substr(0,2);
+            		$("#remainder_money h3").html(chatStr[0]+seconeStr);
+        		}
+        		$(".djk_self_head img").attr("src",localStorage.headImg);
+        		$(".djk_self_head h4").html(localStorage.nickName);
+        		$("#health_money").html(localStorage.healMoney);
+        		$("#recommend_per").html(localStorage.recommendPer);
+        		$("#count_money h3").html(localStorage.remainderMoney);
+        		//$("#remainder_money h3").html(localStorage.countMoney);
+        		//healthMoney
+                
+
+        	//获取参数
+		  	function GetQueryString(key){
+	        	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	        	var result = window.location.search.substr(1).match(reg);
+	        	return result?decodeURIComponent(result[2]):null;
+      		}
+
+        </script>
+</body>
+</html>

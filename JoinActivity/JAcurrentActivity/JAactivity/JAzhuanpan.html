@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <title>大转盘</title>
+    <style type="text/css">
+    	*{
+    		margin: 0;
+    		padding:0;
+    		font-family: '微软雅黑';
+    	}
+    	body{
+    		background:#C00A20;
+    	}
+    	.zhuan_title img{
+    		width:100%;
+    		display: block;
+    	}
+    	.zhuan_body{
+    		position: relative;
+    		text-align: center
+    	}
+    	.zhuan_body #pan{
+    		width:80%;
+    		display: block;
+    		margin: 0 auto;
+    	}
+    	.zhuan_body #btn{
+    		width:26%;
+    		position: absolute;
+    		left:37%;
+    		top:50%;
+    		z-index:2;
+    	}
+    	.zhuan_body #zhen{
+    		position: absolute;
+    		z-index:1;
+    		top:7.5%;
+    		width:33%;
+    		opacity:.7;
+			-webkit-transform-origin:0% 100%;
+			-ms-transform-origin:0% 100%; 		/* IE 9 */
+			-webkit-transform-origin:0% 100%;	/* Safari 和 Chrome */
+			-moz-transform-origin:0% 100%;		/* Firefox */
+			-o-transform-origin:0% 100%;		/* Opera */ 
+    	}
+    	.zhuan_back{
+    		background:url(zhuan_back.png) no-repeat 0% 0%;
+    		background-size:100% 100%;
+    	}
+    </style>
+  </head>
+  <body>
+  	<div>
+  		<div class="zhuan_title">
+  			<img src="zhuan_title.png">
+  		</div> 
+  		<div class="zhuan_back">
+	  		<div class="zhuan_body">
+	  			<img id="pan" src="zhuan_pan.png">
+	  			<img id="zhen" src="zhuan_shan.png">
+	  			<img id="btn" src="zhuan_btn.png">
+	  		</div>
+	  		<div class="zhuan_bottom">
+	  			<p style="text-align: center;color:#ffffff;margin-top:2rem">您还有<span class="times" style="color:#FFEC14">1</span>次抽奖机会</p>
+	  			<p style="width:70%;padding:.5rem;background:#FF9C32;text-align:center;color:#ffffff;font-size:1.1rem;margin:2rem auto;">抽奖后进入<span style="color:red">“我-余额”</span>中查询</p>
+	  		</div>
+  		</div>	
+  	</div>
+  	<script type="text/javascript">
+  		var zhuan;
+  		$(document).ready(function(){
+  			var btnH = $("#btn").width();
+  			var num = GetQueryString("num");
+  			if(num == "n"){
+  				$(".times").text("0");
+  			}
+  			$("#btn").css("margin-top",-(btnH/2)+"px");
+  			$("#btn").click(function(){
+  				if(num == "0"){
+  					alert("您还没有抽奖资格，快去充值吧");
+  				}else if(num == "n"){
+  					alert("您已经抽过奖了。。");
+  				}else{
+  					$.ajax({
+						type: "post",
+						url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHrotation/rotationStart",
+						//contentType: "application/json",
+						data: {
+								"openid":localStorage.openID,
+								"num":num
+						      },
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:8000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							if(json != null){
+								if(json.code == "100"){
+  									zhuan = setInterval("roll("+num+")",200);
+  									num = "n";
+  									$(".times").text("0");
+								}else{
+									alert("摇奖失败，请重新摇奖");
+								}
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						  if(status=='timeout'){//超时,status还有success,error等值的情况
+						     // ajaxTimeoutTest.abort();
+						     alert("网络状态不好诶~~");
+						  };
+						},
+						error: function(err) {
+							errormessage = "错啦！";
+							//alert(errormessage);	
+						} 	
+					});
+					return false;
+  				}
+  			});
+  		});
+  		var n = 0;
+  		function roll(N){
+  			n += 72;
+  			$("#zhen").css("transform","rotate("+n+"deg)");
+  			var rotate = getRotate(N);
+  			if(n > 1080 && n%360 == rotate){
+  				window.clearInterval(zhuan);
+  				alert("恭喜中奖");
+  			}
+  		}
+  		function getRotate(n){
+  			if(n == "1"){
+  				return 0;
+  			}else if(n == "2"){
+  				return 3*72;
+  			}else if(n == "3"){
+  				return 72;
+  			}else if(n == "4"){
+  				return 4*72;
+  			}else if(n == "5"){
+  				return 2*72;
+  			}
+  		}
+  		//获取参数
+		function GetQueryString(key){
+		  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		   	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+  	</script>
+  </body>
+</html>

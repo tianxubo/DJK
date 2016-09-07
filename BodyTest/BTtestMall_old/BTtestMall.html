@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="../../src/js/swiper.min.js"></script>
+	<title>都健康</title>
+	<link rel="stylesheet" type="text/css" href="../../src/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <style type="text/css">
+    	.test_list{
+    		font-size:0;
+    		width:100%;
+    		margin-top: 5%;
+    	}
+		.test_list .test_type{
+			width:33%;
+			display:inline-block;
+			text-align: center;
+    		padding: 1rem 0;
+		}
+		.test_list .test_type img{
+			width:100%;
+		}
+    </style>
+  </head>
+  <body>
+	 <div data-role="page" class="djk_page" style="background:#BBF9F6">
+		<div data-role="header" data-theme="f">
+			<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+			<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">体检商城</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="test_list">
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=熬夜失眠"><img src="1.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=不运动"><img src="2.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=电脑族"><img src="3.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=男性"><img src="4.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=应酬族及常吃外卖"><img src="5.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=肿瘤"><img src="6.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=中老年人"><img src="7.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=女性"><img src="8.png"></a>
+				</div>
+				<div class="test_type">
+					<a data-role="none" data-ajax="false" href="BTtest.html?type=心脑血管"><img src="9.png"></a>
+				</div>
+			</div>
+			<div style="position: absolute;bottom:2%;text-align: center;">
+				<img src="back_bottom.png" style="width:80%;">
+			</div>
+		</div>
+	 </div>
+  </body>
+</html>

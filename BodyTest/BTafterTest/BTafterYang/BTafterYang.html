@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+	<style type="text/css">
+		.shadow_border{
+    		background:#FFFEFE;
+    		box-shadow:1px 2px 1px #BAB9B9;
+    	}
+    	.margin_border{
+    		margin-top:.5rem;
+    	}
+    	.bottom_border{
+    		border-bottom: 1px solid #c1c0c0;
+    		padding:.7rem;
+    		font-size:1rem;
+    	}
+    	.yang_title{
+    		padding:.5rem;
+    	}
+    	.yang_title img{
+    		width:10%;
+    		vertical-align: middle;
+    	}
+    	.yang_title span{
+    		font-size: 1rem;
+    		margin:0;
+    		margin-left:1rem;
+    		vertical-align: middle;
+    	}
+    	.yang_body_title{
+    		padding:.5rem;
+    	}
+    	.yang_body_title span{
+    		margin: 0;
+    		font-size:1rem;
+    	}
+    	.yang_body_des{
+    		padding:0 .8rem .8rem .8rem;
+    	}
+    	.yang_body_des .advice_word{
+    		margin:0;
+    		font-size: .8rem;
+    	}
+	</style>
+  </head>
+  
+  <body>
+  	<div data-role="page" style="background:#F6F5F5;">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">检后管理</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:1rem">
+	  	<div class="yang_title shadow_border">
+	  		<img src="">
+	  		<span class="yang_span"></span>
+	  	</div>
+	  	<div class="yang_advice">
+	  	</div>
+	  	<!-- <div class="yang_body shadow_border margin_border">
+	  		<div class="yang_body_title">
+	  			<span>6.2<空腹血糖<=6.7</span>
+	  		</div>
+	  		<div class="yang_body_des">
+	  			【<span class="advice">建议</span>】<span class="advice_word">您的空腹血糖增高，建议检查餐后两小时血糖或作糖耐量测试</span>
+	  		</div>
+	  	</div> -->
+	  </div>
+	  <script type="text/javascript">
+	  $(document).ready(function(){
+	  	var id = GetQueryString("id");
+	  		$.ajax({
+				type: "post",
+				url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/getYang",
+				//contentType: "application/json",
+				data: {
+						"id":id
+				      },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:8000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code == "100"){
+							//当返回data不为空时，进行处理
+							if(json.data != null){
+								var yangdata = json.data;
+								$(".yang_title img").attr("src",yangdata.img);
+								$(".yang_span").text(yangdata.result);
+								var content = yangdata.content;
+								var len = content.length;
+								var yangHtml = "";
+								for(var i=0;i<len;i++){
+									yangHtml += "<div class='yang_body shadow_border margin_border'>"+
+											  		"<div class='yang_body_title'>"+
+											  			"<span>"+content[i].value+"</span>"+
+											  		"</div>"+
+											  		"<div class='yang_body_des'>"+
+											  			"<span class='advice_word'>"+content[i].advice+"</span>"+
+											  		"</div>"+
+											  	"</div>";
+								}
+								$(".yang_advice").append(yangHtml);
+							}
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				  if(status=='timeout'){//超时,status还有success,error等值的情况
+				     // ajaxTimeoutTest.abort();
+				     alert("网络状态不好诶~~");
+				  };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					//alert(errormessage);	
+				} 	
+			});
+			return false;
+		});
+		//获取参数
+		function GetQueryString(key){
+		  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		   	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+	  </script>
+	  </div>
+  </body>
+</html>

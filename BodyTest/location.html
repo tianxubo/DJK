@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=VfQpUe0lYBtkiVOdRr2aduqq"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <style type="text/css">
+    	@media screen and (min-width:320px) and (max-width:360px){
+			html{
+				font-size:12px;
+			}
+		}
+		 @media screen and (min-width:360px) and (max-width:385px){
+			html{
+				font-size:14px;
+			}
+		}
+	    	.background_img{
+    		background:url(../src/images/bodyTest/location_back.png) no-repeat;
+    		background-size:100% 100%;
+    		overflow: hidden
+    	}
+    	.location_body{
+    		text-align: center;
+    	    margin-top: 6%;
+    	}
+    	.location_body img{
+    		width: 70%;
+    		display: block;
+    		margin: 0 auto;
+    	}
+    	.you_location{
+    		padding:1rem;
+    		margin-top: 1rem;
+    		text-align: center;
+    	}
+    	.you_location span{
+    		font-size:1rem;
+    		margin:0;
+    		color:#000000;
+    		text-shadow: none;
+    	}
+    	.you_location .location_city{
+    		background:#ffffff;
+    		color:#FA4F1B;
+    		padding:.3rem 1rem;
+    		border-radius:20px;
+    	}
+    	.city_list_div{
+    		padding:1rem;
+    		text-align: center;
+    	}
+    	.city_list_div a{
+    		background:#ffffff;
+		    padding: .5rem 1rem;
+		    border-radius: 20px;
+		    color:#25C5DF;
+		    text-decoration: none;
+    	}
+    	.city_list_div a:active{
+    		color: #FA4F1B;
+    	}
+    	.city_list{
+    	    margin: 1.5rem 0 2rem;
+    	}
+    	.city_list .citys{
+    		display: inline-block;
+    		text-align: center;
+    		width:31%;
+    	}
+    	.city_list .citys img{
+    		width:15%;
+    	}
+    	.citys p{
+    		background:#ffffff;
+    		color:#FA4F1B;
+    		text-shadow: none;
+    		border-radius:20px;
+    		padding:.5rem 0;
+    	}
+    </style>
+  </head>
+  <body>
+  	<div data-role="page" id="location_page">
+  		<div data-role="header" data-theme="f">
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">您的定位</h2>
+		</div>
+        <div data-role="main" class="ui-content" style="padding:0">
+        <div class="background_img">
+        	<div class="you_location">
+        		<span>您当前城市：</span>
+        		<span class="location_city"></span>
+        	</div>
+        	<div class="location_body">
+        		<img src="../src/images/bodyTest/location_img.png">
+        	</div>
+        	<div class="city_list_div">
+        		<p>目前我们只开通以下城市，如您未定位到下列城市中，请手动选择下列任一城市进入：</p>
+        		<div class="city_list">
+	        		<div class="citys">
+	        			<img src="../src/images/bodyTest/location.png">
+	        			<p>太原市</p>
+	        		</div>
+	        		<div class="citys">
+		        		<img src="../src/images/bodyTest/location.png">
+		        		<p>呼和浩特市</p>
+	        		</div>
+	        		<div class="citys">
+		        		<img src="../src/images/bodyTest/location.png">
+		        		<p>吕梁市</p>
+	        		</div>
+        		</div>
+        		<a id="go_home" style="color:#25C5DF;" data-role="none" data-ajax="false">确认并进入</a>
+        	</div>
+       	</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    function onBridgeReady(){
+	 WeixinJSBridge.call('hideOptionMenu');
+	}
+	
+	if (typeof WeixinJSBridge == "undefined"){
+	    if( document.addEventListener ){
+	        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	    }else if (document.attachEvent){
+	        document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+	        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+	    }
+	}else{
+	    onBridgeReady();
+	}
+     $(document).ready(function(){
+     	var _h = window.innerHeight,
+     		_w = window.innerWidth;
+     	$(".background_img").css({"width":_w+"px","height":_h-50.1875+"px"});
+    	var geolocation = new BMap.Geolocation();
+		var geoc = new BMap.Geocoder();   
+		geolocation.getCurrentPosition(function(r){
+			if(this.getStatus() == BMAP_STATUS_SUCCESS){
+				var pt = r.point;
+				geoc.getLocation(pt, function(rs){
+					var addComp = rs.addressComponents;
+					var city = addComp.city;
+					$(".you_location .location_city").text(city);
+				});
+			}else {
+				alert('failed'+this.getStatus());
+			}        
+		},{enableHighAccuracy: true});
+		
+		$(".city_list .citys").click(function(){
+			var city = $(this).find("p").text();
+			$(".you_location .location_city").text(city);
+		});
+		$("#go_home").click(function(){
+			var city = $(".you_location .location_city").text();
+			if(city == ""){
+				alert("定位失败，请选择城市进入");
+				return false;
+			}else{
+				localStorage.setItem("city",city);
+				location.href="home.html";
+			}
+		});
+		//获取参数
+        var dataTostring = GetQueryString("info");
+        var dataJson =  JSON.parse(dataTostring);
+        //获取个人信息
+        var personInfo = dataJson.info;
+        //存储个人信息;
+        //alert(dataJson.info);
+        //openid;
+        localStorage.openID = personInfo.openid;
+        //昵称
+        localStorage.nickName = personInfo.nickName;
+        //头像
+        localStorage.headImg = personInfo.img;
+        //健康币
+        localStorage.healMoney = personInfo.jiankangbi;
+        //推荐人
+        if(personInfo.tuijianren == null || personInfo.tuijianren == "null"){
+        	localStorage.recommendPer = "无";
+        }else{
+        	localStorage.recommendPer = personInfo.tuijianren;
+        }
+        //余额
+        localStorage.countMoney = personInfo.gold;
+        //佣金
+        localStorage.remainderMoney = personInfo.yongjin; 
+        //用户状态信息；
+        //会员信息
+        localStorage.vip = dataJson.vip;
+        //企业状态信息
+        localStorage.bisumsg = dataJson.qiye;
+        //企业名称
+        localStorage.businame = dataJson.qiyename;
+        //企业邀请码
+        localStorage.busicode = dataJson.qiyecode;
+        //健康使者信息
+        localStorage.healPer = dataJson.shizhe;
+	});	
+	//获取参数
+	function GetQueryString(key){
+	  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	   	var result = window.location.search.substr(1).match(reg);
+	   	return result?decodeURIComponent(result[2]):null;
+    }
+    </script>
+  </body>
+</html>

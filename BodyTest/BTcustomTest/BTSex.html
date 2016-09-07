@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+  </head>
+  
+  <body>
+  	 <div data-role="page" class="djk_page" id="djk_basicTest">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">选择性别</h2>
+	  </div>
+	  <div data-role="main" class="ui-content">
+	  	<p>请选择您的性别：</p>
+	  	<a href="BTbasicTest11.html?sex=man" id="check_city" class="button_a" data-role="button" data-ajax="false" data-theme="f">男</a>
+	  	<a href="BTbasicTest11.html?sex=woman" id="check_city" class="button_a" data-role="button" data-ajax="false" data-theme="f">女</a>
+	  </div>
+	 </div>
+  </body>
+</html>

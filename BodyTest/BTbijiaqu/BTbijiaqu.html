@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+	<script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <style type="text/css">
+    	.shadow_border{
+    		background:#FFFEFE;
+    		box-shadow:1px 2px 1px #BAB9B9;
+    	}
+    	.margin_border{
+    		margin-top:.5rem;
+    	}
+    	.bottom_border{
+    		border-bottom: 1px solid #c1c0c0;
+    		padding:.7rem;
+    		font-size:1rem;
+    	}
+    	.after_btn_word{
+    		display: inline-block;
+    		vertical-align: middle;
+    		position: relative;
+    		margin-left:5%;
+    	}
+    	.bottom_border img{
+    		vertical-align: middle;
+    		width:15%;
+    	}
+    	#submit_btn{
+    		padding: .3rem 1rem;
+		    background: #EF6E20;
+		    color: #ffffff;
+		    border: none;
+		    border-radius: 20px;
+		    outline: none;
+    	}
+    	.bijialist a{
+    		text-decoration: none;
+    		color:#000000;
+    		text-shadow: none;
+    	}
+    	.bijialist a:hover{
+    		text-decoration: none;
+    	}
+    </style>
+  </head>
+  
+  <body>	
+  	<div data-role="page" class="djk_page" style="background:#F5F4F4">
+	  <div data-role="header" data-theme="f">
+		<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">比价区</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<img src="../../src/images/bodyTest/home_title.png" style="width:100%">
+	  		<div style="padding:.8rem">
+	  		<div class="shadow_border">
+	  	  	  <div class="bottom_border">
+	  	  		 <p>要比价的套餐</p>
+	  	  	  </div>
+	  	  	  <div class="input_test">
+	  	  	 		<form method="post" data-ajax="false" enctype="multipart/form-data" action="http://mndjk.app0351.cn/mndjk/weixin.php/GTHcompare/compareUp">
+			  	  	  <div class="bottom_border">
+			  	  	  	<input name="openid" type="text" data-role="none" style="display:none">
+			  	  		<img src="photo.png">
+				  		<div class="after_btn_word" style="width:70%;">
+				  			<input data-role="none" name="img" id="file0" type="file" style="position: absolute;top:50%;margin-top:-.7rem;z-index:5;opacity: 0;">
+				  			<p id="paizhao" style="color:#a9a9a9">拍照上传</p>
+				  			<img id="img0" style="display:none;width:50%;vertical-align: middle;" src="">
+				  		</div>
+			  	  	  </div>
+			  	  	  <div class="bottom_border">
+			  	  		<img src="web.png">
+				  		<div class="after_btn_word">
+				  			<input data-role="none" name="url" type="text"  placeholder="留下网址" style="border:none;outline: none;font-size:1.1rem;">
+				  		</div>
+			  	  	  </div>
+			  	  	  <div class="bottom_border">
+			  	  	  	<p style="display: inline-block;margin:0;vertical-align: middle;">当前价格</p>
+				  		<div class="after_btn_word" style="text-align: right;width:75%">
+			  	  	  		￥<input data-role="none" name="now" type="text" style="width:20%;border:none;outline: none;font-size:1.1rem;color:#F42E2E">
+			  	  	  	</div>
+			  	  	  </div>
+			  	  	  <div class="bottom_border" style="text-align: right">
+			  	  	  	<input id="submit_btn" type="submit" value="提交" data-role="none">
+			  	  	  </div>
+		  	  	 </form>
+	  	  	  </div>
+	  	  </div>
+	  	  <div class="bijialist margin_border shadow_border bottom_border">
+	  	  	<a href="BTbijiaList.html" data-role="none" data-ajax="false">
+	  	  		<p>都健康平台建议价格查看</p>
+	  	  	</a>
+	  	  </div>
+	  	  <div class="margin_border shadow_border bottom_border">
+	  	  	<div class="after_btn_word">
+	  	  		<p>加客服私聊</p>
+	  	  		<p>微信号：18636867887</p>
+	  	  	</div>
+	  	  	<img src="erwei.jpg" style="width:30%;">
+	  	  </div>
+	  	 </div>
+	  </div>
+	 </div>
+	 <script type="text/javascript">
+	 	$(document).ready(function(){
+	 		$("input[name='openid']").val(localStorage.openID);
+	 		var data = GetQueryString("status");
+	 		if(data == "2"){
+	 			return false;
+	 		}else if(data == "0"){
+	 			alert("提交成功，请扫面下方二维码加客服私聊吧");
+	 		}else if(data == "1"){
+	 			alert("提交失败");
+	 		}
+	 	});
+	 	$("#file0").change(function(){
+			var objUrl = getObjectURL(this.files[0]) ;
+			console.log("objUrl = "+objUrl) ;
+			if (objUrl) {
+				$("#paizhao").hide();
+				$("#img0").show();
+				$("#img0").attr("src", objUrl) ;
+			}
+		}) ;
+		//建立一個可存取到該file的url
+		function getObjectURL(file) {
+			var url = null ; 
+			if (window.createObjectURL!=undefined) { // basic
+				url = window.createObjectURL(file) ;
+			}else if (window.webkitURL!=undefined) { // webkit or chrome
+				url = window.webkitURL.createObjectURL(file) ;
+			}
+			return url ;
+		}
+    	//获取参数
+		function GetQueryString(key){
+		  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		   	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+	 </script>
+  </body>
+</html>

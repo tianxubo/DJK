@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+.djk_self_head{
+	font-family: '微软雅黑';	
+	background-image: url(../../images/Myself/background.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size:100% 100%;
+	text-align: center;
+	color:#fff;
+	text-shadow:none;
+}
+.djk_self_head img{
+	width:30%;
+	margin-top: .5em;
+	border-radius:50%;
+}
+.djk_self_head h4{
+	margin:.3em;
+	font-size: 1em;
+}
+.djk_self_head p{
+	margin:.5em;
+	font-size: .7em;
+}
+.djk_self_head span{
+	margin:.5em;
+	font-size: .7em;
+	display: inline-block;
+}
+.djk_self_money .djk_self_crash .self_crash{
+	float: left;
+    width: 50%;
+    text-align: center;
+    border-bottom: 1px solid #CCCCCC;
+    background: #F5F3F4;
+}
+.djk_self_money .djk_self_crash .self_crash h3{
+	margin:1em 0 0 0;
+	color:#1AB0C9;
+	font-size:1em;
+}
+.djk_self_money .djk_self_crash .self_crash p{
+	margin:0 0 1em 0;
+	font-size: .7em;
+	color:#888888;
+}
+
+
+.djk_self_money .djk_crash_btn .crash_btn{
+	font-family:'SimHei';
+    color: #000;
+    display: block;
+    float: left;
+    width: 49.8%;
+    padding: 1.4em 0;
+    text-align: center;
+    border-bottom: 1px solid #cccccc;
+    text-decoration:none;
+    background: #F5F3F4;
+}
+.djk_self_other .self_testform .testform{
+	display: block;
+    padding: .5em .6em;
+    border-bottom: 1px solid #cccccc;
+    background: #ffffff;
+    color:#000;
+} 
+.djk_self_other .self_testform div{
+	padding: .5em 0;
+    border-bottom: 1px solid #cccccc; 
+    background: #ffffff;
+   	font-size: .9em;
+}
+.djk_self_other .self_testform div span{
+	display:inline-block;
+	text-align:center;
+	width: 31%;
+}
+.self_testform div a{
+	color:#000;
+}
+.menu_item a{
+	display:block;
+	margin-top: .7em;
+    padding: .5em .6em;
+    border-bottom: 1px solid #cccccc;
+    background:#ffffff;
+    color:#000;
+}

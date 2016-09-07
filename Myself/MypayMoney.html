@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    	.menu_item{
+			margin-top: .7em;
+		    border-bottom: 1px solid #cccccc;
+		    border-top: 1px solid #cccccc;
+		    background:#ffffff;
+		    color:#000;
+		    padding:1rem 0.5rem
+    	}
+    	.first_item{
+			margin-top: 1.5em;
+    	}
+    	.first_item span{
+    		font-size:1rem;
+    		margin:0
+    	}
+    	.first_item input{
+    		border:0;
+    		font-size:1.5rem;
+    		outline:none;
+    		width:50%;
+    	}
+    	.yongjin{
+    		color:#19AFC7;
+    		font-size:.8rem
+    	}
+    </style>
+  </head>
+  
+  <body>
+  	<div data-role="page" class="djk_page">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">充值</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="menu_item first_item">
+        	 	<span>充值金额：￥</span><input type="text" data-role="none" placeholder="输入金额">
+        	</div>
+			<a id="check_cash" class="button_a" data-role="button" data-ajax="false" data-theme="f">确认充值</a>
+		</div>
+		
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#check_cash").click(function(){
+				var openid = localStorage.openID;
+				var money = $("input").val();
+				location.href = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/chongzhi?openid="+openid+"&money="+money;
+			});
+		});
+	</script>
+  </body>
+</html>

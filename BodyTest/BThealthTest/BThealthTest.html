@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+	<style type="text/css">
+		.djk_question fieldset{
+			margin-top: 1.5em;
+		}
+		.djk_question fieldset legend{
+			font-weight: bold;
+		}
+		#djk_body_test .djk_question h4{
+			font-size: 1em;
+		}
+		.load{
+			padding:.5rem;
+			background:#000000;
+			opacity:.6;
+			position: fixed;
+			z-index:10;
+			width: 4rem;
+		    top: 50%;
+		    border-radius: 5px;
+		    left: 50%;
+		    margin-left: -2rem;
+		    text-align: center;
+		    display: none;
+		}
+		.load img{
+			width:60%;
+		}
+		.load p{
+			color:#ffffff;
+			font-size:.8rem;
+		}
+	</style>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+  </head>
+  
+  <body>
+  <!-- 健康检测 -->
+  	<div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+		<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">健康检测</h2>
+	  </div>
+	  <div data-role="main" class="ui-content">
+	  	<img src="../../src/images/bodyTest/BThealthTest/jkjc.png" style="width:100%">
+	  	<a class="button_a" style="width:40%;padding: .5em 1.5em;" href="#china_test" data-role="button" data-transition="slide" data-theme="f">中医体质检测</a>
+	  	<a class="button_a" style="width:40%;padding: .5em 1.5em;" href="#body_age" data-role="button" data-transition="slide" data-theme="f">生理年龄检测</a>
+	  </div>
+	</div>
+	<!-- <script type="text/javascript">
+		window.onload = function(){
+		alert(localStorage.openID);};
+	</script> -->
+	<!-- 中医体质检测 -->
+  	<div data-role="page" class="djk_page" id="china_test">
+	  <div data-role="header" data-theme="f">
+		<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">中医体质检测</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" id="">
+	  	<div>
+	  		<div class="djk_question">
+	  			<div class="question_title">
+	  				<h4 style="text-align: center;">中医体质分类与判定测试表</h4>
+	  				<p>请根据您一年的体验和感觉，真实回答以下针对各类体质型问题，最后让我们给您判定一个属于您的体质</p>
+	  			</div>
+	  			<h4 style="text-align: center;">阳虚质</h4>
+	  			<fieldset class="num_1" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>1.您手脚发凉吗？</legend>
+		        	<label for="test1_a">没有</label>
+		        	<input type="radio" name="test1_1" id="test1_a" value="1">
+		        	<label for="test1_b">很少</label>
+		        	<input type="radio" name="test1_1" id="test1_b" value="2">
+		        	<label for="test1_c">有时</label>
+		        	<input type="radio" name="test1_1" id="test1_c" value="3">
+		        	<label for="test1_d">经常</label>
+		        	<input type="radio" name="test1_1" id="test1_d" value="4">
+		        	<label for="test1_e">总是</label>
+		        	<input type="radio" name="test1_1" id="test1_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_1" data-role="controlgroup">
+		  			<legend>2.您胃脘部、背部或腰膝部怕冷吗？</legend>
+		        	<label for="test2_a">没有</label>
+		        	<input type="radio" name="test1_2" id="test2_a" value="1">
+		        	<label for="test2_b">很少</label>
+		        	<input type="radio" name="test1_2" id="test2_b" value="2">
+		        	<label for="test2_c">有时</label>
+		        	<input type="radio" name="test1_2" id="test2_c" value="3">
+		        	<label for="test2_d">经常</label>
+		        	<input type="radio" name="test1_2" id="test2_d" value="4">
+		        	<label for="test2_e">总是</label>
+		        	<input type="radio" name="test1_2" id="test2_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_1" data-role="controlgroup">
+		  			<legend>3.您感到怕冷、衣服比别人穿得多吗？</legend>
+		        	<label for="test3_a">没有</label>
+		        	<input type="radio" name="test1_3" id="test3_a" value="1">
+		        	<label for="test3_b">很少</label>
+		        	<input type="radio" name="test1_3" id="test3_b" value="2">
+		        	<label for="test3_c">有时</label>
+		        	<input type="radio" name="test1_3" id="test3_c" value="3">
+		        	<label for="test3_d">经常</label>
+		        	<input type="radio" name="test1_3" id="test3_d" value="4">
+		        	<label for="test3_e">总是</label>
+		        	<input type="radio" name="test1_3" id="test3_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_1" data-role="controlgroup">
+		  			<legend>4.您比一般人不了寒冷（冬天的寒冷，夏天的冷空调、电扇等）吗？</legend>
+		        	<label for="test4_a">没有</label>
+		        	<input type="radio" name="test1_4" id="test4_a" value="1">
+		        	<label for="test4_b">很少</label>
+		        	<input type="radio" name="test1_4" id="test4_b" value="2">
+		        	<label for="test4_c">有时</label>
+		        	<input type="radio" name="test1_4" id="test4_c" value="3">
+		        	<label for="test4_d">经常</label>
+		        	<input type="radio" name="test1_4" id="test4_d" value="4">
+		        	<label for="test4_e">总是</label>
+		        	<input type="radio" name="test1_4" id="test4_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_1" data-role="controlgroup">
+		  			<legend>5.您比别人容易患感冒吗？</legend>
+		        	<label for="test5_a">没有</label>
+		        	<input type="radio" name="test1_5" id="test5_a" value="1">
+		        	<label for="test5_b">很少</label>
+		        	<input type="radio" name="test1_5" id="test5_b" value="2">
+		        	<label for="test5_c">有时</label>
+		        	<input type="radio" name="test1_5" id="test5_c" value="3">
+		        	<label for="test5_d">经常</label>
+		        	<input type="radio" name="test1_5" id="test5_d" value="4">
+		        	<label for="test5_e">总是</label>
+		        	<input type="radio" name="test1_5" id="test5_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_1" data-role="controlgroup">
+		  			<legend>6.您吃（喝）凉的东西会感到不舒服或者怕吃（喝）凉东西吗？</legend>
+		        	<label for="test6_a">没有</label>
+		        	<input type="radio" name="test1_6" id="test6_a" value="1">
+		        	<label for="test6_b">很少</label>
+		        	<input type="radio" name="test1_6" id="test6_b" value="2">
+		        	<label for="test6_c">有时</label>
+		        	<input type="radio" name="test1_6" id="test6_c" value="3">
+		        	<label for="test6_d">经常</label>
+		        	<input type="radio" name="test1_6" id="test6_d" value="4">
+		        	<label for="test6_e">总是</label>
+		        	<input type="radio" name="test1_6" id="test6_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_1" data-role="controlgroup"> 
+		  			<legend>7.你受凉或吃（喝）凉的东西后，容易腹泻（拉肚子）吗？</legend>
+		        	<label for="test7_a">没有</label>
+		        	<input type="radio" name="test1_7" id="test7_a" value="1">
+		        	<label for="test7_b">很少</label>
+		        	<input type="radio" name="test1_7" id="test7_b" value="2">
+		        	<label for="test7_c">有时</label>
+		        	<input type="radio" name="test1_7" id="test7_c" value="3">
+		        	<label for="test7_d">经常</label>
+		        	<input type="radio" name="test1_7" id="test7_d" value="4">
+		        	<label for="test7_e">总是</label>
+		        	<input type="radio" name="test1_7" id="test7_e" value="5">  
+	        	</fieldset>
+	  			<h4 style="text-align: center;">阴虚质</h4>
+	        	<fieldset class="num_2" data-role="controlgroup" style="margin-top: .5em"> 
+		  			<legend>1.您感到手脚心发热吗？</legend>
+		        	<label for="test8_a">没有</label>
+		        	<input type="radio" name="test2_1" id="test8_a" value="1">
+		        	<label for="test8_b">很少</label>
+		        	<input type="radio" name="test2_1" id="test8_b" value="2">
+		        	<label for="test8_c">有时</label>
+		        	<input type="radio" name="test2_1" id="test8_c" value="3">
+		        	<label for="test8_d">经常</label>
+		        	<input type="radio" name="test2_1" id="test8_d" value="4">
+		        	<label for="test8_e">总是</label>
+		        	<input type="radio" name="test2_1" id="test8_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_2" data-role="controlgroup"> 
+		  			<legend>2.您感觉身体、脸上发热吗？</legend>
+		        	<label for="test9_a">没有</label>
+		        	<input type="radio" name="test2_2" id="test9_a" value="1">
+		        	<label for="test9_b">很少</label>
+		        	<input type="radio" name="test2_2" id="test9_b" value="2">
+		        	<label for="test9_c">有时</label>
+		        	<input type="radio" name="test2_2" id="test9_c" value="3">
+		        	<label for="test9_d">经常</label>
+		        	<input type="radio" name="test2_2" id="test9_d" value="4">
+		        	<label for="test9_e">总是</label>
+		        	<input type="radio" name="test2_2" id="test9_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_2" data-role="controlgroup"> 
+		  			<legend>3.您皮肤或口唇干吗？</legend>
+		        	<label for="test10_a">没有</label>
+		        	<input type="radio" name="test2_3" id="test10_a" value="1">
+		        	<label for="test10_b">很少</label>
+		        	<input type="radio" name="test2_3" id="test10_b" value="2">
+		        	<label for="test10_c">有时</label>
+		        	<input type="radio" name="test2_3" id="test10_c" value="3">
+		        	<label for="test10_d">经常</label>
+		        	<input type="radio" name="test2_3" id="test10_d" value="4">
+		        	<label for="test10_e">总是</label>
+		        	<input type="radio" name="test2_3" id="test10_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_2" data-role="controlgroup"> 
+		  			<legend>4.您口唇的颜色比一般人红吗？</legend>
+		        	<label for="test11_a">没有</label>
+		        	<input type="radio" name="test2_4" id="test11_a" value="1">
+		        	<label for="test11_b">很少</label>
+		        	<input type="radio" name="test2_4" id="test11_b" value="2">
+		        	<label for="test11_c">有时</label>
+		        	<input type="radio" name="test2_4" id="test11_c" value="3">
+		        	<label for="test11_d">经常</label>
+		        	<input type="radio" name="test2_4" id="test11_d" value="4">
+		        	<label for="test11_e">总是</label>
+		        	<input type="radio" name="test2_4" id="test11_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_2" data-role="controlgroup"> 
+		  			<legend>5.您容易便秘或大便干燥吗？</legend>
+		        	<label for="test12_a">没有</label>
+		        	<input type="radio" name="test2_5" id="test12_a" value="1">
+		        	<label for="test12_b">很少</label>
+		        	<input type="radio" name="test2_5" id="test12_b" value="2">
+		        	<label for="test12_c">有时</label>
+		        	<input type="radio" name="test2_5" id="test12_c" value="3">
+		        	<label for="test12_d">经常</label>
+		        	<input type="radio" name="test2_5" id="test12_d" value="4">
+		        	<label for="test12_e">总是</label>
+		        	<input type="radio" name="test2_5" id="test12_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_2" data-role="controlgroup"> 
+		  			<legend>6.您面部两潮红或偏红吗？</legend>
+		        	<label for="test13_a">没有</label>
+		        	<input type="radio" name="test2_6" id="test13_a" value="1">
+		        	<label for="test13_b">很少</label>
+		        	<input type="radio" name="test2_6" id="test13_b" value="2">
+		        	<label for="test13_c">有时</label>
+		        	<input type="radio" name="test2_6" id="test13_c" value="3">
+		        	<label for="test13_d">经常</label>
+		        	<input type="radio" name="test2_6" id="test13_d" value="4">
+		        	<label for="test13_e">总是</label>
+		        	<input type="radio" name="test2_6" id="test13_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_2" data-role="controlgroup"> 
+		  			<legend>7.您感到眼睛干涩吗？</legend>
+		        	<label for="test14_a">没有</label>
+		        	<input type="radio" name="test2_7" id="test14_a" value="1">
+		        	<label for="test14_b">很少</label>
+		        	<input type="radio" name="test2_7" id="test14_b" value="2">
+		        	<label for="test14_c">有时</label>
+		        	<input type="radio" name="test2_7" id="test14_c" value="3">
+		        	<label for="test14_d">经常</label>
+		        	<input type="radio" name="test2_7" id="test14_d" value="4">
+		        	<label for="test14_e">总是</label>
+		        	<input type="radio" name="test2_7" id="test14_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_2" data-role="controlgroup"> 
+		  			<legend>8.您活动量稍大就容易出虚汗吗？</legend>
+		        	<label for="test15_a">没有</label>
+		        	<input type="radio" name="test2_8" id="test15_a" value="1">
+		        	<label for="test15_b">很少</label>
+		        	<input type="radio" name="test2_8" id="test15_b" value="2">
+		        	<label for="test15_c">有时</label>
+		        	<input type="radio" name="test2_8" id="test15_c" value="3">
+		        	<label for="test15_d">经常</label>
+		        	<input type="radio" name="test2_8" id="test15_d" value="4">
+		        	<label for="test15_e">总是</label>
+		        	<input type="radio" name="test15" id="test15_e" value="5">  
+	        	</fieldset>
+	  			<h4 style="text-align: center;">气虚质</h4>
+	        	<fieldset class="num_3" data-role="controlgroup" style="margin-top: .5em"> 
+		  			<legend>1.你容易疲乏吗？</legend>
+		        	<label for="test16_a">没有</label>
+		        	<input type="radio" name="test3_1" id="test16_a" value="1">
+		        	<label for="test16_b">很少</label>
+		        	<input type="radio" name="test3_1" id="test16_b" value="2">
+		        	<label for="test16_c">有时</label>
+		        	<input type="radio" name="test3_1" id="test16_c" value="3">
+		        	<label for="test16_d">经常</label>
+		        	<input type="radio" name="test3_1" id="test16_d" value="4">
+		        	<label for="test16_e">总是</label>
+		        	<input type="radio" name="test3_1" id="test16_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_3" data-role="controlgroup"> 
+		  			<legend>2.您容易气短（呼吸短促，接不上气）吗？</legend>
+		        	<label for="test17_a">没有</label>
+		        	<input type="radio" name="test3_2" id="test17_a" value="1">
+		        	<label for="test17_b">很少</label>
+		        	<input type="radio" name="test3_2" id="test17_b" value="2">
+		        	<label for="test17_c">有时</label>
+		        	<input type="radio" name="test3_2" id="test17_c" value="3">
+		        	<label for="test17_d">经常</label>
+		        	<input type="radio" name="test3_2" id="test17_d" value="4">
+		        	<label for="test17_e">总是</label>
+		        	<input type="radio" name="test3_2" id="test17_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_3" data-role="controlgroup"> 
+		  			<legend>3.您容易心慌吗？</legend>
+		        	<label for="test18_a">没有</label>
+		        	<input type="radio" name="test3_3" id="test18_a" value="1">
+		        	<label for="test18_b">很少</label>
+		        	<input type="radio" name="test3_3" id="test18_b" value="2">
+		        	<label for="test18_c">有时</label>
+		        	<input type="radio" name="test3_3" id="test18_c" value="3">
+		        	<label for="test18_d">经常</label>
+		        	<input type="radio" name="test3_3" id="test18_d" value="4">
+		        	<label for="test18_e">总是</label>
+		        	<input type="radio" name="test3_3" id="test18_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_3" data-role="controlgroup"> 
+		  			<legend>4.您容易头晕或站起时晕眩吗？</legend>
+		        	<label for="test19_a">没有</label>
+		        	<input type="radio" name="test3_4" id="test19_a" value="1">
+		        	<label for="test19_b">很少</label>
+		        	<input type="radio" name="test3_4" id="test19_b" value="2">
+		        	<label for="test19_c">有时</label>
+		        	<input type="radio" name="test3_4" id="test19_c" value="3">
+		        	<label for="test19_d">经常</label>
+		        	<input type="radio" name="test3_4" id="test19_d" value="4">
+		        	<label for="test19_e">总是</label>
+		        	<input type="radio" name="test3_4" id="test19_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_3" data-role="controlgroup"> 
+		  			<legend>5.您比别人容易患感冒吗？</legend>
+		        	<label for="test20_a">没有</label>
+		        	<input type="radio" name="test3_5" id="test20_a" value="1">
+		        	<label for="test20_b">很少</label>
+		        	<input type="radio" name="test3_5" id="test20_b" value="2">
+		        	<label for="test20_c">有时</label>
+		        	<input type="radio" name="test3_5" id="test20_c" value="3">
+		        	<label for="test20_d">经常</label>
+		        	<input type="radio" name="test3_5" id="test20_d" value="4">
+		        	<label for="test20_e">总是</label>
+		        	<input type="radio" name="test3_5" id="test20_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_3" data-role="controlgroup"> 
+		  			<legend>6.您喜欢安静、懒得说话吗？</legend>
+		        	<label for="test21_a">没有</label>
+		        	<input type="radio" name="test3_6" id="test21_a" value="1">
+		        	<label for="test21_b">很少</label>
+		        	<input type="radio" name="test3_6" id="test21_b" value="2">
+		        	<label for="test21_c">有时</label>
+		        	<input type="radio" name="test3_6" id="test21_c" value="3">
+		        	<label for="test21_d">经常</label>
+		        	<input type="radio" name="test3_6" id="test21_d" value="4">
+		        	<label for="test21_e">总是</label>
+		        	<input type="radio" name="test3_6" id="test21_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_3" data-role="controlgroup"> 
+		  			<legend>7.您说话声音无力吗？</legend>
+		        	<label for="test22_a">没有</label>
+		        	<input type="radio" name="test3_7" id="test22_a" value="1">
+		        	<label for="test22_b">很少</label>
+		        	<input type="radio" name="test3_7" id="test22_b" value="2">
+		        	<label for="test22_c">有时</label>
+		        	<input type="radio" name="test3_7" id="test22_c" value="3">
+		        	<label for="test22_d">经常</label>
+		        	<input type="radio" name="test3_7" id="test22_d" value="4">
+		        	<label for="test22_e">总是</label>
+		        	<input type="radio" name="test3_7" id="test22_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_3" data-role="controlgroup"> 
+		  			<legend>8.您活动量就容易出虚汗吗？</legend>
+		        	<label for="test23_a">没有</label>
+		        	<input type="radio" name="test3_8" id="test23_a" value="1">
+		        	<label for="test23_b">很少</label>
+		        	<input type="radio" name="test3_8" id="test23_b" value="2">
+		        	<label for="test23_c">有时</label>
+		        	<input type="radio" name="test3_8" id="test23_c" value="3">
+		        	<label for="test23_d">经常</label>
+		        	<input type="radio" name="test3_8" id="test23_d" value="4">
+		        	<label for="test23_e">总是</label>
+		        	<input type="radio" name="test3_8" id="test23_e" value="5">  
+	        	</fieldset>
+	        	<h4 style="text-align: center;">痰湿质</h4>
+	  			<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>1.您感到胸闷或腹部胀满吗？</legend>
+		        	<label for="test24_a">没有</label>
+		        	<input type="radio" name="test4_1" id="test24_a" value="1">
+		        	<label for="test24_b">很少</label>
+		        	<input type="radio" name="test4_1" id="test24_b" value="2">
+		        	<label for="test24_c">有时</label>
+		        	<input type="radio" name="test4_1" id="test24_c" value="3">
+		        	<label for="test24_d">经常</label>
+		        	<input type="radio" name="test4_1" id="test24_d" value="4">
+		        	<label for="test24_e">总是</label>
+		        	<input type="radio" name="test4_1" id="test24_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>2.您感到身体学生不轻松或不爽快吗？</legend>
+		        	<label for="test25_a">没有</label>
+		        	<input type="radio" name="test4_2" id="test25_a" value="1">
+		        	<label for="test25_b">很少</label>
+		        	<input type="radio" name="test4_2" id="test25_b" value="2">
+		        	<label for="test25_c">有时</label>
+		        	<input type="radio" name="test4_2" id="test25_c" value="3">
+		        	<label for="test25_d">经常</label>
+		        	<input type="radio" name="test4_2" id="test25_d" value="4">
+		        	<label for="test25_e">总是</label>
+		        	<input type="radio" name="test4_2" id="test25_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>3.您腹部肥满松软吗？</legend>
+		        	<label for="test26_a">没有</label>
+		        	<input type="radio" name="test4_3" id="test26_a" value="1">
+		        	<label for="test26_b">很少</label>
+		        	<input type="radio" name="test4_3" id="test26_b" value="2">
+		        	<label for="test26_c">有时</label>
+		        	<input type="radio" name="test4_3" id="test26_c" value="3">
+		        	<label for="test26_d">经常</label>
+		        	<input type="radio" name="test4_3" id="test26_d" value="4">
+		        	<label for="test26_e">总是</label>
+		        	<input type="radio" name="test4_3" id="test26_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>4.您有额部油脂分泌多的现象吗？</legend>
+		        	<label for="test27_a">没有</label>
+		        	<input type="radio" name="test4_4" id="test27_a" value="1">
+		        	<label for="test27_b">很少</label>
+		        	<input type="radio" name="test4_4" id="test27_b" value="2">
+		        	<label for="test27_c">有时</label>
+		        	<input type="radio" name="test4_4" id="test27_c" value="3">
+		        	<label for="test27_d">经常</label>
+		        	<input type="radio" name="test4_4" id="test27_d" value="4">
+		        	<label for="test27_e">总是</label>
+		        	<input type="radio" name="test4_4" id="test27_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>5.您上眼睑比别人肿（仍轻微隆起的现象）吗？</legend>
+		        	<label for="test28_a">没有</label>
+		        	<input type="radio" name="test4_5" id="test28_a" value="1">
+		        	<label for="test28_b">很少</label>
+		        	<input type="radio" name="test4_5" id="test28_b" value="2">
+		        	<label for="test28_c">有时</label>
+		        	<input type="radio" name="test4_5" id="test28_c" value="3">
+		        	<label for="test28_d">经常</label>
+		        	<input type="radio" name="test4_5" id="test28_d" value="4">
+		        	<label for="test28_e">总是</label>
+		        	<input type="radio" name="test4_5" id="test28_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>6.您嘴里有黏黏的感觉吗？</legend>
+		        	<label for="test29_a">没有</label>
+		        	<input type="radio" name="test4_6" id="test29_a" value="1">
+		        	<label for="test29_b">很少</label>
+		        	<input type="radio" name="test4_6" id="test29_b" value="2">
+		        	<label for="test29_c">有时</label>
+		        	<input type="radio" name="test4_6" id="test29_c" value="3">
+		        	<label for="test29_d">经常</label>
+		        	<input type="radio" name="test4_6" id="test29_d" value="4">
+		        	<label for="test29_e">总是</label>
+		        	<input type="radio" name="test4_6" id="test29_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>7.您平时痰多，特别是咽喉部总感到有痰堵着吗？</legend>
+		        	<label for="test30_a">没有</label>
+		        	<input type="radio" name="test4_7" id="test30_a" value="1">
+		        	<label for="test30_b">很少</label>
+		        	<input type="radio" name="test4_7" id="test30_b" value="2">
+		        	<label for="test30_c">有时</label>
+		        	<input type="radio" name="test4_7" id="test30_c" value="3">
+		        	<label for="test30_d">经常</label>
+		        	<input type="radio" name="test4_7" id="test30_d" value="4">
+		        	<label for="test30_e">总是</label>
+		        	<input type="radio" name="test4_7" id="test30_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_4" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>8.您舌苔厚腻或有舌苔厚厚的感觉吗？</legend>
+		        	<label for="test31_a">没有</label>
+		        	<input type="radio" name="test4_8" id="test31_a" value="1">
+		        	<label for="test31_b">很少</label>
+		        	<input type="radio" name="test4_8" id="test31_b" value="2">
+		        	<label for="test31_c">有时</label>
+		        	<input type="radio" name="test4_8" id="test31_c" value="3">
+		        	<label for="test31_d">经常</label>
+		        	<input type="radio" name="test4_8" id="test31_d" value="4">
+		        	<label for="test31_e">总是</label>
+		        	<input type="radio" name="test4_8" id="test31_e" value="5">  
+	        	</fieldset>
+	        	<h4 style="text-align: center;">湿热质</h4>
+	  			<fieldset class="num_5" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>1.您感到胸闷或腹部胀满吗？</legend>
+		        	<label for="test32_a">没有</label>
+		        	<input type="radio" name="test5_1" id="test32_a" value="1">
+		        	<label for="test32_b">很少</label>
+		        	<input type="radio" name="test5_1" id="test32_b" value="2">
+		        	<label for="test32_c">有时</label>
+		        	<input type="radio" name="test5_1" id="test32_c" value="3">
+		        	<label for="test32_d">经常</label>
+		        	<input type="radio" name="test5_1" id="test32_d" value="4">
+		        	<label for="test32_e">总是</label>
+		        	<input type="radio" name="test5_1" id="test32_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_5" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>2.您感到身体学生不轻松或不爽快吗？</legend>
+		        	<label for="test33_a">没有</label>
+		        	<input type="radio" name="test5_2" id="test33_a" value="1">
+		        	<label for="test33_b">很少</label>
+		        	<input type="radio" name="test5_2" id="test33_b" value="2">
+		        	<label for="test33_c">有时</label>
+		        	<input type="radio" name="test5_2" id="test33_c" value="3">
+		        	<label for="test33_d">经常</label>
+		        	<input type="radio" name="test5_2" id="test33_d" value="4">
+		        	<label for="test33_e">总是</label>
+		        	<input type="radio" name="test5_2" id="test33_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_5" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>3.您腹部肥满松软吗？</legend>
+		        	<label for="test34_a">没有</label>
+		        	<input type="radio" name="test5_3" id="test34_a" value="1">
+		        	<label for="test34_b">很少</label>
+		        	<input type="radio" name="test5_3" id="test34_b" value="2">
+		        	<label for="test34_c">有时</label>
+		        	<input type="radio" name="test5_3" id="test34_c" value="3">
+		        	<label for="test34_d">经常</label>
+		        	<input type="radio" name="test5_3" id="test34_d" value="4">
+		        	<label for="test34_e">总是</label>
+		        	<input type="radio" name="test5_3" id="test34_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_5" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>4.您有额部油脂分泌多的现象吗？</legend>
+		        	<label for="test35_a">没有</label>
+		        	<input type="radio" name="test5_4" id="test35_a" value="1">
+		        	<label for="test35_b">很少</label>
+		        	<input type="radio" name="test5_4" id="test35_b" value="2">
+		        	<label for="test35_c">有时</label>
+		        	<input type="radio" name="test5_4" id="test35_c" value="3">
+		        	<label for="test35_d">经常</label>
+		        	<input type="radio" name="test5_4" id="test35_d" value="4">
+		        	<label for="test35_e">总是</label>
+		        	<input type="radio" name="test5_4" id="test35_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_5" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>5.您上眼睑比别人肿（仍轻微隆起的现象）吗？</legend>
+		        	<label for="test36_a">没有</label>
+		        	<input type="radio" name="test5_5" id="test36_a" value="1">
+		        	<label for="test36_b">很少</label>
+		        	<input type="radio" name="test5_5" id="test36_b" value="2">
+		        	<label for="test36_c">有时</label>
+		        	<input type="radio" name="test5_5" id="test36_c" value="3">
+		        	<label for="test36_d">经常</label>
+		        	<input type="radio" name="test5_5" id="test36_d" value="4">
+		        	<label for="test36_e">总是</label>
+		        	<input type="radio" name="test5_5" id="test36_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_5" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>6.您嘴里有黏黏的感觉吗？</legend>
+		        	<label for="test37_a">没有</label>
+		        	<input type="radio" name="test5_6" id="test37_a" value="1">
+		        	<label for="test37_b">很少</label>
+		        	<input type="radio" name="test5_6" id="test37_b" value="2">
+		        	<label for="test37_c">有时</label>
+		        	<input type="radio" name="test5_6" id="test37_c" value="3">
+		        	<label for="test37_d">经常</label>
+		        	<input type="radio" name="test5_6" id="test37_d" value="4">
+		        	<label for="test37_e">总是</label>
+		        	<input type="radio" name="test5_6" id="test37_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_5" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>7.您平时痰多，特别是咽喉部总感到有痰堵着吗？</legend>
+		        	<label for="test38_a">没有</label>
+		        	<input type="radio" name="test5_7" id="test38_a" value="1">
+		        	<label for="test38_b">很少</label>
+		        	<input type="radio" name="test5_7" id="test38_b" value="2">
+		        	<label for="test38_c">有时</label>
+		        	<input type="radio" name="test5_7" id="test38_c" value="3">
+		        	<label for="test38_d">经常</label>
+		        	<input type="radio" name="test5_7" id="test38_d" value="4">
+		        	<label for="test38_e">总是</label>
+		        	<input type="radio" name="test5_7" id="test38_e" value="5">  
+	        	</fieldset>
+	        	<h4 style="text-align: center;">血淤质</h4>
+	  			<fieldset class="num_6" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>1.您的皮肤在不知不觉中会出现青紫瘀斑（皮下出血）吗？</legend>
+		        	<label for="test39_a">没有</label>
+		        	<input type="radio" name="test6_1" id="test39_a" value="1">
+		        	<label for="test39_b">很少</label>
+		        	<input type="radio" name="test6_1" id="test39_b" value="2">
+		        	<label for="test39_c">有时</label>
+		        	<input type="radio" name="test6_1" id="test39_c" value="3">
+		        	<label for="test39_d">经常</label>
+		        	<input type="radio" name="test6_1" id="test39_d" value="4">
+		        	<label for="test39_e">总是</label>
+		        	<input type="radio" name="test6_1" id="test39_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_6" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>2.您两颧部有细微红丝吗？</legend>
+		        	<label for="test40_a">没有</label>
+		        	<input type="radio" name="test6_2" id="test40_a" value="1">
+		        	<label for="test40_b">很少</label>
+		        	<input type="radio" name="test6_2" id="test40_b" value="2">
+		        	<label for="test40_c">有时</label>
+		        	<input type="radio" name="test6_2" id="test40_c" value="3">
+		        	<label for="test40_d">经常</label>
+		        	<input type="radio" name="test6_2" id="test40_d" value="4">
+		        	<label for="test40_e">总是</label>
+		        	<input type="radio" name="test6_2" id="test40_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_6" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>3.您身体上有哪里疼痛吗？</legend>
+		        	<label for="test41_a">没有</label>
+		        	<input type="radio" name="test6_3" id="test41_a" value="1">
+		        	<label for="test41_b">很少</label>
+		        	<input type="radio" name="test6_3" id="test41_b" value="2">
+		        	<label for="test41_c">有时</label>
+		        	<input type="radio" name="test6_3" id="test41_c" value="3">
+		        	<label for="test41_d">经常</label>
+		        	<input type="radio" name="test6_3" id="test41_d" value="4">
+		        	<label for="test41_e">总是</label>
+		        	<input type="radio" name="test6_3" id="test41_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_6" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>4.您面色晦黯或容易出现褐斑吗？</legend>
+		        	<label for="test42_a">没有</label>
+		        	<input type="radio" name="test6_4" id="test42_a" value="1">
+		        	<label for="test42_b">很少</label>
+		        	<input type="radio" name="test6_4" id="test42_b" value="2">
+		        	<label for="test42_c">有时</label>
+		        	<input type="radio" name="test6_4" id="test42_c" value="3">
+		        	<label for="test42_d">经常</label>
+		        	<input type="radio" name="test6_4" id="test42_d" value="4">
+		        	<label for="test42_e">总是</label>
+		        	<input type="radio" name="test6_4" id="test42_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_6" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>5.您容易有黑眼圈吗？</legend>
+		        	<label for="test43_a">没有</label>
+		        	<input type="radio" name="test6_5" id="test43_a" value="1">
+		        	<label for="test43_b">很少</label>
+		        	<input type="radio" name="test6_5" id="test43_b" value="2">
+		        	<label for="test43_c">有时</label>
+		        	<input type="radio" name="test6_5" id="test43_c" value="3">
+		        	<label for="test43_d">经常</label>
+		        	<input type="radio" name="test6_5" id="test43_d" value="4">
+		        	<label for="test43_e">总是</label>
+		        	<input type="radio" name="test6_5" id="test43_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_6" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>6.您容易忘事（健忘）吗？</legend>
+		        	<label for="test44_a">没有</label>
+		        	<input type="radio" name="test6_6" id="test44_a" value="1">
+		        	<label for="test44_b">很少</label>
+		        	<input type="radio" name="test6_6" id="test44_b" value="2">
+		        	<label for="test44_c">有时</label>
+		        	<input type="radio" name="test6_6" id="test44_c" value="3">
+		        	<label for="test44_d">经常</label>
+		        	<input type="radio" name="test6_6" id="test44_d" value="4">
+		        	<label for="test44_e">总是</label>
+		        	<input type="radio" name="test6_6" id="test44_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_6" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>7.您口唇颜色偏黯吗？ </legend>
+		        	<label for="test45_a">没有</label>
+		        	<input type="radio" name="test6_7" id="test45_a" value="1">
+		        	<label for="test45_b">很少</label>
+		        	<input type="radio" name="test6_7" id="test45_b" value="2">
+		        	<label for="test45_c">有时</label>
+		        	<input type="radio" name="test6_7" id="test45_c" value="3">
+		        	<label for="test45_d">经常</label>
+		        	<input type="radio" name="test6_7" id="test45_d" value="4">
+		        	<label for="test45_e">总是</label>
+		        	<input type="radio" name="test6_7" id="test45_e" value="5">  
+	        	</fieldset>
+	        	<h4 style="text-align: center;">特禀质</h4>
+	  			<fieldset class="num_7" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>1.您没有感冒时也会打喷嚏吗？</legend>
+		        	<label for="test46_a">没有</label>
+		        	<input type="radio" name="test7_1" id="test46_a" value="1">
+		        	<label for="test46_b">很少</label>
+		        	<input type="radio" name="test7_1" id="test46_b" value="2">
+		        	<label for="test46_c">有时</label>
+		        	<input type="radio" name="test7_1" id="test46_c" value="3">
+		        	<label for="test46_d">经常</label>
+		        	<input type="radio" name="test7_1" id="test46_d" value="4">
+		        	<label for="test46_e">总是</label>
+		        	<input type="radio" name="test7_1" id="test46_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_7" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>2.您没有感冒时也会鼻塞、流鼻涕吗？</legend>
+		        	<label for="test47_a">没有</label>
+		        	<input type="radio" name="test7_2" id="test47_a" value="1">
+		        	<label for="test47_b">很少</label>
+		        	<input type="radio" name="test7_2" id="test47_b" value="2">
+		        	<label for="test47_c">有时</label>
+		        	<input type="radio" name="test7_2" id="test47_c" value="3">
+		        	<label for="test47_d">经常</label>
+		        	<input type="radio" name="test7_2" id="test47_d" value="4">
+		        	<label for="test47_e">总是</label>
+		        	<input type="radio" name="test7_2" id="test47_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_7" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>3.您有因季节变化、温度变化或异味等原因而咳喘的现象吗？</legend>
+		        	<label for="test48_a">没有</label>
+		        	<input type="radio" name="test7_3" id="test48_a" value="1">
+		        	<label for="test48_b">很少</label>
+		        	<input type="radio" name="test7_3" id="test48_b" value="2">
+		        	<label for="test48_c">有时</label>
+		        	<input type="radio" name="test7_3" id="test48_c" value="3">
+		        	<label for="test48_d">经常</label>
+		        	<input type="radio" name="test7_3" id="test48_d" value="4">
+		        	<label for="test48_e">总是</label>
+		        	<input type="radio" name="test7_3" id="test48_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_7" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>4.您容易过敏（对药物、食物、气味、花粉或在季节交替、气候变化时）吗？</legend>
+		        	<label for="test49_a">没有</label>
+		        	<input type="radio" name="test7_4" id="test49_a" value="1">
+		        	<label for="test49_b">很少</label>
+		        	<input type="radio" name="test7_4" id="test49_b" value="2">
+		        	<label for="test49_c">有时</label>
+		        	<input type="radio" name="test7_4" id="test49_c" value="3">
+		        	<label for="test49_d">经常</label>
+		        	<input type="radio" name="test7_4" id="test49_d" value="4">
+		        	<label for="test49_e">总是</label>
+		        	<input type="radio" name="test7_4" id="test49_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_7" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>5.您的皮肤容易起荨麻疹（风团、风疹块、风疙瘩）吗？</legend>
+		        	<label for="test50_a">没有</label>
+		        	<input type="radio" name="test7_5" id="test50_a" value="1">
+		        	<label for="test50_b">很少</label>
+		        	<input type="radio" name="test7_5" id="test50_b" value="2">
+		        	<label for="test50_c">有时</label>
+		        	<input type="radio" name="test7_5" id="test50_c" value="3">
+		        	<label for="test50_d">经常</label>
+		        	<input type="radio" name="test7_5" id="test50_d" value="4">
+		        	<label for="test50_e">总是</label>
+		        	<input type="radio" name="test7_5" id="test50_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_7" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>6.您的因过敏出现过紫癜（紫红色瘀点、瘀斑）吗？</legend>
+		        	<label for="test51_a">没有</label>
+		        	<input type="radio" name="test7_6" id="test51_a" value="1">
+		        	<label for="test51_b">很少</label>
+		        	<input type="radio" name="test7_6" id="test51_b" value="2">
+		        	<label for="test51_c">有时</label>
+		        	<input type="radio" name="test7_6" id="test51_c" value="3">
+		        	<label for="test51_d">经常</label>
+		        	<input type="radio" name="test7_6" id="test51_d" value="4">
+		        	<label for="test51_e">总是</label>
+		        	<input type="radio" name="test7_6" id="test51_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_7" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>7.您的皮肤一抓就红，并出现抓痕吗？ </legend>
+		        	<label for="test52_a">没有</label>
+		        	<input type="radio" name="test7_7" id="test52_a" value="1">
+		        	<label for="test52_b">很少</label>
+		        	<input type="radio" name="test7_7" id="test52_b" value="2">
+		        	<label for="test52_c">有时</label>
+		        	<input type="radio" name="test7_7" id="test52_c" value="3">
+		        	<label for="test52_d">经常</label>
+		        	<input type="radio" name="test7_7" id="test52_d" value="4">
+		        	<label for="test52_e">总是</label>
+		        	<input type="radio" name="test7_7" id="test52_e" value="5">  
+	        	</fieldset>
+	        	<h4 style="text-align: center;">气郁质</h4>
+	  			<fieldset class="num_8" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>1.您感到闷闷不乐吗？</legend>
+		        	<label for="test53_a">没有</label>
+		        	<input type="radio" name="test8_1" id="test53_a" value="1">
+		        	<label for="test53_b">很少</label>
+		        	<input type="radio" name="test8_1" id="test53_b" value="2">
+		        	<label for="test53_c">有时</label>
+		        	<input type="radio" name="test8_1" id="test53_c" value="3">
+		        	<label for="test53_d">经常</label>
+		        	<input type="radio" name="test8_1" id="test53_d" value="4">
+		        	<label for="test53_e">总是</label>
+		        	<input type="radio" name="test8_1" id="test53_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_8" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>2.您容易精神紧张、焦虑不安吗？</legend>
+		        	<label for="test54_a">没有</label>
+		        	<input type="radio" name="test8_2" id="test54_a" value="1">
+		        	<label for="test54_b">很少</label>
+		        	<input type="radio" name="test8_2" id="test54_b" value="2">
+		        	<label for="test54_c">有时</label>
+		        	<input type="radio" name="test8_2" id="test54_c" value="3">
+		        	<label for="test54_d">经常</label>
+		        	<input type="radio" name="test8_2" id="test54_d" value="4">
+		        	<label for="test54_e">总是</label>
+		        	<input type="radio" name="test8_2" id="test54_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_8" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>3.您多愁善感、感情脆弱吗？</legend>
+		        	<label for="test55_a">没有</label>
+		        	<input type="radio" name="test8_3" id="test55_a" value="1">
+		        	<label for="test55_b">很少</label>
+		        	<input type="radio" name="test8_3" id="test55_b" value="2">
+		        	<label for="test55_c">有时</label>
+		        	<input type="radio" name="test8_3" id="test55_c" value="3">
+		        	<label for="test55_d">经常</label>
+		        	<input type="radio" name="test8_3" id="test55_d" value="4">
+		        	<label for="test55_e">总是</label>
+		        	<input type="radio" name="test8_3" id="test55_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_8" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>4.您容易感到害怕或受到惊吓吗？</legend>
+		        	<label for="test56_a">没有</label>
+		        	<input type="radio" name="test8_4" id="test56_a" value="1">
+		        	<label for="test56_b">很少</label>
+		        	<input type="radio" name="test8_4" id="test56_b" value="2">
+		        	<label for="test56_c">有时</label>
+		        	<input type="radio" name="test8_4" id="test56_c" value="3">
+		        	<label for="test56_d">经常</label>
+		        	<input type="radio" name="test8_4" id="test56_d" value="4">
+		        	<label for="test56_e">总是</label>
+		        	<input type="radio" name="test8_4" id="test56_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_8" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>5.您胁肋部或乳房腹痛吗？</legend>
+		        	<label for="test57_a">没有</label>
+		        	<input type="radio" name="test8_5" id="test57_a" value="1">
+		        	<label for="test57_b">很少</label>
+		        	<input type="radio" name="test8_5" id="test57_b" value="2">
+		        	<label for="test57_c">有时</label>
+		        	<input type="radio" name="test8_5" id="test57_c" value="3">
+		        	<label for="test57_d">经常</label>
+		        	<input type="radio" name="test8_5" id="test57_d" value="4">
+		        	<label for="test57_e">总是</label>
+		        	<input type="radio" name="test8_5" id="test57_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_8" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>6.您无缘无故叹气吗？</legend>
+		        	<label for="test58_a">没有</label>
+		        	<input type="radio" name="test8_6" id="test58_a" value="1">
+		        	<label for="test58_b">很少</label>
+		        	<input type="radio" name="test8_6" id="test58_b" value="2">
+		        	<label for="test58_c">有时</label>
+		        	<input type="radio" name="test8_6" id="test58_c" value="3">
+		        	<label for="test58_d">经常</label>
+		        	<input type="radio" name="test8_6" id="test58_d" value="4">
+		        	<label for="test58_e">总是</label>
+		        	<input type="radio" name="test8_6" id="test58_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_8" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>7.您咽喉部有异物感，且吐之不出、咽之不下吗？ </legend>
+		        	<label for="test59_a">没有</label>
+		        	<input type="radio" name="test8_7" id="test59_a" value="1">
+		        	<label for="test59_b">很少</label>
+		        	<input type="radio" name="test8_7" id="test59_b" value="2">
+		        	<label for="test59_c">有时</label>
+		        	<input type="radio" name="test8_7" id="test59_c" value="3">
+		        	<label for="test59_d">经常</label>
+		        	<input type="radio" name="test8_7" id="test59_d" value="4">
+		        	<label for="test59_e">总是</label>
+		        	<input type="radio" name="test8_7" id="test59_e" value="5">  
+	        	</fieldset>
+	        	<h4 style="text-align: center;">平和质</h4>
+	  			<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>1.您精力充沛吗？</legend>
+		        	<label for="test60_a">没有</label>
+		        	<input type="radio" name="test9_1" id="test60_a" value="1">
+		        	<label for="test60_b">很少</label>
+		        	<input type="radio" name="test9_1" id="test60_b" value="2">
+		        	<label for="test60_c">有时</label>
+		        	<input type="radio" name="test9_1" id="test60_c" value="3">
+		        	<label for="test60_d">经常</label>
+		        	<input type="radio" name="test9_1" id="test60_d" value="4">
+		        	<label for="test60_e">总是</label>
+		        	<input type="radio" name="test9_1" id="test60_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>2.您容易疲乏吗？</legend>
+		        	<label for="test61_a">没有</label>
+		        	<input type="radio" name="test9_2" id="test61_a" value="1">
+		        	<label for="test61_b">很少</label>
+		        	<input type="radio" name="test9_2" id="test61_b" value="2">
+		        	<label for="test61_c">有时</label>
+		        	<input type="radio" name="test9_2" id="test61_c" value="3">
+		        	<label for="test61_d">经常</label>
+		        	<input type="radio" name="test9_2" id="test61_d" value="4">
+		        	<label for="test61_e">总是</label>
+		        	<input type="radio" name="test9_2" id="test61_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>3.您说话声音无力吗？</legend>
+		        	<label for="test62_a">没有</label>
+		        	<input type="radio" name="test9_3" id="test62_a" value="1">
+		        	<label for="test62_b">很少</label>
+		        	<input type="radio" name="test9_3" id="test62_b" value="2">
+		        	<label for="test62_c">有时</label>
+		        	<input type="radio" name="test9_3" id="test62_c" value="3">
+		        	<label for="test62_d">经常</label>
+		        	<input type="radio" name="test9_3" id="test62_d" value="4">
+		        	<label for="test62_e">总是</label>
+		        	<input type="radio" name="test9_3" id="test62_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>4.您感到闷闷不乐吗？</legend>
+		        	<label for="test63_a">没有</label>
+		        	<input type="radio" name="test9_4" id="test63_a" value="1">
+		        	<label for="test63_b">很少</label>
+		        	<input type="radio" name="test9_4" id="test63_b" value="2">
+		        	<label for="test63_c">有时</label>
+		        	<input type="radio" name="test9_4" id="test63_c" value="3">
+		        	<label for="test63_d">经常</label>
+		        	<input type="radio" name="test9_4" id="test63_d" value="4">
+		        	<label for="test63_e">总是</label>
+		        	<input type="radio" name="test9_4" id="test63_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>5.您比一般 人耐受不了寒冷（冬天的寒冷，夏天的冷空调、电扇）吗？</legend>
+		        	<label for="test64_a">没有</label>
+		        	<input type="radio" name="test9_5" id="test64_a" value="1">
+		        	<label for="test64_b">很少</label>
+		        	<input type="radio" name="test9_5" id="test64_b" value="2">
+		        	<label for="test64_c">有时</label>
+		        	<input type="radio" name="test9_5" id="test64_c" value="3">
+		        	<label for="test64_d">经常</label>
+		        	<input type="radio" name="test9_5" id="test64_d" value="4">
+		        	<label for="test64_e">总是</label>
+		        	<input type="radio" name="test9_5" id="test64_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>6.您能适应外界自然和社会环境的变化吗？</legend>
+		        	<label for="test65_a">没有</label>
+		        	<input type="radio" name="test9_6" id="test65_a" value="1">
+		        	<label for="test65_b">很少</label>
+		        	<input type="radio" name="test9_6" id="test65_b" value="2">
+		        	<label for="test65_c">有时</label>
+		        	<input type="radio" name="test9_6" id="test65_c" value="3">
+		        	<label for="test65_d">经常</label>
+		        	<input type="radio" name="test9_6" id="test65_d" value="4">
+		        	<label for="test65_e">总是</label>
+		        	<input type="radio" name="test9_6" id="test65_e" value="5">  
+	        	</fieldset>
+	        	<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>7.您容易失眠吗？ </legend>
+		        	<label for="test66_a">没有</label>
+		        	<input type="radio" name="test9_7" id="test66_a" value="1">
+		        	<label for="test66_b">很少</label>
+		        	<input type="radio" name="test9_7" id="test66_b" value="2">
+		        	<label for="test66_c">有时</label>
+		        	<input type="radio" name="test9_7" id="test66_c" value="3">
+		        	<label for="test66_d">经常</label>
+		        	<input type="radio" name="test9_7" id="test66_d" value="4">
+		        	<label for="test66_e">总是</label>
+		        	<input type="radio" name="test9_7" id="test66_e" value="5">
+	        	</fieldset>
+	        	<fieldset class="num_9" data-role="controlgroup" style="margin-top: .5em">
+		  			<legend>8.您容易忘事（健忘）吗？ </legend>
+		        	<label for="test67_a">没有</label>
+		        	<input type="radio" name="test9_8" id="test67_a" value="1">
+		        	<label for="test67_b">很少</label>
+		        	<input type="radio" name="test9_8" id="test67_b" value="2">
+		        	<label for="test67_c">有时</label>
+		        	<input type="radio" name="test9_8" id="test67_c" value="3">
+		        	<label for="test67_d">经常</label>
+		        	<input type="radio" name="test9_8" id="test67_d" value="4">
+		        	<label for="test67_e">总是</label>
+		        	<input type="radio" name="test9_8" id="test67_e" value="5">  
+	        	</fieldset>
+	        	<a id="submitChina" class="button_a" style="width:30%;padding: .5em 1.5em;" href="#" data-role="button" data-ajax="false" data-theme="f">&nbsp;&nbsp;提&nbsp;&nbsp;交&nbsp;&nbsp;</a>
+	  			<script type="text/javascript">
+	  		$(document).ready(function(){
+		 	$("#submitChina").click(function(){
+		 		var jsonb = getJson();
+		 		if(!jsonb){
+		 			alert("您有未完成的题目，请全部完成再提交");
+		 			return false;
+		 		}
+		 		$(".load").show();
+		 		$.ajax({
+			        type: "post",
+			        async: true,  
+			        url: 'http://mndjk.app0351.cn/mndjk/weixin.php/GTHtijian/bodycheckaction',
+			        //方法传参的写法一定要对，与后台一致，区分大小写，不能为数组等，str1为形参的名字,str2为第二个形参的名字 
+			        data:{answer:JSON.stringify(jsonb)},
+			        contentType: "application/x-www-form-urlencoded",
+			        dataType: "json",
+			        success: function(data) {
+		 				$(".load").hide();
+			        	var json = eval(data);
+			        	if(json != null){
+			        		if(json.code == "100"){
+			        			if(json.data != null){
+				        			var mydata = json.data;
+				        			localStorage.img1 = mydata[0].img;
+				        			localStorage.img2 = mydata[1].img;
+				        			location.href="BTtestResult.html?taocanid1="+mydata[0].taocanid+"&taocanid2="
+				        			+mydata[1].taocanid+"&taocanname1="+mydata[0].taocanname+"&taocanname2="+
+				        			mydata[1].taocanname+"&info="+json.info+"&tc=y";
+			        			}else{
+			        				location.href="BTtestResult.html?info="+json.info+"&tc=n";
+			        			}
+			        		}
+			        	}
+			        },
+			        error: function(err){
+			        	alert("cuo la !!!");
+			        } 
+			    });
+			    return false;
+		 	});
+		 });
+		 function getJson(){
+		 	var doc = document;
+		 		var test_1 = doc.querySelectorAll(".num_1"),
+		 			test_2 = doc.querySelectorAll(".num_2"),
+		 			test_3 = doc.querySelectorAll(".num_3"),
+		 			test_4 = doc.querySelectorAll(".num_4"),
+		 			test_5 = doc.querySelectorAll(".num_5"),
+		 			test_6 = doc.querySelectorAll(".num_6"),
+		 			test_7 = doc.querySelectorAll(".num_7"),
+		 			test_8 = doc.querySelectorAll(".num_8"),
+		 			test_9 = doc.querySelectorAll(".num_9");
+		 		var data_1 = new Array(),
+		 			data_2 = new Array(),
+		 			data_3 = new Array(),
+		 			data_4 = new Array(),
+		 			data_5 = new Array(),
+		 			data_6 = new Array(),
+		 			data_7 = new Array(),
+		 			data_8 = new Array(),
+		 			data_9 = new Array();
+			 		for(var i=0,len = test_1.length;i<len;i++){
+			 			var x = $('input[name="test1_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 			}else{
+			 				data_1.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_2.length;i<len;i++){
+			 			var x = $('input[name="test2_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_2.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_3.length;i<len;i++){
+			 			var x = $('input[name="test3_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_3.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_4.length;i<len;i++){
+			 			var x = $('input[name="test4_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_4.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_5.length;i<len;i++){
+			 			var x = $('input[name="test5_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_5.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_6.length;i<len;i++){
+			 			var x = $('input[name="test6_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_6.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_7.length;i<len;i++){
+			 			var x = $('input[name="test7_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_7.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_8.length;i<len;i++){
+			 			var x = $('input[name="test8_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_8.push(x);
+			 			}
+			 		}
+			 		for(var i=0,len = test_9.length;i<len;i++){
+			 			var x = $('input[name="test9_'+(i+1)+'"]:checked').val();
+			 			if(x==undefined){
+			 				return false;
+			 				//alert("dd");
+			 			}else{
+			 				data_9.push(x);
+			 			}
+			 		}
+			 	var jsonb = {
+			 		'yangxuzhi':data_1,
+			 		'yinxuzhi':data_2,
+			        'qixuzhi':data_3,
+			        'tanshizhi':data_4,
+			        'shirezhi':data_5,
+			        'xueyuzhi':data_6,
+			        'tebingzhi':data_7,
+			        'qiyuzhi':data_8,
+			        'pinghezhi':data_9
+			 	};
+			 return jsonb;
+		 }
+	  			</script>
+	  		</div>
+	  	</div>
+	  </div>
+	</div>
+	
+	<!-- 生理年龄测试 -->
+  	<div data-role="page" class="djk_page" id="body_age">
+	  <div data-role="header" data-theme="f">
+		<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">生理年龄测试</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" id="djk_body_test">
+	  	<div class="djk_question">
+	  		<h4 style="text-align: center;">请自行测试后正确选择真实选项</h4>
+	  		<form method="post" action="">
+	  		<fieldset class="" data-role="controlgroup">
+	  		<legend>测试1：瞳孔大小</legend>
+	        	<p>瞳孔会在强光下收缩，瞳孔大小应在平日的光线下量度</p>
+	        	<label for="testa_a">4毫米</label>
+	        	<input type="radio" name="eye_hole" id="testa_a" value="30">
+	        	<label for="testa_b">2毫米</label>
+	        	<input type="radio" name="eye_hole" id="testa_b" value="60"> 
+	        </fieldset>
+	        <fieldset data-role="controlgroup">
+	        <legend>测试2：大脑活性</legend>
+	        	<p>由100开始倒数到零，每次隔7个数字（100,93,86……），并记录所需的时间，如果需要25秒以上，代表大脑正在衰老。</p>
+	        	<label for="testb_a">少于25秒</label>
+	        	<input type="radio" name="head_alive" id="testb_a" value="40">
+	        	<label for="testb_b">25秒</label>
+	        	<input type="radio" name="head_alive" id="testb_b" value="60"> 
+	        </fieldset>
+	        <fieldset data-role="controlgroup">
+	        <legend>测试3：眼角膜环</legend>
+	        	<p>照镜望自己的眼球，眼角膜会围着一条白色的曲线，曲线越长，身体的胆固醇越高。</p>
+	        	<label for="testc_a">完整眼角膜环</label>
+	        	<input type="radio" name="eye_circle" id="testc_a" value="80">
+	        	<label for="testc_b">较长眼角膜环</label>
+	        	<input type="radio" name="eye_circle" id="testc_b" value="60">
+	        	<label for="testc_c">较短眼角膜环</label>
+	        	<input type="radio" name="eye_circle" id="testc_c" value="30"> 
+	        </fieldset>
+	        <fieldset data-role="controlgroup">
+	        <legend>测试4：皮肤弹性</legend>
+	        	<p>捏着皮肤1分钟，然后放松，留意皮肤回复平坦状态的时间。皮肤越老失去的骨胶原越多，就越需要更多复原时间。</p>
+	        	<label for="testd_a">少于1秒</label>
+	        	<input type="radio" name="skin" id="testd_a" value="30">
+	        	<label for="testd_b">1至2秒</label>
+	        	<input type="radio" name="skin" id="testd_b" value="30"> 
+	        	<label for="testd_c">3至4秒</label>
+	        	<input type="radio" name="skin" id="testd_c" value="40">
+	        	<label for="testd_d">5至10秒</label>
+	        	<input type="radio" name="skin" id="testd_c" value="50">
+	        	<label for="testd_e">11至30秒</label>
+	        	<input type="radio" name="skin" id="testd_e" value="60">
+	        	<label for="testd_f">30至45秒</label>
+	        	<input type="radio" name="skin" id="testd_f" value="70">
+	        	<label for="testd_g">45秒以上</label>
+	        	<input type="radio" name="skin" id="testd_g" value="80">
+	        </fieldset>
+	        <fieldset data-role="controlgroup">
+	        <legend>测试5：反射动作时间</legend>
+	        	<p>尽快接住一把跌下来的45厘米的尺子，记录接尺子的高度，年纪越小反射动作时间越少。</p>
+	        	<label for="teste_a">14厘米</label>
+	        	<input type="radio" name="reflex" id="teste_a" value="20">
+	        	<label for="teste_b">15至24厘米</label>
+	        	<input type="radio" name="reflex" id="teste_b" value="30">
+	        	<label for="teste_c">25至29厘米</label>
+	        	<input type="radio" name="reflex" id="teste_c" value="40">
+	        	<label for="teste_d">30至35厘米</label>
+	        	<input type="radio" name="reflex" id="teste_d" value="50"> 
+	        	<label for="teste_e">40厘米以上</label>
+	        	<input type="radio" name="reflex" id="teste_e" value="60"> 
+	        </fieldset>
+	        <fieldset data-role="controlgroup">
+	        <legend>测试6：平衡</legend>
+	        	<p>用左脚站立，右脚弯曲成45度角，双手放在臀部，闭上眼睛，记录右脚失平衡落地的时间，如是总共做3次，每次相隔数分钟，计算平均时间。</p>
+	        	<label for="testf_a">60至69秒</label>
+	        	<input type="radio" name="balance" id="testf_a" value="30">
+	        	<label for="testf_b">50至59秒</label>
+	        	<input type="radio" name="balance" id="testf_b" value="40">
+	        	<label for="testf_c">40至49秒</label>
+	        	<input type="radio" name="balance" id="testf_c" value="50">
+	        	<label for="testf_d">30至39秒</label>
+	        	<input type="radio" name="balance" id="testf_d" value="60">
+	        	<label for="testf_e">20至29秒</label>
+	        	<input type="radio" name="balance" id="testf_e" value="70">
+	        	<label for="testf_f">少于19秒</label>
+	        	<input type="radio" name="balance" id="testf_f" value="80">
+	        </fieldset>
+	        </form>
+	        <a id="submitBody" class="button_a" style="width:30%;padding: .5em 1.5em;" href="#" data-role="button" data-ajax="false" data-theme="f">&nbsp;&nbsp;提&nbsp;&nbsp;交&nbsp;&nbsp;</a>
+	  	</div>
+	  	<script type="text/javascript">
+	  	$(document).ready(function(){
+		 	$("#submitBody").click(function(){
+		 		var jsona = getMjson();
+		 		if(!jsona){
+		 			alert("您有未完成的题目，请全部完成再提交");
+		 			return false;
+		 		}
+		 		$(".load").show();
+		 		$.ajax({
+			        type: "post",
+			        async: true,  
+			        url: 'http://mndjk.app0351.cn/mndjk/weixin.php/GTHtijian/agecheckaction',
+			        //方法传参的写法一定要对，与后台一致，区分大小写，不能为数组等，str1为形参的名字,str2为第二个形参的名字 
+			        data:{answer:JSON.stringify(jsona)},
+    				//traditional: true,
+			        contentType: "application/x-www-form-urlencoded",
+			        dataType: "json",
+			        success: function(data) {
+			       	var json = eval(data);
+			       		$(".load").hide();
+			        	if(json != null){
+			        		if(json.code == "100"){
+			        			if(json.data != null){
+				        			var mydata = json.data;
+				        			localStorage.img1 = mydata[0].img;
+				        			localStorage.img2 = mydata[1].img;
+				        			location.href="BTtestResult.html?taocanid1="+mydata[0].taocanid+"&taocanid2="
+				        			+mydata[1].taocanid+"&taocanname1="+mydata[0].taocanname+"&taocanname2="+
+				        			mydata[1].taocanname+"&info="+json.info+"&tc=y";
+			        			}else{
+			        				location.href="BTtestResult.html?info="+json.info+"&tc=n";
+			        			}
+			        		}
+			        	}
+			        },
+			        error: function(err) {
+			        	alert("出错啦！！！");
+			        } 
+			    });
+			    return false;
+		 	});
+		 });
+		function getMjson(){
+			
+		 		var mydata = new Array();
+		 		mydata[0] = $('input[name="eye_hole"]:checked ').val();
+		 		mydata[1] = $('input[name="head_alive"]:checked ').val();
+		 		mydata[2] = $('input[name="eye_circle"]:checked ').val();
+		 		mydata[3] = $('input[name="skin"]:checked ').val();
+		 		mydata[4] = $('input[name="reflex"]:checked ').val();
+		 		mydata[5] = $('input[name="balance"]:checked ').val();
+		 		for(var i=0,len=mydata.length;i<len;i++){
+		 			if(mydata[i] == undefined){
+		 				return false;
+		 			}
+		 		}
+		 		//var dd = '['+mydata[0]+','+mydata[1]+','+mydata[2]+','+mydata[3]+','+mydata[4]+','+mydata[5]+']';
+		 		var jsona = {
+		 			'answer':mydata
+		 		};
+		 		return jsona;
+		}
+	  	</script>
+	  </div>
+	</div>
+	
+  </body>
+</html>

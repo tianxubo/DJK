@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <style type="text/css">
+    
+    	@media screen and (min-width:320px) and (max-width:360px){
+			html{
+				font-size:12px;
+			}
+		}
+		 @media screen and (min-width:360px) and (max-width:385px){
+			html{
+				font-size:14px;
+			}
+		}
+		.yang_read{
+			padding-bottom:.5rem;
+		}
+    	.yang_title{
+    		background:#FFFEFE;
+    		box-shadow:1px 2px 1px #BAB9B9;
+    		padding:.5rem;
+    	}
+    	.yang_title img{
+    		width:10%;
+    		vertical-align: middle;
+    	}
+    	.yang_title span{
+    		font-size: 1rem;
+    		margin:0;
+    		margin-left:1rem;
+    		vertical-align: middle;
+    	}
+    	.after_btn{
+    		padding:.8rem;
+    		background:#ffffff;
+    		border-top:1px solid #BDBDBD; 
+    		border-left:1px solid #BDBDBD; 
+    		border-right:1px solid #BDBDBD; 
+    	}
+    	.after_btn a{
+    		text-decoration: none;
+    		color:#000000;
+    	}
+    	.after_btn a:visited{
+    		color:#000000;
+    	}
+    	.after_btn img{
+    		width:15%;
+    		vertical-align: middle;
+    	}
+    	.after_btn .after_btn_word{
+    		display: inline-block;
+    		vertical-align: middle;
+    		margin-left: 1rem;
+    	}
+    	.after_btn_word h4{
+    		margin:0;
+    		font-size:1.2rem;
+    		font-weight: normal;
+    	}
+    	.after_btn_word p{
+    		font-size:.7rem;
+    		margin-top:.2rem
+    	}
+    	.yang_list{
+    		font-size:0;
+    		padding-top:.5rem;
+    		overflow: hidden;
+    	}
+    	.yang_type{
+    		display: inline-block;
+    		width:33.3%;
+    		font-size:.7rem;
+    		color:#b8b5b5;
+    		text-align: center;
+    	}
+    	.yang_type a{
+    		text-decoration: none;
+    		color:#b8b5b5;
+    		font-weight:normal;
+    		display: block;
+    	}
+    	.yang_type a:visited{
+    		color:#b8b5b5;
+    		text-decoration: none;
+    		font-weight:normal;
+    		display: block;
+    	}
+    	.yang_border{
+    		background-color:#FFFEFE;
+    		width:90%;
+    		margin:0 auto;
+    		border-left:1px solid #b8b5b5;
+    		border-right:1px solid #b8b5b5;
+    		border-bottom:1px solid #b8b5b5;
+    		border-top:1px solid #ffffff;
+    		border-radius:5px;
+    		margin-bottom:1px;
+    		box-shadow: 1px 3px 5px #b8b5b5;    
+    		background-image: url(test_back.png);
+    		background-repeat:no-repeat;
+		    background-position: 100% 100%;
+		    background-size: 50%;
+    	}
+    	.yang_border img{
+    		width:45%
+    	}
+    	.yang_border .yang_message{
+    		margin:.5rem 0;
+    	}
+    	.yang_border .yang_message img{
+    		border-radius:50%;
+    	}
+    	.border-line{
+    		border-bottom: 1px dotted #b8b5b5;
+		    width: 60%;
+		    margin: .3rem auto;
+    	}
+    </style>
+  </head>
+  <body>
+  	<!-- 阳性检项 -->
+  	<div data-role="page" style="background:#F6F5F5;">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">检后管理</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:1rem">
+	  	<div class="yang_read">
+	  		<div class="yang_title">
+	  			<img src="yang.png">
+	  			<span class="yang_span">阳性检项解读</span>
+	  		</div>
+	  		<div class="yang_content">
+	  			<!-- <div class="yang_list">
+		  			<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+					<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+					<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+				</div>
+				<div class="yang_list">
+		  			<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+					<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+					<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+				</div>
+				<div class="yang_list">
+		  			<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+					<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+					<div class="yang_type">
+						<a href="" data-ajax="false" data-role="none">
+						<div class="yang_border">
+							<div class="yang_message">
+								<img src="shimian.png">
+								<p>Shimian</p>
+								<div class="border-line"></div>
+								<p>熬夜失眠</p>
+							</div>
+						</div>
+						</a>
+					</div>
+				</div> -->
+	  		</div>
+	  	</div>
+	  	<div class="after_btn" id="advice_after">
+		  	<img src="long.png">
+		  	<div class="after_btn_word">
+		  		<h4 style="color:red">检后提示</h4>
+		  		<p>提醒您对自己身体的关注</p>
+		  	</div>
+	  	</div>
+	  	<div class="after_btn">
+	  		<a href="" data-role="none" data-ajax="false">
+		  		<img src="health.png">
+		  		<div class="after_btn_word">
+		  			<h4>健康咨询</h4>
+		  			<p>可咨询平台的在线医师</p>
+		  		</div>
+	  		</a>
+	  	</div>
+	  	<div class="after_btn" style="border-bottom:1px solid #BDBDBD;">
+	  		<a href="BTafterTuo/BTafterTuo.html" data-role="none" data-ajax="false">
+		  		<img src="tuoguan.png">
+		  		<div class="after_btn_word">
+		  			<h4>您需要的健康托管</h4>
+		  			<p>供您随时选择</p>
+		  		</div>
+	  		</a>
+	  	</div>
+	  </div>
+	 </div>
+	 <script type="text/javascript">
+	 	$(document).ready(function(){
+	 		var checknum = GetQueryString("checknum");
+	 		$.ajax({
+				type: "post",
+				url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/listYang",
+				//contentType: "application/json",
+				data: {
+						"checknum":checknum
+				      },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:8000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code == "100"){
+							//当返回data不为空时，进行处理
+							if(json.data != null){
+								var yangdata = json.data;
+								var len = yangdata.length;
+								var x = Math.ceil(len/3);
+								var yanghtml = "";
+								for(var j=0;j<x;j++){
+									var minlen;
+									if((j+1)*3 < len){
+										minlen = ((j+1)*3);
+									}else{
+										minlen = len;
+									}
+									yanghtml += "<div class='yang_list'>";
+									for(var i=j*3;i<minlen;i++){
+										yanghtml += "<div class='yang_type'>"+
+														"<a href='BTafterYang/BTafterYang.html?id="+yangdata[i].id+"' data-ajax='false' data-role='none'>"+
+														"<div class='yang_border'>"+
+															"<div class='yang_message'>"+
+																"<img src='"+yangdata[i].img+"'>"+
+																"<p>"+yangdata[i].pinyin+"</p>"+
+																"<div class='border-line'></div>"+
+																"<p>"+yangdata[i].result+"</p>"+
+															"</div>"+
+														"</div>"+
+														"</a>"+
+													"</div>";
+									}
+									yanghtml += "</div>";
+								}
+								$(".yang_content").append(yanghtml);
+							}else{
+								
+							}
+							//location.href = "BTafterTest.html?checknum="+userName;
+						}else{
+							alert("目前您的阳性结果还没有上传，请耐心等待");
+						}
+					}else{
+						alert("登录错误");
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				  if(status=='timeout'){//超时,status还有success,error等值的情况
+				     // ajaxTimeoutTest.abort();
+				     alert("网络状态不好诶~~");
+				  };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					//alert(errormessage);	
+				} 	
+			});
+			return false;
+	 	});
+	 	$("#advice_after").click(function(){
+	 		var checknum = GetQueryString("checknum");
+	 		location.href = "BTafterAdvice/BTafterAdvice.html?checknum="+checknum;
+	 	});
+	 	//获取参数
+		function GetQueryString(key){
+		  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		   	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+	 </script>
+  </body>
+</html>

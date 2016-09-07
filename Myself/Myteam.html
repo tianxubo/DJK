@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <style type="text/css">
+    	.menu_item{
+			margin-top: .7em;
+		    border-bottom: 1px solid #cccccc;
+		    border-top: 1px solid #cccccc;
+		    background:#ffffff;
+		    color:#000;
+    	}
+    	.first_item{
+			margin-top: 1.5em;
+    	}
+    	.menu_item a{
+    		display: block;
+		    padding: .5em .6em;
+		    text-decoration:none;
+		    color:#000
+    	}
+    	.menu_item a:visited{
+    		color:#000
+    	}
+    	.menu_item .img_next{
+    		float:right;
+    		height: 1.3em;
+    	}
+    	.menu_item p{
+    		display: inline-block;
+    	}
+    </style>
+  </head>
+  
+  <body>
+   <div data-role="page" class="djk_page">
+		<div data-role="header" data-theme="f">
+			<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+			<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">我的团队</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="menu_item first_item">
+        	 	<a data-role="none" data-ajax="false" href="MyteamPer.html">
+        	 		<p>团队成员</p>
+        	 		<img class="img_next" src="../src/images/Myself/next.png">
+        	 	</a>
+        	</div>
+        	<div class="menu_item">
+        	 	<a data-role="none" data-ajax="false" href="Myincome.html">
+        	 		<p>收入</p>
+        	 		<img class="img_next" src="../src/images/Myself/next.png">
+        	 	</a>
+        	</div>
+        	<div class="menu_item">
+        	 	<a data-role="none" data-ajax="false" href="Mychit.html">
+	        	 	<p>代金券</p>
+	        	 	<img class="img_next" src="../src/images/Myself/next.png">
+        	 	</a>
+        	</div>
+        	<div class="menu_item">
+        	 	<a data-role="none" data-ajax="false" href="MynotTestper.html">
+	        	 	<p>已参团未体检</p>
+	        	 	<img class="img_next" src="../src/images/Myself/next.png">
+        	 	</a>
+        	</div>
+		</div>
+	</div>
+  </body>
+</html>

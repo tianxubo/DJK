@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+    <style type="text/css">
+    	.daijin_back{
+    		background:url(daijinB.png) no-repeat 0% 0%;
+    		background-size:100% 100%;
+    		text-align: center;
+    	}
+    	.daijinquan{
+    		background:url(daijin.png) no-repeat 0% 0%;
+    		background-size:100% 100%;
+    		padding:.5rem .5rem .5rem 1rem;
+    		font-size:0;
+    		width:70%;
+    		margin:1rem auto;
+    	}
+    	.daijinquan div{
+    		display: inline-block;
+    		vertical-align: middle;
+    	}
+    	.daijin_info{
+    		color:#ffffff;
+    		width:60%;
+    	}
+    	.daijin_info span:nth-child(1){
+    		margin:0;
+    		font-size: 1.3rem;
+    		text-shadow: none;
+    	}
+    	.daijin_info span:nth-child(2){
+    		margin:0;
+    		font-size:.8rem;
+    		text-shadow: none;
+    	}
+    	.daijin_info .quanchang{
+    		font-size:.6rem;
+    		text-shadow: none;
+    		margin:.2rem 0;
+    	}
+    	.daijin_info .time{
+    		font-size:.6rem;
+    		text-shadow: none;
+    	}
+    	.daijin_ling{
+    		margin-top: .8rem;
+		    margin-bottom: .8rem;
+		    margin-left: 10%;
+		    width: 20%;
+    	}
+    	.daijin_ling p{
+    		font-size:1.2rem;
+    		color:yellow;
+    		text-shadow: none;
+    	}
+    </style>
+  </head>
+  <body>
+  	<div data-role="page">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">检后提示</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<div class="daijin_back">
+	  		<img src="daijinT.png" style="width:60%;margin-top: 50%;">
+	  		<div class="daijinquan">
+	  			<div class="daijin_info">
+	  				<span class="daijin_value"></span><span>元优惠券</span>
+	  				<p class="quanchang">(全场通用)</p>
+	  				<p class="time">有效期：</p>
+	  			</div>
+	  			<div class="daijin_ling">
+	  				<p>点击领取</p>
+	  			</div>
+	  		</div>
+	  	</div>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+	    	var _h = window.innerHeight;
+	    	$(".daijin_back").css("height",(_h-50)+"px");
+    		var limit = GetQueryString("limit");
+    		var value = GetQueryString("value");
+    		var id = GetQueryString("id");
+    		$(".daijin_value").text(value);
+    		$(".time").text("有效期："+limit);
+    		
+    		$(".daijin_ling").click(function(){
+    			$.ajax({
+					type: "post",
+					url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/getCoupon",
+					//contentType: "application/json",
+					data: {
+							"id":id,
+					      },
+					contentType: "application/x-www-form-urlencoded",
+					async: true,
+					timeout:8000,
+					dataType:'json',  
+					success: function(data) {
+						var json = eval(data);
+						if(json != null){
+							if(json.code == "100"){
+								alert(json.info);
+							}
+						}
+					},
+					complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					  if(status=='timeout'){//超时,status还有success,error等值的情况
+					     // ajaxTimeoutTest.abort();
+					     alert("网络状态不好诶~~");
+					  };
+					},
+					error: function(err) {
+						errormessage = "错啦！";
+						//alert(errormessage);	
+					} 	
+				});
+			return false;
+    		});
+    	});
+    	//获取参数
+		function GetQueryString(key){
+		  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		   	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+    </script>
+	  </div>
+	 </div>
+  </body>
+</html>

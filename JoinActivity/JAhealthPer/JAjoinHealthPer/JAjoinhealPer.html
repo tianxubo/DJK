@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+	<title>都健康</title>
+	<style type="text/css">
+	
+		.healthper_title{
+			margin:1em;
+			font-size:1em;
+			border-radius:5px;
+		}
+		.guize{
+			font-size:.8em;
+			background:#ffffff;
+			border-top:1px solid #cccccc;
+			border-radius:5px;
+		}
+		.guize p:nth-child(odd){
+			margin:.3em 0;
+			font-size:1em;
+		}
+		.guize p:nth-child(even){
+			font-size:1em;
+			color:#cccccc
+		}
+		.zhuanqian:nth-child(1){
+			padding:.8em;
+			border-top-left-radius: 5px;
+    		border-top-right-radius: 5px;
+			border-left:1px solid #cccccc;
+			border-right:1px solid #cccccc;
+			border-bottom:1px solid #cccccc;
+		}
+		.zhuanqian:nth-child(2){
+			padding:.8em;
+			border-left:1px solid #cccccc;
+			border-right:1px solid #cccccc;
+			border-bottom:1px solid #cccccc;
+		}
+		.zhuanqian:nth-child(3){
+			padding:.8em;
+			border-bottom-left-radius: 5px;
+    		border-bottom-right-radius: 5px;
+			border-left:1px solid #cccccc;
+			border-right:1px solid #cccccc;
+			border-bottom:1px solid #cccccc;
+		}
+		.zhuanqian .words{
+			display: inline-block;
+			vertical-align: middle;
+			margin-left:.8em
+		}
+		.zhuanqian img{
+			width:12%;
+			vertical-align: middle;
+		}
+	</style>
+  </head>
+  <body>
+     <div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">申请加入健康使者</h2>
+	  </div>
+		  
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<img src="../../../src/images/JoinActivity/JAhealthPer/join_healthper.png" style="width:100%">
+	  	<p style="margin:.5em 1em;font-size:.8em">欢迎加入都健康，点击下方按钮申请加入健康使者</p>
+	  	<a id="joinHealth" class="button_a" data-role="button" data-theme="f">加入健康使者</a>
+	  	<div class="healthper_title">
+	  	<p style="font-size:1em;margin:.5em;">加入健康使者:</p>
+	  		<div class="guize">
+	  			<div class="zhuanqian">
+	  				<img src="saomiao.png">
+	  				<div class="words">
+		  				<p>组团体检</p>
+		  				<p>6人成团，体检赚钱</p>
+	  				</div>
+	  			</div>
+	  			<div class="zhuanqian">
+	  				<img src="money.png">
+	  				<div class="words">
+		  				<p>销售拿收入</p>
+		  				<p>使用你发送的代金券，你就能获得收入</p>
+	  				</div>
+	  			</div>
+	  			<div class="zhuanqian">
+	  				<p>体检服务由都健康安排提供，健康使者的分销收入由都健康统一发放</p>
+	  			</div>
+			</div>
+	  	</div>
+	  </div>
+	  <script type="text/javascript">
+	  		$("#joinHealth").click(function(){
+	  		if(localStorage.healPer == "0"){
+	  			var URL = "http://192.168.0.31/mndjk01/weixin.php/GTHjiankangshizhe/setShizhe";
+	        		$.ajax({
+	        			type: "post",
+						url: URL, 
+						data: {
+							"openid":localStorage.openID
+						},
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							if(json != null){
+								if(json.code == "100"){
+									localStorage.healPer = "1";
+									location.href = "JAjoinsuccess.html";
+									//alert("申请成功，您已经是健康使者了");
+								}else{
+									alert("申请失败，重新尝试");
+								}
+							}else{
+								alert("申请失败，重新尝试");
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						      ajaxTimeoutTest.abort();
+						      alert("网络状态不好诶~~");
+						   };
+						},
+						error: function(err) {
+							errormessage = "错啦！";
+							alert(errormessage);	
+						} 
+	        		});
+	        		return false;
+	        	}else{
+	        		alert("您已经是健康使者了，请返回进行其他操作吧");
+	        	}
+	  		});
+	  </script>
+	 </div>
+  </body>
+</html>

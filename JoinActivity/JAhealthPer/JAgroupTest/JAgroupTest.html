@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <style type="text/css">
+		.td_pk_package{
+			padding:.5em;
+			background:#ffffff;
+			margin-top:1.5em
+		}
+		.pk_package{
+		 border-bottom: 1px solid #cccccc;
+		}
+		.pk_package img{
+			width:100%;
+		}
+		.td_1{
+			width:40%
+		}
+		.td_3{
+			width:20%;text-align: center
+		}
+		.td_3 div{
+			background:#19AFC7;
+			border-radius:3px;
+			width:80%;
+			margin:0 auto;
+			color:#fff;
+			font-size:.8em;
+			padding:.3em;
+			text-shadow:none;
+		}
+		/* .pk_package div{
+			display: inline-block;
+			width:55%;
+		}*/
+		.td_1 span{
+			color:#cccccc;
+			margin:0;
+		} 
+		.pk_person{
+			padding-top: .8em;
+			position: relative;
+		}
+		.pk_person span{
+			position: absolute;
+			bottom:0;
+			right:0;
+			color:#cccccc;
+			width:18%;
+			/* line-height: 13em */
+		}
+		.pk_person .per_head{
+			width:80%;
+			display: inline-block;
+		}
+		.pk_person .per_head img{
+			width:18%;
+		}
+	</style>
+  </head>
+  
+  <body>
+  	<!-- 六人成团 -->
+  	<div data-role="page" class="djk_page">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">组团体检</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="td_pk_package">
+	  		<div class="pk_package">
+	  			<table>
+	  				<tbody cellspacing="0">
+	  					<tr>
+	  					<td class="td_1"><img src="../../../src/images/taocan.png"></td>
+	  					<td class="td_1">
+	  						<p>套餐套餐套餐套餐套餐套餐套餐套餐</p>
+	  						<span>套餐套餐套餐</span>
+	  					</td>
+	  					<td class="td_3">
+	  						<div>加入组团</div>
+	  					</td>
+	  					</tr>
+	  				</tbody>
+	  			</table>
+	  		</div>
+	  		<div class="pk_person">
+	  			<div class="per_head">
+	  				<img src="../../../src/images/quan.png">
+	  				<img src="../../../src/images/quan1.png">
+	  				<img src="../../../src/images/quan1.png">
+	  			</div>
+	  			<span>距离组团成功只差2人</span>	
+	  		</div>
+	  	</div>
+	  	<a class="button_a" href="JAgroupApply.html" data-ajax="false" data-role="button" data-transition="slide" data-theme="f">申请建团</a>
+		
+		</div>
+	</div>
+  </body>
+</html>

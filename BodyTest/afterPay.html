@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+	<script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    	.shadow_border{
+    		background:#FFFEFE;
+    		box-shadow:1px 2px 1px #BAB9B9;
+    	}
+    	.margin_border{
+    		margin-top:.5rem;
+    	}
+    	.bottom_border{
+    		border-bottom: 1px solid #c1c0c0;
+    		padding:.7rem;
+    		font-size:1rem;
+    	}
+    	.order_test div{
+    		padding:.7rem;
+    	}
+    	.pic_span img{
+    		width:10%;
+    		vertical-align: middle;
+    	}
+    	.pic_span span{
+    		font-size: 1rem;
+    		margin:0;
+    		margin-left:1rem;
+    		vertical-align: middle;
+    	}
+    	.words p{
+    		color:#a9aaaa;
+    		font-size:.8rem;
+    	}
+    	.daijinlink{
+    		position: relative;
+    	}
+    	.daijinlink .pay_btn{
+    		width:30%;
+    		position: absolute;
+    		bottom:12%;
+    		left:50%;
+    		margin-left:-15%;
+    	}
+    </style>
+  </head>
+  <body>
+  	<div data-role="page" class="djk_page">
+		  <div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">付款成功</h2>
+		  </div>
+		<div data-role="main" class="ui-content" style="padding:.7rem">
+			<div class="order_test shadow_border">
+				<div class="pic_span" id="godate">
+					<img src="BTafterTest/yang.png">
+		  			<span class="yang_span">预约体检</span>
+				</div>
+			</div>
+			<div class="test_return shadow_border margin_border">
+				<div class="bottom_border pic_span">
+					<img src="BTafterTest/yang.png">
+		  			<span class="yang_span">体检回馈</span>
+				</div>
+				<div class="words bottom_border">
+					<p id="fanhuanM">温馨提示：您本次共消费了￥180，可回馈您21元，已放到您余额中</p>
+				</div>
+			</div>
+			<div class="daijinlink shadow_border margin_border">
+				<img src="../src/images/bodyTest/pay_daijin.png" style="width:100%">
+				<img class="pay_btn" src="../src/images/bodyTest/pay_btn.png">
+			</div>
+			<div class="after_test_manager shadow_border margin_border">
+				<div class="bottom_border pic_span">
+					<img src="BTafterTest/yang.png">
+		  			<span class="yang_span">检后管理</span>
+				</div>
+				<div class="words bottom_border">
+					<p>温馨提示：您可以在检后24小时查看后续服务内容</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//获取参数
+		var dingdanid = GetQueryString("dingdanid");
+		var shijiprice = GetQueryString("shijiprice");
+		var fanhuan = GetQueryString("fanhuan");
+		$("#fanhuanM").text("温馨提示：您本次共消费了￥"+shijiprice+"，可回馈您"+fanhuan+"元，已放到您余额中");
+		$("#godate").click(function(){
+			location.href = "Testorder.html?dingdanid="+dingdanid;
+		});
+		$(".pay_btn").click(function(){
+			location.href="../HealthPer/HPhealthPer.html";
+		});
+        var dataTostring = GetQueryString("info");
+        var dataJson =  JSON.parse(dataTostring);
+        //获取个人信息
+        var personInfo = dataJson.info;
+        //存储个人信息;
+        //alert(dataJson.info);
+        //openid;
+        localStorage.openID = personInfo.openid;
+        //昵称
+        localStorage.nickName = personInfo.nickName;
+        //头像
+        localStorage.headImg = personInfo.img;
+        //健康币
+        localStorage.healMoney = personInfo.jiankangbi;
+        //推荐人
+        if(personInfo.tuijianren == null || personInfo.tuijianren == "null"){
+        	localStorage.recommendPer = "无";
+        }else{
+        	localStorage.recommendPer = personInfo.tuijianren;
+        }
+        //余额
+        localStorage.countMoney = personInfo.gold;
+        //佣金
+        localStorage.remainderMoney = personInfo.yongjin; 
+        //用户状态信息；
+        //会员信息
+        localStorage.vip = dataJson.vip;
+        //企业状态信息
+        localStorage.bisumsg = dataJson.qiye;
+        //企业名称
+        localStorage.businame = dataJson.qiyename;
+        //企业邀请码
+        localStorage.busicode = dataJson.qiyecode;
+        //健康使者信息
+        localStorage.healPer = dataJson.shizhe;
+	});	
+	//获取参数
+	function GetQueryString(key){
+	  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	   	var result = window.location.search.substr(1).match(reg);
+	   	return result?decodeURIComponent(result[2]):null;
+    }
+	</script>
+  </body>
+</html>

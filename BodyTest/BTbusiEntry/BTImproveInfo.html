@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+  </head>
+  <body>
+  
+	<!-- 完善企业信息 -->
+  	<div data-role="page" class="djk_page" id="djk_wsqiye">
+  	  <!-- 头部栏 -->
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">完善企业信息</h2>
+	  </div>
+	  <div data-role="main" class="ui-content">
+	  	<div style="text-align: center;">
+	  		<img src="../../src/images/bodyTest/BTbusiEntry/ok.png" style="width:25%;margin:2.5em 0 2em">
+	  		<h4 style="margin:0">恭喜您，您的企业申请已经通过！</h4>
+	  	</div>
+	  	<div class="djk_improveInfo_form post_form" style="background: #ffffff;padding:1em;margin-top:1em">
+	  		<h3 style="text-align: center;">完善以下信息获取体验金</h3>
+	  		<form action="post" >
+	  			<label class="djk_label">费用预算:</label><input class="input" name="feiyong" data-role="none" type="text"><br>
+	  			<label class="djk_label">邀请码:</label><input class="input" name="fromid" data-role="none" type="text">
+	  			<a id="goBusiTest" class="button_a" href="#" data-role="button" data-transition="slide" data-theme="f">提&nbsp;&nbsp;&nbsp;交</a>
+	  		</form>
+	  	</div>
+	  	<script type="text/javascript">
+	  		//var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHqiye/wanshan";
+	  		var URL = "http://192.168.0.31/mndjk/weixin.php/GTHqiye/wanshan";
+	  		$("#goBusiTest").click(function(){
+	  			//$.mobile.changePage("BTbusiTest.html");
+	  			if($('input[name="feiyong"]').val() == ""){
+	  				alert("您好，请填写您的费用预算");
+	  				return false;
+	  			}
+	  			//alert("aga");
+	  			$.ajax({
+					type: "post",
+					url: URL,
+					//contentType: "application/json",
+					data: {
+							"openid":localStorage.openID,
+		                	"yusuan":$('input[name="feiyong"]').val(),
+		                	"fromcode":$('input[name="fromid"]').val()
+		                },
+					contentType: "application/x-www-form-urlencoded",
+					async: true,
+					timeout:3000,
+					dataType:'json',  
+					success: function(data) {
+						var json = eval(data);
+						if(json != null){
+							if(json.code == "success"){
+								alert(json.data.qiyename);
+								var qiyename = json.data.qiyename;
+								var code = json.data.code;
+								location.href = "BTbusiTest.html?businame="+qiyename+"&busicode="+code;
+							}else{
+								alert("提交失败");
+							}
+						}
+					},
+					complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					   if(status=='timeout'){//超时,status还有success,error等值的情况
+					      alert("网络状态不好诶~~");
+					   };
+					},
+					error: function(err) {
+						errormessage = "错啦！";
+						alert(errormessage);	
+					}
+				});	
+        	//alert("dsfs");
+			return false;
+	  		});
+	  	</script>
+	  </div>
+	</div>
+	
+	<!-- 审核中 -->
+	<div data-role="page" class="djk_page" id="djk_zzshenhe">
+  	  <!-- 头部栏 -->
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">审核中</h2>
+	  </div>
+	  <div data-role="main" class="ui-content">
+	  	<div style="text-align: center;">
+	  		<img src="../../src/images/bodyTest/BTbusiEntry/ok.png" style="width:25%;margin:2.5em 0 2em">
+	  		<h4 style="margin:0">您好，您提交的信息我们的后台正在加紧审核中，请耐心等待</h4>
+	  	</div>
+	  	<div class="djk_improveInfo_form" style="background: #ffffff;padding:1em;margin-top:1em">
+	  		<a id="doingcheck" class="button_a" href="../home.html" data-role="button" data-ajax="false" data-theme="f">确&nbsp;&nbsp;&nbsp;定</a>
+	  	</div>
+	  </div>
+	</div>
+  </body>
+</html>

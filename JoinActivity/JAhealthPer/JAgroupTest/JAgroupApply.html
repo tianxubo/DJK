@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <link rel="stylesheet" type="text/css" href="../../../src/css/taocanList.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+
+  </head>
+  
+  <body>
+    <div data-role="page" class="djk_page">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">组团体检</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<img src="../../../src/images/bodyTest/BTgroupTest/groupimg.png" style="width:100%">
+			<div class="djk_list_box">
+				<div class="taocan_list">
+					<a style="display: block">
+					<img src="../../../src/images/taoc.png">
+					<p>我就是个套餐</p>
+					<span class="red">￥:30</span><span class="gray"><s>￥:300</s></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+  </body>
+</html>

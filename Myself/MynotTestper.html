@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+	<title>都健康</title>
+  </head>
+  <script type="text/javascript">
+			$(document).ready(function(){
+				var url = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/getMyGroupZutuan";
+				 	$.ajax({
+						type: "post",
+						url: url,
+						//contentType: "application/json",
+						data: {
+								"openid":localStorage.openID
+						  },
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+								if(json != null){
+									if(json.code == "100"){
+										var jsonData = json.data;
+										var len  = jsonData.length;
+										var jsonHtml = "";
+										for(var i=0;i<len;i++){
+											var liclass = "";
+											if(i == 0){
+												liclass= " ui-first-child";
+											}else if(i == len-1){
+												liclass= " ui-last-child";
+											}else{
+												liclass = "";
+											}
+											jsonHtml += "<li class='ui-li-has-thumb "+liclass+"'><a href='#' class='ui-btn ui-btn-icon-right ui-icon-carat-r'><img style='border-radius:50%' src='"+jsonData[i].image+"'>"+
+			    							"<h4>"+jsonData[i].taocanname+"</h4><p>"+jsonData[i].nickname+"</p></a></li>";
+										}
+										$(".djk_list").append(jsonHtml);
+									}else{
+										$(".djk_list").append("<h4>您还没有已参团未体检的</h4>");
+									}
+								}							
+							},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+							if(status=='timeout'){//超时,status还有success,error等值的情况
+							ajaxTimeoutTest.abort();
+						alert("网络状态不好诶~~");
+						};
+					},
+					error: function(err) {
+						errormessage = "错啦！";
+						alert(errormessage);	
+					} 
+					});
+					return false;
+			});
+		</script>
+	
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+  <body>
+    <!-- 团体成员 -->
+  	<div data-role="page" class="djk_page" id="djk_team">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">参团未体检的人</h2>
+	  	</div>
+		<div data-role="main" class="ui-content">
+		<div class="djk_list_div" style="padding-top:1rem">
+			<ul data-role="listview" class="djk_list">
+			  <!-- <li>
+			    <a href="#">
+			    <img style="margin: .55em;" src="../src/images/bodyTest/BTgroupTest/head.png">
+			    	<h4>右视觉</h4>
+			    </a>
+			  </li>
+			  <li>
+			    <a href="#">
+			    <img style="margin: .55em;" src="../src/images/bodyTest/BTgroupTest/head.png">
+			    	<h4>右视觉</h4>
+			    </a>
+			  </li>
+			  <li>
+			    <a href="#">
+			    <img style="margin: .55em;" src="../src/images/bodyTest/BTgroupTest/head.png">
+			    	<h4>右视觉</h4>
+			    </a>
+			  </li> -->
+			</ul>
+			</div>
+			</div>
+		</div>
+		
+  </body>
+</html>

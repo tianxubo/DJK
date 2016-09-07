@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <title>加入群聊</title>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <style type="text/css">
+    	*{
+    		margin:0;
+    		padding:0;
+    	}
+    	.background_img{
+    		background:url(ac2_back.png) no-repeat 0% 0%;
+    		background-size:100% 100%;
+    		width:100%;
+    	}
+    	.background_img img{
+    		width:40%;
+    		position:absolute;
+    		bottom:10%;
+    		left:30%;
+    		
+    	}
+    </style>
+  </head>
+  
+  <body>
+  	<div class="background_img">
+  		<img src="ac2_erweima.png">
+  	</div>
+  	<script type="text/javascript">
+  		$(document).ready(function(){
+  			var _h = window.innerHeight;
+  			$('.background_img').css("height",_h+"px");
+  		});
+  	</script>
+  </body>
+</html>

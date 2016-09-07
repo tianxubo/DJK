@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <script type="text/javascript" src="../../src/js/swiper.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../src/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <style type="text/css">
+    @media screen and (min-width:320px) and (max-width:360px){
+			html{
+				font-size:12px;
+			}
+		}
+		 @media screen and (min-width:360px) and (max-width:385px){
+			html{
+				font-size:14px;
+			}
+		}
+    	.test_list{
+    		font-size:0;
+    		padding-top:1rem;
+    		overflow: hidden;
+    	}
+    	.test_type{
+    		display: inline-block;
+    		width:33.3%;
+    		font-size:.7rem;
+    		color:#b8b5b5;
+    		text-align: center;
+    	}
+    	.test_type a{
+    		text-decoration: none;
+    		color:#b8b5b5;
+    		font-weight:normal;
+    		display: block;
+    	}
+    	.test_type a:visited{
+    		color:#b8b5b5;
+    		text-decoration: none;
+    		font-weight:normal;
+    		display: block;
+    	}
+    	.test_border{
+    		width:90%;
+    		margin:0 auto;
+    		border-left:1px solid #b8b5b5;
+    		border-right:1px solid #b8b5b5;
+    		border-bottom:1px solid #b8b5b5;
+    		border-top:1px solid #ffffff;
+    		border-radius:5px;
+    		margin-bottom:1px;
+    		box-shadow: 1px 3px 5px #b8b5b5;    
+    		background-image: url(test_back.png);
+    		background-repeat:no-repeat;
+		    background-position: 100% 100%;
+		    background-size: 50%;
+    	}
+    	.test_border img{
+    		width:45%
+    	}
+    	.test_border .test_message{
+    		margin:.5rem 0;
+    	}
+    	.border-line{
+    		border-bottom: 1px dotted #b8b5b5;
+		    width: 60%;
+		    margin: .3rem auto;
+    	}
+		.swiper-wrapper img{
+			width:100%
+		}
+    </style>
+  </head>
+  <body>
+	 <div data-role="page" class="djk_page" style="background:#F5F4F4">
+		<div data-role="header" data-theme="f">
+			<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+			<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">体检商城</h2>
+	  	</div>
+		<div data-role="main" class="ui-content">
+			<div class="swiper-container">
+			        <div class="swiper-wrapper">
+			        	<!-- <div class="swiper-slide"><img src="ac_1.png"></div>
+			            <div class="swiper-slide"><img src="ac_2.png"></div> -->
+			        </div>
+    			<!-- Add Pagination -->
+        		<!-- <div class="swiper-pagination"></div> -->
+    			</div>
+			<div class="test_list">
+				<div class="test_type">
+					<a href="BTtest.html?type=熬夜失眠" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="shimian.png">
+							<p>Shimian</p>
+							<div class="border-line"></div>
+							<p>熬夜失眠</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+				<div class="test_type">
+					<a href="BTtest.html?type=不运动" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="yundong.png">
+							<p>Yundong</p>
+							<div class="border-line"></div>
+							<p>不运动</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+				<div class="test_type">
+					<a href="BTtest.html?type=电脑族" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="diannaozu.png">
+							<p>Diannaozu</p>
+							<div class="border-line"></div>
+							<p>电脑族</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+			</div>
+			<div class="test_list">
+				<div class="test_type">
+					<a href="BTtest.html?type=男性" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="nanxing.png">
+							<p>Nanxing</p>
+							<div class="border-line"></div>
+							<p>男性</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+				<div class="test_type">
+					<a href="BTtest.html?type=应酬" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="yingchouzu.png">
+							<p>Yingchouzu</p>
+							<div class="border-line"></div>
+							<p>应酬族及常吃外卖</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+				<div class="test_type">
+					<a href="BTtest.html?type=肿瘤" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="zhongliu.png">
+							<p>Zhongliu</p>
+							<div class="border-line"></div>
+							<p>肿瘤</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+			</div>
+			<div class="test_list">
+				<div class="test_type">
+					<a href="BTtest.html?type=中老年" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="laonianren.png">
+							<p>Laonianren</p>
+							<div class="border-line"></div>
+							<p>中老年人</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+				<div class="test_type">
+					<a href="BTtest.html?type=女性" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="nvxing.png">
+							<p>Nvxing</p>
+							<div class="border-line"></div>
+							<p>女性</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+				<div class="test_type">
+					<a href="BTtest.html?type=心脑血管" data-ajax="false" data-role="none">
+					<div class="test_border">
+						<div class="test_message">
+							<img src="shimian.png">
+							<p>Xinnaoxueguan</p>
+							<div class="border-line"></div>
+							<p>心脑血管及其他疾病</p>
+						</div>
+					</div>
+					</a>
+					<div style="margin:.2rem auto .1rem;width:80%;border-bottom: 1px solid #b0b3b3;"></div>
+					<div style="margin:0 auto;width:60%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+					<div style="margin:0 auto;width:40%;border-bottom: 1px solid #b0b3b3;margin-bottom:.1rem"></div>
+				</div>
+			</div>
+		</div>
+	 </div>
+	 <script type="text/javascript">
+	 	$(document).ready(function(){
+	 		var URLS= "http://mndjk.app0351.cn/mndjk/weixin.php/GTHlunbo/getLunboImg";
+			 	$.ajax({
+				  		type: "post",
+						url: URLS,
+						//contentType: "application/json",testTable.html?taocanid="+jsonData[i].taocanid+"&type=zt
+						data: {
+							"type":"sc"
+						},
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							if(json!= null){
+								if(json.code == "100"){
+									var imgData = json.data;
+									var len = imgData.length;
+									var imgHtml = "";
+									for(var i=0;i<len;i++){
+										imgHtml += "<div class='swiper-slide'><img src='"+imgData[i]+"'></div>";
+									}
+									$(".swiper-wrapper").append(imgHtml);
+									var mySwiper = new Swiper ('.swiper-container', {
+					    				direction: 'horizontal',
+					    				loop: true,
+					    				autoplay: 3000
+		  							});
+									/* $(".swiper-slide:nth-child(1) img").attr("src",);
+									$(".swiper-slide:nth-child(2) img").attr("src",imgData[1]); */
+								}
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						      alert("您的网络貌似不是很良好");
+						   };
+						   return false;
+						},
+						error: function(err) {
+							errormessage = "您的网络貌似不是很良好";
+							//alert(errormessage);
+							return false;	
+						} 
+				  	});
+				  	return false;
+	 	});
+	 </script>
+  </body>
+</html>

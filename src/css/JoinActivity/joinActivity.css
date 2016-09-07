@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+ @media screen and (min-width:320px) and (max-width:360px){
+			html{
+				font-size:12px;
+			}
+		}
+		 @media screen and (min-width:360px) and (max-width:385px){
+			html{
+				font-size:14px;
+			}
+		}
+			.test_list{
+	    		font-size:0;
+	    		padding-top:1rem;
+	    		overflow: hidden;
+	    	}
+	    	.test_type{
+	    		display: inline-block;
+	    		width:50%;
+	    		font-size:.8rem;
+	    		color:#b8b5b5;
+	    		text-align: center;
+	    	}
+	    	.test_type a{
+	    		text-decoration: none;
+	    		color:#b8b5b5;
+	    		font-weight:normal;
+	    		display: block;
+	    	}
+	    	.test_type a:visited{
+	    		color:#b8b5b5;
+	    		text-decoration: none;
+	    		font-weight:normal;
+	    		display: block;
+	    	}
+	    	.test_border{
+	    		width:90%;
+	    		margin:0 auto;
+	    		border-left:1px solid #b8b5b5;
+	    		border-right:1px solid #b8b5b5;
+	    		border-bottom:1px solid #b8b5b5;
+	    		border-top:1px solid #ffffff;
+	    		border-radius:5px;
+	    		margin-bottom:1px;
+	    		box-shadow: 1px 3px 5px #b8b5b5;    
+	    		background-image: url(../../images/HealthPer/test_back.png);
+	    		background-repeat:no-repeat;
+			    background-position: 100% 100%;
+			    background-size: 50%;
+			    background-color: #ffffff;
+	    	}
+	    	.test_border img{
+	    		width:45%
+	    	}
+	    	.test_border .test_message{
+	    		margin: 2rem 0;
+	    	}
+	    	.test_border .test_message p{
+	    		color:#7f7f7f;
+	    	}
+	    	.test_border .test_message .p2{
+	    		font-size:1.1rem;
+	    		color:#eb4208
+	    	}
+	    	.border-line{
+	    		border-bottom: 1px dotted #b8b5b5;
+			    width: 60%;
+			    margin: .3rem auto;
+	    	}

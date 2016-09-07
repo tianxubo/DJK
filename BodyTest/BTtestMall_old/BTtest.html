@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="../../src/js/swiper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+	<title>都健康</title>
+	<style type="text/css">
+	@media screen and (min-width:320px) and (max-width:360px){
+		html{
+			font-size:12px;
+		}
+	}
+	 @media screen and (min-width:360px) and (max-width:385px){
+		html{
+			font-size:14px;
+		}
+	}
+		.testList_div .test_content{
+			background:#BE9F66;
+			margin-top:1rem;
+		    padding: .3rem 0;
+		}
+		.test_content p{
+			color:#ffffff;
+			text-shadow: none;
+			font-size:.8rem;
+			margin-left: 1rem
+		}
+		.test_name a{
+			text-decoration: none;
+			color:#ffffff;
+		}
+		.test_name_price{
+			font-size:0;
+			background:#ffffff;
+		    padding: 1rem .5rem;
+		}
+		.test_name_price div{
+			width:20%;
+			display: inline-block;
+		}
+		.test_name_price .test_name{
+			width:35%
+		}
+		.test_name_price .test_name h3{
+			font-size:1.2rem;
+			color:#BE9F66;
+		}
+		.test_name_price .test_name p{
+			background:#BE9F66;
+			font-size:1rem;
+			color:#ffffff;
+			border-radius:10px;
+		    display: inline-block;
+		    padding: 0 .7rem;
+			text-align: center;
+		}
+		.test_name_price .test_price{
+			width:40%;
+		}
+		.test_name_price .test_price p{
+			color:#BE9F66;
+			font-size:1rem;
+		}
+		.test_name_price .test_price span{
+			color:#BE9F66;
+			font-size: .7rem;
+   			margin: 0;
+		}
+		.test_name_price .test_price .biaozhi{
+			font-size:1rem;
+		}
+		.test_name_price .test_price .span_price{
+			font-size:2rem;
+		}
+		.test_img{
+			text-align: right;
+		}
+		.test_img img{
+			width:100%;
+		}
+			.load{
+			padding:.5rem;
+			background:#000000;
+			opacity:.6;
+			position: fixed;
+			z-index:10;
+			width: 4rem;
+		    top: 50%;
+		    border-radius: 5px;
+		    left: 50%;
+		    margin-left: -2rem;
+		    text-align: center;
+		    display: none;
+		}
+		.load img{
+			width:60%;
+		}
+		.load p{
+			color:#ffffff;
+		}
+		
+	</style>
+</head>
+  <body>
+  <div class="load">
+		<img src="../../src/images/load.gif">
+		<p>获取中</p>
+</div>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  			$(".load").show();
+		  	var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHtaocan/getTaocanList";
+		  	var type = GetQueryString("type");
+		  	//alert(type);
+		  	$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+					"type":type,
+					"city":localStorage.city
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null && json != ""){
+						if(json.code == "100"){
+							var testdata = json.data;
+							var len = testdata.length;
+							var testcontent = "";
+							for(var i=0;i<len;i++){
+								testcontent += "<div class='test_content'><p>健康早知道更好</p><div class='test_name_price'>"+
+								"<div class='test_name'><h3>"+testdata[i].taocanname+"</h3><a data-ajax='false' href='../testTable.html?taocanid="+testdata[i].taocanid+"&type=tc'><p>马上订购</p></a></div>"+
+								"<div class='test_price'><p><s>门市价:"+testdata[i].price+"元</s></p><div style='width:100%;margin-left: 1rem;'>"+
+								"<span>现价:</span><span class='biaozhi'>￥</span><span class='span_price'>"+testdata[i].realprice+"</span></div>"+
+								"</div><div class='test_img'><img src='"+testdata[i].img+"'></div></div>"+
+								"<p>咨询/预约热线：18335115688</p></div>";
+							}
+							$(".testList_div").append(testcontent);
+							$(".load").hide();
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      ajaxTimeoutTest.abort();
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+		  });
+		  //获取参数
+		  	function GetQueryString(key){
+	        	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	        	var result = window.location.search.substr(1).match(reg);
+	        	return result?decodeURIComponent(result[2]):null;
+      		}
+  </script>
+  	<div data-role="page" class="djk_page" style="background:#BBF9F6">
+		<div data-role="header" data-theme="f">
+			<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+			<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">体检商城</h2>
+	  	</div>
+		<div data-role="main" class="ui-content">
+			<div class="testList_div">
+				<!-- <div class="test_content">
+					<p>健康早知道更好</p>
+					<div class="test_name_price">
+						<div class="test_name">
+							<h3>内科+外科</h3>
+							<p>马上订购</p>
+						</div>
+						<div class="test_price">
+							<p><s>门市价:40元</s></p>
+							<div style="width:100%;margin-left: 1rem;">
+								<span>现价:</span>
+								<span class="biaozhi">￥</span>
+								<span class="span_price">20</span>
+							</div>
+						</div>
+						<div class="test_img">
+							<img src="">
+						</div>
+					</div>
+					<p>咨询/预约热线：18335115688</p>
+				</div> -->
+			</div>
+		</div>
+	</div>
+  </body>
+</html>

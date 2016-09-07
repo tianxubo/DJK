@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+	<title>都健康</title>
+	<style type="text/css">
+	 @media screen and (min-width:320px) and (max-width:360px){
+		html{
+			font-size:12px;
+		}
+	}
+	 @media screen and (min-width:360px) and (max-width:385px){
+		html{
+			font-size:14px;
+		}
+	}
+		.pk_body{
+			padding:0 1.5rem;
+		}
+		.personal_msg{
+			position: relative;
+		}
+		.per_msg_title{
+			text-align: right;
+			padding:.3rem .5rem;
+			background: -ms-linear-gradient(top,  #97D6DC,#5BB9C1);        /* IE 10 */
+			background:-moz-linear-gradient(top, #97D6DC,#5BB9C1);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#97D6DC), to(#5BB9C1));/*谷歌*/ 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#97D6DC), to(#5BB9C1));      /* Safari 4-5, Chrome 1-9*/
+			background: -webkit-linear-gradient(top, #97D6DC,#5BB9C1);   /*Safari5.1 Chrome 10+*/
+			background: -o-linear-gradient(top, #97D6DC,#5BB9C1);  /*Opera 11.10+*/
+			color:#ffffff;
+			text-shadow:none;
+			border-bottom:2px solid #2C6B70;
+			border-top:2px solid #5BB9C1;
+			border-left:2px solid #5BB9C1;
+			border-right:2px solid #5BB9C1;
+    		border-top-left-radius: 20px;
+    		border-top-right-radius: 20px;
+		}
+		.pk_msg_title{
+			text-align: right;
+			padding:.3rem .5rem;
+			background: -ms-linear-gradient(top,  #96DCA0,#64C66F);        /* IE 10 */
+			background:-moz-linear-gradient(top, #96DCA0,#64C66F);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#96DCA0), to(#64C66F));/*谷歌*/ 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#96DCA0), to(#64C66F));      /* Safari 4-5, Chrome 1-9*/
+			background: -webkit-linear-gradient(top, #96DCA0,#64C66F);   /*Safari5.1 Chrome 10+*/
+			background: -o-linear-gradient(top, #96DCA0,#64C66F);  /*Opera 11.10+*/
+			color:#ffffff;
+			text-shadow:none;
+			border-bottom:2px solid #37783E;
+			border-top:2px solid #5AC168;
+			border-left:2px solid #5AC168;
+			border-right:2px solid #5AC168;
+    		border-top-left-radius: 20px;
+    		border-top-right-radius: 20px;
+		}
+		.per_msg_body{
+			background:#F0F0F0;
+			border-right:2px solid #F0F0F0;
+			border-left: 2px solid #F0F0F0;
+			border-bottom: 2px solid #F0F0F0;
+			border-top:2px solid #ffffff;
+			border-bottom-left-radius:20px;
+			border-bottom-right-radius:20px;
+			box-shadow: 2px 5px 9px #cccccc;
+			padding:2rem .5rem
+		}
+		.per_msg_body .test_info{
+			color:#19B1C6;
+			display: inline-block;
+		}
+		.per_msg_body .test_info span{
+			margin:0;
+			font-size:1.2rem
+		}
+		.tijianxiangqing{
+			background: -ms-linear-gradient(top,  #97D6DC,#5BB9C1);        /* IE 10 */
+			background:-moz-linear-gradient(top, #97D6DC,#5BB9C1);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#97D6DC), to(#5BB9C1));/*谷歌*/ 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#97D6DC), to(#5BB9C1));      /* Safari 4-5, Chrome 1-9*/
+			background: -webkit-linear-gradient(top, #97D6DC,#5BB9C1);   /*Safari5.1 Chrome 10+*/
+			background: -o-linear-gradient(top, #97D6DC,#5BB9C1);  /*Opera 11.10+*/
+			font-size:0;
+			border-bottom:1px solid #387379;
+   			padding: .6rem;
+   			border-radius:50%
+		}
+		.tijianxiangqing p{
+			    color: #ffffff;
+    			text-shadow: none;
+    			font-size:1.5rem;
+    			line-height: 1.5rem;
+		}
+		.pkperson_msg{
+			margin-top:1rem;
+			position: relative;
+			margin-bottom: 1rem;
+		}
+		
+		.pk_msg_body{
+			background:#F0F0F0;
+			padding-top:4rem;
+			padding-bottom:1rem;
+			border-top: 2px solid #ffffff;
+			border-right:2px solid #F0F0F0;
+			border-left: 2px solid #F0F0F0;
+			border-bottom: 2px solid #F0F0F0;
+		    border-bottom-left-radius: 20px;
+		    border-bottom-right-radius: 20px;
+			box-shadow: 2px 5px 9px #cccccc;
+		}
+		.pk_per_msg{
+			font-size:0;
+			padding:.5rem;
+			background:#ffffff;
+			color:#5AC367;
+			margin-top:1rem;
+		}
+		.pk_per_msg img{
+			width:10%;
+			vertical-align: middle;
+			border-radius:50%;
+		}
+		.pk_per_msg span{
+			width:50%;
+			font-size:1.5rem;
+			padding-left:5%;
+			vertical-align: middle;
+			display: inline-block;
+			margin: 0;
+		}
+		.pk_per_msg div{
+			display:inline-block;
+			width:30%;
+			vertical-align: middle;
+		}
+		.pk_per_msg div p{
+			font-size:.8rem;
+		}
+		.xiaozuchengyuan{
+			background: -ms-linear-gradient(top,  #96DCA0,#64C66F);        /* IE 10 */
+			background:-moz-linear-gradient(top, #96DCA0,#64C66F);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#96DCA0), to(#64C66F));/*谷歌*/ 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#96DCA0), to(#64C66F));      /* Safari 4-5, Chrome 1-9*/
+			background: -webkit-linear-gradient(top, #96DCA0,#64C66F);   /*Safari5.1 Chrome 10+*/
+			background: -o-linear-gradient(top, #96DCA0,#64C66F);  /*Opera 11.10+*/
+			font-size:0;
+			border-bottom:1px solid #387379;
+   			padding: .6rem;
+   			border-radius:50%
+		}
+		.xiaozuchengyuan p{
+			    color: #ffffff;
+    			text-shadow: none;
+    			font-size:1.5rem;
+    			line-height: 1.5rem;
+		}
+	</style>
+  </head>
+  
+  <body>
+  	<div data-role="page" class="djk_page" style="background:#ffffff">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow:none">健康pk</h2>
+	  </div>
+	  
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<img src="pkxiangqing.png" style="width:100%">
+	  	<div class="pk_body">
+	  	
+	  		<!-- 体检详情信息 -->
+		  	<div class="personal_msg">
+		  		<div class="per_msg_title">
+		  			<p>都健康体检平台</p>
+		  		</div>
+		  		<div class="per_msg_body">
+		  			<div style="display: inline-block;width:32%">
+		  			</div>
+		  			<div class="test_info">
+		  				<span>体检项目：</span><span class="test_xiangmu"></span>
+		  			</div>
+		  		</div>
+		  		<div style="position: absolute;padding:.8rem;background:#f0f0f0;top:5%;left:5%;border-radius:50%;border-top:2px solid #ffffff;">
+		  			<div class="tijianxiangqing">
+		  				<p>体检</p>
+		  				<p>详情</p>
+		  			</div>
+		  		</div>
+		  	</div>
+		  	
+		  	<!-- 小组成员信息 -->
+		  	<div class="pkperson_msg">
+		  		<div class="pk_msg_title">
+		  			<p>都健康体检平台</p>
+		  		</div>
+		  		<div style="position: absolute;padding:.8rem;background:#f0f0f0;top:5%;left:5%;border-radius:50%;border-top:2px solid #ffffff;">
+		  			<div class="xiaozuchengyuan">
+		  				<p>小组</p>
+		  				<p>成员</p>
+		  			</div>
+		  		</div>
+		  		<div class="pk_msg_body">
+		  			<!-- <div class="pk_per_msg">
+		  				<img src="quan1.png">
+		  					<span>小明</span>
+		  				<div>
+		  					<p>体检分数：95</p>
+		  					<p>体检状态：合格</p>
+		  				</div>
+		  			</div>
+		  			<div class="pk_per_msg">
+		  				<img src="quan1.png">
+		  					<span>小明</span>
+		  				<div>
+		  					<p>体检分数：95</p>
+		  					<p>体检状态：合格</p>
+		  				</div>
+		  			</div>
+		  			<div class="pk_per_msg">
+		  				<img src="quan1.png">
+		  					<span>小明</span>
+		  				<div>
+		  					<p>体检分数：95</p>
+		  					<p>体检状态：合格</p>
+		  				</div>
+		  			</div> -->
+		  		</div>
+		  	</div>
+		  	<!-- 提交按钮 -->
+		  	<a class="button_a" href="BTgroupApply.html" data-ajax="false" data-role="button" data-theme="f">开始体检</a>
+			<!-- <a class="button_a" href="#" data-ajax="false" data-role="button" data-theme="f">费用返还</a> -->
+	  	</div>
+	  </div>
+	  
+	  </div>
+	  <script type="text/javascript">
+	  $(document).ready(function(){
+		  	var groupid = GetQueryString("groupid");
+			var url = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHpk/getGroupCon";
+			 	$.ajax({
+					type: "post",
+					url: url,
+					//contentType: "application/json",
+					data: {
+							"groupid":groupid//localStorage.openID
+					  },
+					contentType: "application/x-www-form-urlencoded",
+					async: true,
+					timeout:3000,
+					dataType:'json',  
+					success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code == "100"){
+							var memberList = json.data.mem;
+							$(".test_xiangmu").text(json.data.taocanname);
+							if(memberList != null){
+								var len = memberList.length;
+								var memberHtml = "";
+								for(var i=0;i<len;i++){
+									var score = "";;
+									if(memberList[i].score != null){
+										score = memberList[i].score;
+									}else{
+										score = "暂无";
+									}
+									memberHtml += "<div class='pk_per_msg'>"+
+										  				"<img src='"+memberList[i].img+"'>"+
+										  					"<span>"+memberList[i].nickname+"</span>"+
+										  				"<div>"+
+										  					"<p>体检分数："+score+"</p>"+
+										  				"</div>"+
+										  			"</div>";
+								}
+								$(".pk_msg_body").append(memberHtml);
+							}
+						}
+						}							
+					},
+					complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						if(status=='timeout'){//超时,status还有success,error等值的情况
+						alert("网络状态不好诶~~");
+					};
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+				});
+				return false;	
+			});
+		//获取参数
+	  	function GetQueryString(key){
+      	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+      	var result = window.location.search.substr(1).match(reg);
+      	return result?decodeURIComponent(result[2]):null;
+		}
+	  </script>
+  </body>
+</html>

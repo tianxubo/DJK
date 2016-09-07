@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+    <style type="text/css">
+    	.shadow_border{
+    		background:#FFFCFE;
+    		box-shadow:1px 2px 1px #bfbfbf;
+    		padding:1.5rem .7rem;
+    	}
+    	.shadow_border:active{
+    		background:#FCFCFE;
+    		box-shadow:0px 0px 1px #bfbfbf;
+    	}
+    	.margin_border{
+    		margin-top:1rem;
+    	}
+    	.bottom_border{
+    		border-bottom: 1px solid #c1c0c0;
+    		padding:.7rem;
+    		font-size:1rem;
+    	}
+    	.left_right_div img{
+    		width:20%;
+    		vertical-align: middle;
+    	}
+    	.left_right_div .right_div{
+    		display: inline-block;
+    		vertical-align: middle;
+    		margin-left: 1rem;
+    	}
+    	.right_div h4{
+    		margin:0;
+    		font-size:1.2rem;
+    		font-weight: normal;
+    	}
+    	.right_div p{
+    		font-size:.5rem;
+    		color:#878686;
+    		margin-top:.5rem
+    	}
+    </style>
+  	</head>
+  
+  	<body>
+	  	<div data-role="page" style="background:#F7F7F7;">
+		  <div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">健康托管</h2>
+		  </div>
+		  <div data-role="main" class="ui-content" style="padding:.8rem">
+		  	<div class="yingyangshi shadow_border">
+		  		<div class="left_right_div">
+		  			<a href="BTtuoYing.html" data-role="none" data-ajax="false">
+			  			<img src="shimian.png">
+				  		<div class="right_div">
+				  			<h4 style="color:red">营养师</h4>
+				  			<p>您可以选择咨询或者自己学习营养管理</p>
+				  		</div>
+			  		</a>
+		  		</div>
+		  	</div>
+		  	<div class="kouqiang shadow_border margin_border" id="kouqiang">
+		  		<div class="left_right_div">
+		  			<img src="shimian.png">
+			  		<div class="right_div">
+			  			<h4 style="color:red">口腔</h4>
+			  			<p>提供口腔门诊体验券</p>
+			  		</div>
+		  		</div>
+		  	</div>
+		  	<div class="zhongyililiao shadow_border margin_border" id="zhongyi">
+		  		<div class="left_right_div">
+		  			<img src="shimian.png">
+			  		<div class="right_div">
+			  			<h4 style="color:red">中医理疗/按摩</h4>
+			  			<p>为您的身体保驾护航</p>
+			  		</div>
+		  		</div>
+		  	</div>
+		  	<div class="shicaiku shadow_border margin_border" id="shicai">
+		  		<div class="left_right_div">
+		  			<img src="shimian.png">
+			  		<div class="right_div">
+			  			<h4 style="color:red">食材库</h4>
+			  			<p>充值后可随意选择商品</p>
+			  		</div>
+		  		</div>
+		  	</div>
+		  </div>
+		 </div>
+		 <script type="text/javascript">
+		 	$("#kouqiang").click(function(){
+		 		alert("暂未开通，尽请期待");
+		 	});
+		 	$("#zhongyi").click(function(){
+		 		alert("暂未开通，尽请期待");
+		 	});
+		 	$("#shicai").click(function(){
+		 		alert("暂未开通，尽请期待");
+		 	});
+		 </script>
+  	</body>
+</html>

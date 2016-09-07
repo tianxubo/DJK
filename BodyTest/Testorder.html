@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    	.add_person{
+			border-top:1px solid #f8f8f8;
+			background:#ffffff;
+			padding-bottom: 2em
+		}
+		.add_person form label{
+			margin: 1.1em 0em 1.1em 2em;
+    		width: 5em;
+			font-size: 1em;
+		}
+		.add_person form .input{
+			font-size: 1em;
+		}
+		.ui-input-text{
+			display: inline-block;
+		}
+    </style>
+  </head>
+  
+  <body>	
+  	<div data-role="page" class="djk_page" id="djk_testPer_info">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">预约体检</h2>
+	  </div>
+	  
+	  <div data-role="main" class="ui-content">
+	  	<div class="add_person post_form">
+	  		<h4>预约体检信息</h4>
+	  		<form id="form1" action="">
+	  			<label data-role="none">订单号</label><p class="order_number" style="display: inline-block;">1615161</p><br>
+	  			<label data-role="none">姓名</label><input class="input" name="name" type="text" data-role="none" placeholder="请输入体检人姓名"><br>
+		  		<label data-role="none">电话</label><input class="input" name="tele" type="tel" data-role="none" placeholder="请输入体检人电话"><br>
+		  		<label data-role="none">身份证号</label><input class="input" name="idnum" type="tel" data-role="none" placeholder="请输入体检人姓名"><br>
+	  			<label data-role="none">门店</label><select  style="width:60%;" name="store" id="store" data-role="none">
+		         <!-- <option value="20">双东分院(周日不营业)</option>
+		         <option value="22">漪汾分院(周日不营业)</option>
+		         <option value="21">长风分院(周一不营业)</option>
+		         <option value="23">王村分院(周一不营业)</option> -->
+	        	</select>
+	  			<label data-role="none">日期</label><input name="date" type="date" data-role="none" placeholder="输入体检日期" style="display:inline-block;min-width:5em"><br>
+	  			<label data-role="none">时间</label><select name="time" id="time" data-role="none">
+		         <option value="7:40—8:00">7:40—8:00</option>
+		         <option value="8:00—8:20">8:00—8:20</option>
+		         <option value="8:20—8:40">8:20—8:40</option>
+		         <option value="8:40—9:00">8:40—9:00</option>
+	        	</select>
+	  		</form>
+	  		<a id="test_order" class="button_a" style="padding:.5em 1.5em;" href="#" data-role="button" data-transition="slide" data-theme="f">预约</a>
+	 		<script type="text/javascript">
+	 		$(document).ready(function(){
+	 		var dingdanid = GetQueryString("dingdanid");
+	 		$(".order_number").text(dingdanid);
+	 		var url = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHyuyue/getMendian";
+	 			$.ajax({
+	  				type: "post",
+					url: url,
+					//contentType: "application/json",
+					data: {
+						"city":localStorage.city
+			              },
+					contentType: "application/x-www-form-urlencoded",
+					async: true,
+					timeout:3000,
+					dataType:'json',  
+					success: function(data) {
+						var json = eval(data);
+						if(json != null){
+							if(json.code == "100"){
+								var storeData = json.data;
+								var len = storeData.length;
+								var storeHtml = "";
+								for(var i=0;i<len;i++){
+									storeHtml += "<option value='"+storeData[i].mendianid+"'>"+storeData[i].mendianname+"</option>";
+								}
+								$('select[name="store"]').append(storeHtml);
+								
+								$("#test_order").click(function(){
+				  				var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHyuyue/setYuyue";
+				  				var Name = $('input[name="name"]').val(),
+				        		   Tele = $('input[name="tele"]').val(),
+				        		   idnum = $('input[name="idnum"]').val(),
+				        		   store = $('select[name="store"]').val(),
+				        		   //wordStore = $('select[name="store"]').find('option:selected').text(),
+				        		   date = $('input[name="date"]').val(),
+				        		   time = $('select[name="time"]').val();
+				        		   if(store == "20" || store == "22" || store=="25"){
+				  						var n = new Date(date).getDay();
+				  						if(n == 0){
+				  							alert("您选的"+date+"是星期天,该医院星期天不营业,请重新选择日期");
+				  							return false;
+				  						}
+				  					}else if(store == "21" || store == "23" || store=="24"){
+				  						var n = new Date(date).getDay();
+				  						if(n == 1){
+				  							alert("您选的"+date+"是星期一,该医院星期一不营业,请重新选择日期");
+				  							return false;
+				  						}
+				  					}
+				  					$.ajax({
+				  						type: "post",
+										url: URL,
+									//contentType: "application/json",
+										data: {
+											"openid":localStorage.openID,
+											"name":Name,
+											"tel":Tele,
+											"cardnum":idnum,
+											"time":date+" "+time,
+											"dingdanid":dingdanid,
+											"store":store
+						                },
+									contentType: "application/x-www-form-urlencoded",
+									async: true,
+									timeout:3000,
+									dataType:'json',  
+									success: function(data) {
+										var json = eval(data);
+										if(json != null){
+											if(json.code == "100"){
+												alert("预约成功");
+											}else{
+												alert("预约失败");
+											}
+										}
+									},
+									complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+									   if(status=='timeout'){//超时,status还有success,error等值的情况
+									      ajaxTimeoutTest.abort();
+									      alert("网络状态不好诶~~");
+									   };
+									},
+									error: function(err) {
+										errormessage = "错啦！";
+										alert(errormessage);	
+									} 
+								});
+								return false;
+				        		  //alert(wordStore);
+				  			});
+							}
+						}
+					},
+					complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					   if(status=='timeout'){//超时,status还有success,error等值的情况
+					      ajaxTimeoutTest.abort();
+					      alert("网络状态不好诶~~");
+					   };
+					},
+					error: function(err) {
+						errormessage = "错啦！";
+						alert(errormessage);	
+					}
+					});
+				return false;
+	  			
+	  			
+	 			});
+	  			//获取参数
+			  	function GetQueryString(key){
+		        	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		        	var result = window.location.search.substr(1).match(reg);
+		        	return result?decodeURIComponent(result[2]):null;
+	      		}
+	  		</script>
+	  	</div>
+	  </div>
+	 </div>
+  </body>
+</html>

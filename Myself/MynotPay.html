@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    @media screen and (min-width:320px) and (max-width:360px){
+		html{
+			font-size:12px;
+		}
+	}
+	 @media screen and (min-width:360px) and (max-width:385px){
+		html{
+			font-size:14px;
+		}
+	}
+    	.test_order_list{
+    		border-top: 1px solid #19AFC7;
+    		border-bottom: 1px solid #19AFC7;
+    		padding:1rem;
+    		background:#ffffff;
+    		margin-top:1rem;
+    	}
+    	.test_order_div{
+    		padding:1rem 0
+    	}
+    	.test_order_list p{
+    		font-size: 1rem;
+    		text-shadow: none;
+    	}
+    	.test_body{
+    		border:1px solid #cccccc;
+    		padding:.5rem;
+    	}
+    	.test_body img{
+    		width:60%;
+    		vertical-align: middle;
+    	}
+    	.test_msg{
+    		width:40%;
+    		display: inline-block;
+    		vertical-align: middle;
+    		text-align: center;
+    	}
+    	.payfor{
+    		background:#19AFC7;
+    		border-radius:10px;
+    		padding:.5rem;
+    		color:#ffffff;
+			width: 40%;
+		    margin: 0 auto;
+    	}
+    	.payfor:active{
+    		background: #0C8DA2
+    	}
+    </style>
+	<title>都健康</title>
+  </head>
+  <script type="text/javascript">
+	  	$(document).ready(function(){
+		var url = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/getDaizhifu";
+		 	$.ajax({
+				type: "post",
+				url: url,
+				//contentType: "application/json",
+				data: {
+						"openid":localStorage.openID
+				  },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+				var json = eval(data);
+				if(json != null){
+					if(json.code == "100"){
+						if(json.data.list != null);
+						var notPayList =  json.data;
+						var len = notPayList.length;
+						var notPayHtml = "";
+						for(var i=0;i<len;i++){
+						var name = "",
+							taocanI = "";
+						if(notPayList[i].dingdantype == "cj"){
+							name = "初级体检";
+							taocanI = "taocan.png";
+						}else if(notPayList[i].dingdantype == "gj"){
+							name = "高级体检";
+							taocanI = "taocan.png";
+						}else{
+							name = notPayList[i].taocanname;
+							taocanI = notPayList[i].img;
+						}
+							notPayHtml += "<div class='test_order_list'>"+
+											"<p>订单号:<span style='font-size:1rem;margin:0'>"+notPayList[i].dingdanid+"</span></p>"+
+											"<div class='test_body'>"+
+												"<img src='"+taocanI+"'>"+
+												"<div class='test_msg'>"+
+													"<p class='test_name'>"+name+"</p>"+
+													"<p style='margin:1rem 0'>价格：￥"+notPayList[i].price+"</p>"+
+													"<p class='payfor' id='"+notPayList[i].dingdantype+"'>去支付</p>"+
+												"</div>"+
+											"</div>"+
+											"<span style='margin:0'>时间："+notPayList[i].datetime.substr(0, 10)+"</span>"+
+										"</div>";
+							//alert(incomeHtml);
+						}
+						$(".test_order_div").append(notPayHtml);
+						$(".payfor").click(function(){
+							var dingdanid = $(this).parent().parent().prev().find("span").text();
+							var type = $(this).attr("id");
+							if(type == "cj" || type == "gj"){
+								location.href = "../BodyTest/BTcustomTest/BTpayfortest.html?dingdanid="+dingdanid;
+							}else{
+								location.href = "../BodyTest/ptpayfortest.html?dingdanid="+dingdanid;
+							}
+						});
+						}else if(json.code=="-404"){
+						$(".test_order_div").append("<h3>您还没有未支付的订单，请您前往下订单吧</h3>");
+						}
+					}							
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					if(status=='timeout'){//超时,status还有success,error等值的情况
+					ajaxTimeoutTest.abort();
+				alert("网络状态不好诶~~");
+				};
+			},
+			error: function(err) {
+				errormessage = "错啦！";
+				alert(errormessage);	
+			} 
+			});
+			return false;	
+		});
+  </script>
+  <body>
+  	<div data-role="page" class="djk_page">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">待支付</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="test_order_div">
+				<!-- <div class="test_order_list">
+					<p>订单号:123124123123</p>
+					<div class="test_body">
+						<img src="taocan.png">
+						<div class="test_msg">
+							<p class="test_name">妇女检查</p>
+							<p style="margin:1rem 0">价格：￥213</p>
+							<p class="payfor">去支付</p>
+						</div>
+					</div>
+				</div> -->
+				
+				<!-- <div class="test_order_list">
+					<p>订单号:123124123123</p>
+					<div class="test_body">
+						<img src="taocan.png">
+						<div class="test_msg">
+							<p class="test_name">男科检查</p>
+							<p style="margin:1rem 0">价格：￥213</p>
+							<p class="payfor">去支付</p>
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+    <script src="../../../src/lib/jquery.raty.min.js"></script>
+    <style type="text/css">
+    	.shadow_border{
+    		background:#FFFCFE;
+    		box-shadow:1px 2px 1px #bfbfbf;
+    		padding:.7rem .7rem 1.5rem .7rem;
+    	}
+    	.margin_border{
+    		margin-top:.7rem;
+    	}
+    	.bottom_border{
+    		border-bottom: 1px solid #c1c0c0;
+    		padding:.7rem;
+    		font-size:1rem;
+    	}
+    	.nutrition_per .nutrition_per_div{
+    		font-size:0;
+    	}
+    	.nutrition_per_div .nutrition_info{
+    		display: inline-block;
+    		width:40%;
+    		margin:0 4%;
+    		vertical-align: top;
+    	}
+    	.nutrition_per_div .erweima_div{
+    		vertical-align: middle;
+    		display: inline-block;
+    		width:30%;
+    	}
+    	.nutrition_per_div .erweima_div img{
+    		width:100%;
+    	}
+    	.nutrition_per_div .erweima_div p{
+    		font-size:.5rem;
+    		text-align: center;
+    	}
+    	.nutrition_info h3{
+    		font-size:1.2rem;
+    		text-shadow: none;	
+	  	}
+	  	.nutrition_info p{
+	  		font-size:.7rem;
+	  		text-shadow:none;
+	  		color:#717070
+	  	}
+	  	.nutrition_info .star{
+	  		display: inline-block;
+	  		margin-left:3%
+	  	}
+	  	.baoming h3{
+	  		font-size:1.2rem;
+    		text-shadow: none;	
+	  	}
+	  	.baoming p{
+	  		font-size:1rem;
+	  		text-shadow:none;
+	  		color:#717070
+	  	}
+	  	.baoming div{
+	  		background: #A5A1A1;
+	  		color:#FFFFFF;
+	  		padding:.3rem 1rem;
+	  		border-radius:5px;
+	  		width:40%;
+	  		text-align: center;
+	  	}
+	  	.baoming div a{
+	  		text-decoration:none;
+	  		color:#ffffff;
+	  		text-shadow: none;
+	  	}
+	  	.baoming div a:visited{
+	  		color:#ffffff;
+	  	}
+    </style>
+  </head>
+  <body>
+  		<div data-role="page" style="background:#F7F7F7;">
+		  <div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">营养师</h2>
+		  </div>
+		  <div data-role="main" class="ui-content" style="padding:.8rem;padding-top: 0">
+		  <div class="yingyangshi_div">
+		  	
+		  </div>
+		  	<!-- <div class="nutrition_per shadow_border margin_border">
+		  		<div class="nutrition_per_div">
+		  			<img src="../shimian.png" style="width:20%;vertical-align: top;">
+		  			<div class="nutrition_info">
+		  				<h3 style="display: inline-block;">营养师</h3>
+		  				<div class="star" id="star1"></div>
+		  				<p>国内权威的营养师，为您的健康保驾护航，为您提供 优质的服务，欢迎前来咨询</p>
+		  			</div>
+		  			<div class="erweima_div">
+		  				<img src="erweima.jpg">
+		  				<p>加好友</p>
+		  			</div>
+		  		</div>
+		  	</div>
+		  	<div class="nutrition_per shadow_border margin_border">
+		  		<div class="nutrition_per_div">
+		  			<img src="../shimian.png" style="width:20%;vertical-align: top;">
+		  			<div class="nutrition_info">
+		  				<h3 style="display: inline-block;">营养师</h3>
+		  				<div class="star" id="star2"></div>
+		  				<p>国内权威的营养师，为您的健康保驾护航，为您提供 优质的服务，欢迎前来咨询</p>
+		  			</div>
+		  			<div class="erweima_div">
+		  				<img src="erweima.jpg">
+		  				<p>加好友</p>
+		  			</div>
+		  		</div>
+		  	</div>
+		  	<div class="nutrition_per shadow_border margin_border">
+		  		<div class="nutrition_per_div">
+		  			<img src="../shimian.png" style="width:20%;vertical-align: top;">
+		  			<div class="nutrition_info">
+		  				<h3 style="display: inline-block;">营养师</h3>
+		  				<div class="star" id="star3"></div>
+		  				<p>国内权威的营养师，为您的健康保驾护航，为您提供 优质的服务，欢迎前来咨询</p>
+		  			</div>
+		  			<div class="erweima_div">
+		  				<img src="erweima.jpg">
+		  				<p>加好友</p>
+		  			</div>
+		  		</div>
+		  	</div> -->
+		  	<div class="baoming nutrition_per shadow_border margin_border">
+			  	<h3>我要报名学习营养管理</h3>
+			  	<p>报名咨询</p>
+			  	<div><a href="tel:0351-7923656">0351-7923656</a></div>
+		  	</div>
+		  </div>
+		  
+		  <script type="text/javascript">
+		 	$(document).ready(function(){
+		  		$.ajax({
+					type: "post",
+					url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/listDietitian",
+					//contentType: "application/json",
+					data: {
+					      },
+					contentType: "application/x-www-form-urlencoded",
+					async: true,
+					timeout:8000,
+					dataType:'json',  
+					success: function(data) {
+						var json = eval(data);
+						if(json != null){
+							if(json.code == "100"){
+								var yingdata = json.data;
+								var len = yingdata.length;
+								var yingHtml = "";
+								for(var i = 0;i < len;i++){
+									yingHtml += "<div class='nutrition_per shadow_border margin_border'>"+
+											  		"<div class='nutrition_per_div'>"+
+											  			"<img src='"+yingdata[i].headimg+"' style='width:20%;vertical-align: top;'>"+
+											  			"<div class='nutrition_info'>"+
+											  				"<h3 style='display: inline-block;'>"+yingdata[i].name+"</h3>"+
+											  				"<div class='star' id='star"+i+"'></div>"+
+											  				"<p>"+yingdata[i].introdaction+"</p>"+
+											  			"</div>"+
+											  			"<div class='erweima_div'>"+
+											  				"<img src='"+yingdata[i].erweima+"'>"+
+											  				"<p>加好友</p>"+
+											  			"</div>"+
+											  		"</div>"+
+											  	"</div>";
+								}
+								$(".yingyangshi_div").append(yingHtml);
+								for(var i=0;i<len;i++){
+									$('#star'+i).raty({ readOnly: true, score: yingdata[i].star });
+								}
+								$('.star').css("width","45%");
+		  						$('.star img').css("width","18%");
+							}
+						}
+					},
+					complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					  if(status=='timeout'){//超时,status还有success,error等值的情况
+					     // ajaxTimeoutTest.abort();
+					     alert("网络状态不好诶~~");
+					  };
+					},
+					error: function(err) {
+						errormessage = "错啦！";
+						//alert(errormessage);	
+					} 	
+				});
+				return false;
+			});
+		  		/* $('#star1').raty({ readOnly: true, score: 4 });
+		  		$('#star2').raty({ readOnly: true, score: 3 });
+		  		$('#star3').raty({ readOnly: true, score: 5 });
+		  		$('.star').css("width","45%");
+		  		$('.star img').css("width","18%"); */
+		  </script>
+		 </div>
+  </body>
+</html>

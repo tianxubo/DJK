@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+	<title>都健康</title>
+	<style type="text/css">
+		.pk_package{
+			background:#ffffff;
+			margin-top:1rem;
+		}
+		.pk_package .pack_pic{
+			width:100%;
+			display: block;
+		}
+		.pk_message{
+			font-size:0;
+			padding:.5rem;
+		}
+		.pk_message div{
+			display: inline-block;
+		}
+		.pk_message .pk_name{
+			width:70%;
+		}
+		.pk_message .pk_btn{
+			width:30%;
+		}
+		.pk_message .pk_name img{
+			width:10%;
+			vertical-align: middle;
+		}
+		.pk_message .pk_name span{
+			font-size:1rem;
+			vertical-align: middle;
+			margin:0 0 0 .5rem;
+			color:#19AFC7;
+		}
+		.pk_message .pk_btn a{
+			display: inline-block;
+			padding:0 1rem;
+			font-size:1rem;
+			background:#ffffff;
+			border:1px solid #19AFC7;
+			border-radius:20px;
+			color:#19AFC7;
+			text-decoration:none;
+			font-weight: normal;
+			vertical-align: middle;
+			text-shadow: none;
+		}
+		.pk_message .pk_btn a:active{
+			background:#19AFC7;
+			color:#ffffff;
+			font-weight: normal;
+			text-shadow: none
+		}
+	</style>
+  </head>
+  <body>
+    <div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">我的健康pk</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  <div class="pk_list"></div>
+	  	<!-- <div class="pk_package">
+	  		<img class="pack_pic" src="ac_1.png">
+	  		<div class="pk_message">
+	  			<div class="pk_name">
+	  				<img src="xin.png">
+	  				<span>A套餐</span>
+	  			</div>
+	  			<div class="pk_btn">
+	  				<a href="#" data-ajax="false" data-role="none">加入</a>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<div class="pk_package">
+	  		<img class="pack_pic" src="ac_2.png">
+	  		<div class="pk_message">
+	  			<div class="pk_name">
+	  				<img src="xin.png">
+	  				<span>B套餐(已加入)</span>
+	  			</div>
+	  			<div class="pk_btn">
+	  				<a href="#" data-ajax="false" data-role="none">详情</a>
+	  			</div>
+	  		</div>
+	  	</div> -->
+	  </div>
+	 </div>
+	 <script type="text/javascript">
+	 	$(document).ready(function(){
+	 		var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHpk/getMyPK";
+  			$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+					"openid":localStorage.openID
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null && json != ""){
+						if(json.code == "100"){
+						  var jsonData = json.data;
+						  var len = jsonData.length;
+						  var jsonHtml = "";
+						  for(var i=0;i<len;i++){
+						  	jsonHtml += "<div class='pk_package'><img class='pack_pic' src='"+jsonData[i].img+"'>"+
+								  		"<div class='pk_message'>"+
+								  			"<div class='pk_name'>"+
+								  				"<img src='xin.png'>"+
+								  				"<span>"+jsonData[i].taocanname+"</span>"+
+								  			"</div>"+
+								  			"<div class='pk_btn'>"+
+								  				"<a href='JApkMessage.html?groupid="+jsonData[i].groupid+"' data-ajax='false' data-role='none'>详情</a>"+
+								  			"</div>"+
+								  		"</div>"+
+								  	"</div>";
+						  }
+						  $(".pk_list").append(jsonHtml);
+						
+						}else if(json.code == "-404"){
+						  $(".pk_list").append("<img src='pk_background.png' style='width:100%'><h3>您暂时未加入任何pk，快前去加入吧</h3>");
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+	 	});
+	 </script>
+  </body>
+</html>

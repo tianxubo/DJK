@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+	<title>都健康</title>
+	<style type="text/css">
+		.sec_circle{
+			position: relative;
+			margin:15% auto 0;
+		}
+		.sec_circle a{
+			display: inline-block;
+			width:49%;
+		}
+		.sec_circle a img{
+			display:block;
+			width:100%;
+		}
+		.activity_menus{
+			position: absolute;
+			width:40%;
+			display: block;
+			left:30%;
+			top:30%;
+		}
+	</style>
+  </head>
+  <body>
+  	<div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">健康使者</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0">
+	 <!--  <p id="tian" style="position: absolute;top:50;color:#fff;left:0;width:80%"></p> -->
+	  		<div class="background_img" style="background:url(../../src/images/JoinActivity/JAhealthPer/background_pic.png) no-repeat;background-size: 100% 100%;overflow: hidden;">
+	        	<div class="main_circle">
+	        		<div class="sec_circle">
+		        		 <a id="health_group"><img src="../../src/images/JoinActivity/JAhealthPer/jksz_zt.png"/></a>
+	            		 <a id="join_healthper"><img src="../../src/images/JoinActivity/JAhealthPer/jksz_sq.png"/></a>
+	            		 <a id="get_chit"><img src="../../src/images/JoinActivity/JAhealthPer/jksz_djq.png"/></a>
+	             	 	 <a data-ajax="false" id="fenxiao"><img src="../../src/images/JoinActivity/JAhealthPer/jksz_jkb.png"/></a>
+	        			 <img src="../../src/images/JoinActivity/JAhealthPer/img_center.png" class="activity_menus"/>
+	        		</div>
+	        	</div>
+	        		<img src="../../src/images/JoinActivity/JAhealthPer/djk_icon.png" style="width:40%;position: absolute;left:30%;bottom:7%"/>
+        	</div>
+        	<script type="text/javascript">
+        	window.onload = function(){
+        	var _w = window.innerWidth,
+        		_h = window.innerHeight;
+	        var status = localStorage.healPer;
+	        	$(".background_img").css({"width":_w+"px","height":_h-50.1875+"px"});
+	        	$(".sec_circle").css({"width":0.8*_w+"px","height":0.8*_w+"px"});
+	        	//加入健康使者;
+	        	$("#join_healthper").click(function(){
+	        		if(status == "0"){
+	        			location.href="JAjoinHealthPer/JAjoinhealPer.html";
+	        		}else{
+	        			location.href="JAjoinHealthPer/JAjoinsuccess.html";
+	        		}
+	        	});
+	        	
+	        	//领代金券；
+	        	$("#health_group").click(function(){
+	        		if(status == "0"){
+	        			alert("您还不是健康使者,请先是申请成为健康使者");
+	        		}else{
+	        			location.href="JAgroupTest/JAgroupTest.html";
+	        		}
+	        	});
+	        	
+	        	//六人团
+	        	$("#get_chit").click(function(){
+	        		if(status == "0"){
+	        			alert("您还不是健康使者,请先是申请成为健康使者");
+	        		}else{
+	        			location.href="JAgroupTest/JAgroupTest.html";
+	        		}
+	        	});
+	        	
+	        	//三级分销
+	        	$("#fenxiao").click(function(){
+	        		
+	        	});
+        	};
+        	</script>
+	  </div>
+	 </div>
+  </body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+	<script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+	<title>都健康</title>
+	<style type="text/css">
+		.footer{
+    		font-size: 0;
+    		position: fixed;
+    		bottom:0;
+    		width:100%;
+    	}
+    	.footer div{
+    		display: inline-block;
+    		width: 50%;
+    		font-size:1.1rem;
+    		padding:1rem 0;
+    		text-align: center;
+    	}
+    	.footer #how_mouch{
+    		background:#12B5B0;
+    		color:#FF5E63;
+    		text-shadow: none;
+    	}
+    	.footer #how_mouch span{
+    		margin:0;
+    		font-size:1rem;
+    		color:#FF5E63
+    	}
+    	.footer #go_pay{
+    		background:#179BB0;
+    		color:#ffffff;
+    	}
+		.test_order_list{
+    		border-top: 1px solid #19AFC7;
+    		border-bottom: 1px solid #19AFC7;
+    		padding:1rem;
+    		background:#ffffff;
+    		margin-top:1rem;
+    	}
+    	.test_order_list p{
+    		font-size: 1rem;
+    		text-shadow: none;
+    	}
+    	.test_body{
+    		border:1px solid #cccccc;
+    		padding:.5rem;
+    		border-radius:5px;
+    	}
+    	.test_body img{
+    		width:100%;
+    		vertical-align: middle;
+    	}
+    	.test_msg{
+    		display: inline-block;
+    		vertical-align: middle;
+    		text-align: right;
+    		width: 35%;
+    		font-size:1.2rem
+    	}
+    	.test_pic{
+    		width:60%;
+    		display: inline-block;
+    		vertical-align: middle;
+    	}
+    	.test_pic .test_name{
+    		color:#19AFC7;
+    		padding:.5rem;
+    		font-size:1rem;
+    		text-align: center;
+    	}
+		.menu_item{
+			margin-top: .5em;
+		    border-bottom: 1px solid #cccccc;
+		    border-top: 1px solid #cccccc;
+		    padding:.5em .8em;
+		    background:#ffffff;
+		    color:#000;
+			margin-top: 1.5em;
+    	}
+    	span{
+    		font-size:1em;
+    		color:#19AFC7;
+    	}
+    	/* .coupon_message span{
+    		font-size: 1em;
+    		margin:0
+    	} */
+    	.chip_num{
+    		color:#19AFC7;
+    		line-height:1.5em
+    	}
+    	.chips_list{
+    		background:#ffffff;
+		    padding:.5em .8em;
+    	}
+    	.chips_list .chips{
+    		border-bottom:1px solid #cccccc;    		
+    	}
+    	.chips_list .chips:last-child{
+    		border-bottom:0;
+    	}
+    	.coupon_message label{
+    		display: inline-block;
+    	}
+    	.chips_list label{
+    		display: inline-block;
+    	}
+    	.money label{
+    		display: inline-block;
+    	}
+    	#yue{
+    		width:20%;
+    		text-align: center;
+    	}
+    	.menu_item .img_next{
+    		float:right;
+    		height: 1.3em;
+    		margin-top: .2rem;
+    	}
+    	.health_money_div{
+    		margin-top:1rem;
+    	}
+    	.health_money_div p{
+    		text-align: right;
+    		font-size:.8rem;
+    		padding-right:1rem;
+    	}
+    	.JKB{
+    		font-size:.8rem;
+    		margin:0
+    	}
+    	.max_JKB{
+    		font-size:.8rem;
+    		margin:0
+    	}
+    	.health_money input{
+    		width:15%;
+    		text-align: center;
+    		padding:.3rem 0;
+    	}
+    	.health_money span{
+    		margin:0;
+    		font-size: 1rem;
+    		color:#000000;
+    	}
+    	.health_Per{
+    		padding:.5rem;
+    		margin-bottom:4rem;
+    	}
+    	.health_Per input{
+    		vertical-align: middle;
+    		display: inline-block;
+    	}
+    	.health_Per span{
+    		vertical-align: middle;
+    		margin:0
+    	}
+	</style>
+  </head>
+  <body>
+  	<div data-role="page" class="djk_page">
+		  <div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">订单支付</h2>
+		  </div>
+		<div data-role="main" class="ui-content" style="padding:0">
+				<div class="test_order_list">
+					<p id="dingdanhao">订单号:123124123123</p>
+					<div class="test_body">
+						<div class="test_pic">
+							<p class="test_name">妇女检车啊</p>
+							<img src="taocan.png">
+						</div>
+						<div class="test_msg">
+							<p>价格：￥213</p>
+						</div>
+					</div>
+				</div>
+			<!-- <div class="coupon_message menu_item">
+				<div>
+					<label>您有优惠券可用</label>
+					<span class="chip_num">4张</span>
+        	 		<img class="img_next" src="../src/images/Myself/next.png">
+				</div>
+			</div>
+			<div class="chips_list" style="display: none">
+					<div class="chips">
+						<input type="radio" data-role="none" name="chip" value="50"><label>50元优惠券</label>
+					</div>
+					<div class="chips">
+						<input type="radio" data-role="none" name="chip" value="100"><label>100元优惠券</label>
+					</div>
+					<div class="chips">
+						<input type="radio" data-role="none" name="chip" value="150"><label>150元优惠券</label>
+						<span>*2</span>
+					</div>
+			</div> -->
+			<div class="money menu_item">
+				<label>使用余额</label>
+				<input id="yue" type="text" data-role="none">
+				<span style="float: right;margin-top:.3rem;">56.6元可用</span>
+			</div>
+			
+			<div class="health_money_div">
+				<p>您有<span class="JKB">250</span>个健康币可以使用;本次最多可使用<span class="max_JKB"></span>个</p>
+				<div class="health_money menu_item" style="margin:0">
+					<span>使用</span><input id="jiankang" type="text" data-role="none"><span>×10个健康币</span>
+					<p class="jian" style="float:right;margin-top:.5rem;color:#19AFC7">
+						0元
+					</p>
+				</div>
+				<p>您可以去分享健康咨询换取健康币;</p>
+				<p>健康币兑换规则：10健康币=0.2元</p>
+			</div>
+			
+			<div class="health_Per">
+				<input id="shizhe" type="checkbox" data-role="none"><span>是否加入健康使者</span>
+			</div>
+			<div class="footer">
+			  	<div id="how_mouch">
+			  		<p>共<span>0</span>元</p>
+			  	</div>
+			  	<div id="go_pay">
+			  		<p>去支付</p>
+			  	</div>
+			  </div>
+	 		<script type="text/javascript">
+	 			$(document).ready(function(){
+	 				var dingdanid = GetQueryString("dingdanid");
+	 				$("#dingdanhao").text("订单号："+dingdanid);
+	 				//
+	 				//var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHdingdan/getDiscount";
+	 				var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHdingdan/getDiscount";
+	 				//alert(localStorage.openID);
+	 				$.ajax({
+	 					type: "post",
+						url: URL,
+						data: {
+								"openid":localStorage.openID,
+								"dingdanid":dingdanid
+			                },
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							//alert(data);
+							var json = eval(data);
+							if(json != null){
+								if(json.code == "100"){
+									var payData = json.data.data,
+										payInfo = json.data.info;
+									var gold = parseFloat(payData.gold),
+										jiankang = parseFloat(payData.jiankangbi);
+									var price = payInfo.price,
+										taocanimg = payInfo.taocanimg,
+										taocanname = payInfo.taocanname;
+									var pricen = parseFloat(price);
+									
+									//显示套餐价格；套餐名称；套餐图片
+					 				$(".test_msg p").text("价格：￥"+price);
+					 				$(".test_name").text(taocanname);
+					 				$(".test_pic img").attr("src",taocanimg);
+					 				
+	 								//显示最多可用健康币
+									if(pricen > jiankang){
+										$(".max_JKB").text(jiankang);
+									}else{
+										$(".max_JKB").text(pricen);
+									}
+									
+									//显示余额数量；健康币数量；支付金额
+									$(".money span").text(gold+"元可用");
+									$(".JKB").text(payData.jiankangbi);
+									$("#how_mouch span").text(price);
+	 								
+	 								//健康币输入时控制支付金额实时改变
+	 								$("#jiankang").bind('input propertychange', function() {
+						 				var x = $("#jiankang").val();
+						 				var numX = parseFloat(x);
+						 				var y = $("#yue").val();
+						 				var count;
+						 				if(y == "" || y == null){
+						 					count = pricen;
+						 				}else{
+						 					count = pricen - parseFloat(y);
+						 				}
+						 				if(x == "" || x==null){
+							 				$(".jian").text( "0");
+							 				$("#how_mouch span").text(count);
+						 				}else{
+						 					var keshiyong =  parseFloat($(".max_JKB").text());
+						 					if(numX*10 > keshiyong){
+						 						$("#jiankang").val(keshiyong/10);
+						 						$(".jian").text( keshiyong/5/10);
+						 						$("#how_mouch span").text(count-keshiyong/5/10);
+						 						return false;
+						 					}else{
+							 					$(".jian").text( numX/5);
+							 					$("#how_mouch span").text(count-numX/5);
+							 				}
+						 				}
+						 			});
+						 			
+						 			//余额输入时控制金额实时改变
+						 			$("#yue").bind('input propertychange', function(){
+						 				var y = $("#yue").val();
+						 				var numY = parseFloat(y);
+						 				var jiankangN = parseFloat($(".jian").text());
+						 				var count = pricen - jiankangN;
+						 				var yuE = parseFloat(payData.gold);
+						 				if(y == "" || y==null){
+							 				$("#how_mouch span").text(count);
+						 				}else if(numY < yuE){
+							 				if(count > numY){
+							 					$("#how_mouch span").text(count-numY);
+							 				}else{
+							 					$("#how_mouch span").text(0);
+							 					return false;
+							 				}
+						 				}else{
+						 					$("#yue").val(yuE);
+						 					$("#how_mouch span").text(count-yuE);
+						 					//price = count-yuE;
+						 				}
+						 			});
+						 			
+						 			//点击支付
+						 			$("#go_pay").click(function(){
+							 			var gold = $("#yue").val();
+							 			if(gold == "" || gold == null){
+							 				gold = "0";
+							 			}
+							 			var jiankangbi = $("#jiankang").val();
+							 			if(jiankangbi == "" || jiankangbi == null){
+							 				jiankangbi = "0";
+							 			}else{
+							 				jiankangbi = parseFloat($("#jiankang").val())*10;
+							 			}
+							 			var shizhe = "";
+							 			if($('#shizhe').is(':checked')){
+							 				shizhe = "1";
+							 			}else{
+							 				shizhe = "0";
+							 			}
+							 			location.href="http://mndjk.app0351.cn/mndjk/weixin.php/GTHdingdan/dingdanPay?openid="+
+							 			localStorage.openID+"&gold="+gold+"&jiankangbi="+jiankangbi+"&price="+$("#how_mouch span").text()
+							 			+"&shizhe="+shizhe+"&dingdanid="+dingdanid;
+						 			});
+								}else{
+									alert(json.code);
+								}
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						      ajaxTimeoutTest.abort();
+						      alert("网络状态不好诶~~");
+						   };
+						},
+						error: function(err) {
+							errormessage = "错啦！";
+							alert(errormessage);	
+						}
+	 				});
+	 			
+	 			});
+	 			
+	 			//点击获取券
+	 			$(".coupon_message").click(function(){
+	 				$(".chips_list").slideToggle("fast");
+	 			});
+	 			//获取参数
+			  	function GetQueryString(key){
+		        	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		        	var result = window.location.search.substr(1).match(reg);
+		        	return result?decodeURIComponent(result[2]):null;
+	      		}
+	 		</script>
+		</div>
+	</div>
+  </body>
+</html>

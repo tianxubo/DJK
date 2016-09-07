@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+	<title>都健康</title>
+	<style type="text/css">
+		.success_head{
+			background:#fff;
+			text-align: center;
+			padding:2em 0
+		}
+		.success_head img{
+			width:30%;
+		}
+		.make_money_step table tr td:nth-child(odd){
+			width:20%;
+			vertical-align: text-top;
+		}
+		.make_money_step table tr td:nth-child(even){
+			width:80%;   
+		}
+		.make_money_step{
+			padding-top:.5em;
+		}
+		.success_body{
+			padding:1em;
+			background:#ffffff;
+			margin-top: 1.5em
+		}
+		.make_money{
+			border-bottom: 1px solid #cccccc;
+			padding:.5em 0;
+		}
+		.get_money{
+			padding:.5em 0;
+		}
+		.shuoming{
+			background:#19AFC7;
+			padding:.5em;
+			border-radius:3px;
+			color:#ffffff;
+			text-shadow:none;
+			margin-top:1em;
+		}
+	</style>
+  </head>
+  
+  <body>
+  	 <div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">申请加入健康使者</h2>
+	  </div>
+		  
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<div class="success_head">
+	  		<img src="../../../src/images/bodyTest/BTbusiEntry/ok.png">
+	  		<h3>恭喜您成功成为健康使者，赶快查看下面攻略开始赚钱吧</h3>
+	  	</div>
+	  	<div class="success_body">
+	  		<div class="make_money">
+	  			<p>如何赚钱</p>
+	  		</div>
+	  		<div class="make_money_step">
+	  			<table>
+	  				<tbody cellspacing="0" cellpadding="0">
+	  					<tr>
+	  						<td><p>第一种</p></td>
+	  						<td><p>在都健康平台预约体检，下单时一键加入“健康使者“，体检分数达到健康指标，可以获得体检费返现</p></td>
+	  					</tr>
+	  					<tr>
+	  						<td><p>第二种</p></td>
+	  						<td><p>组织发团：邀请6人组成体检团，团员全部体检完成，即可领取佣金</p></td>
+	  					</tr>
+	  					<tr>
+	  						<td><p>第三种</p></td>
+	  						<td><p>发放代金券：每天可从平台领取3张代金券，发送给好友，好友在都健康下单体检（加项可用），即可领取佣金</p></td>
+	  					</tr>
+	  					<tr>
+	  						<td><p>第四种</p></td>
+	  						<td><p>邀请别人加入健康使者，共同获得分销收入。</p></td>
+	  					</tr>
+	  				</tbody>
+	  			</table>
+	  		</div>
+	  		<div class="shuoming">
+	  			<p>说明：您的邀请会带有独特的分享码，您的好友接受后，系统会自动记录用户关系。如果您的好友已被其他人抢先发展，他就不能成为您的关联用户，以最早发展成为关联用户为准。</p>
+	  		</div>
+	  		<div class="make_money">
+	  			<p>如何取钱</p>
+	  		</div>
+	  		<div class="get_money">
+	  			<p>您可以在【我的】查看我的收入，并提现。</p>
+	  		</div>
+	  		<a id="tuiguang" class="button_a" data-role="button" data-theme="f">帮助推广</a>
+	  	</div>
+	  	<script type="text/javascript">
+	  		$("#tuiguang").click(function(){
+	        		var URL = "http://192.168.0.31/mndjk01/weixin.php/GTHjiankangshizhe/share";
+	        		$.ajax({
+	        			type: "post",
+						url: URL,
+						//contentType: "application/json",
+						data: {
+							"openid":localStorage.openID,
+							"action":"ticket"
+						},
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							if(json != null){
+								var data1 = json.ticket;
+	        					localStorage.signPackage = JSON.stringify(json.signPackage);
+								var ticket = data1.ticket;
+								location.href = "JAhealthfen.html?src=https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+ticket;
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						      ajaxTimeoutTest.abort();
+						      alert("网络状态不好诶~~");
+						   };
+						},
+						error: function(err) {
+							errormessage = "错啦！";
+							alert(errormessage);	
+						} 
+	        		});
+	        		return false;
+	        	});
+	  	</script>
+	  </div>
+	  	
+	  </div>
+  </body>
+</html>

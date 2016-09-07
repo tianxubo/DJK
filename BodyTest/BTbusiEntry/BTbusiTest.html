@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+  </head>
+  <body>
+  	<!-- 邀请新企业 -->
+	<div data-role="page" class="djk_page" id="djk_scerweima">
+	  <div data-role="header" data-theme="f" class="myhead">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none"></h2>
+	  </div>
+	  <div data-role="main" class="ui-content">
+	  	<div style="text-align: center;">
+	  		<img src="../../src/images/bodyTest/BTbusiEntry/ok.png" style="width:25%;margin:2.5em 0 2em">
+	  		<h4 style="margin:0">企业信息完善成功！</h4>
+	  		<h4 style="margin:.3em;font-weight: normal;">体验礼金已放入您的账户！</h4>
+	  	</div>
+	  	<div class="djk_improveInfo_form post_form" style="background: #ffffff;padding:1em;margin-top:1em">
+	  		<h3 style="text-align: center;">目前您可以：</h3>
+	  		<a class="button_b" href="#djk_myerweima" data-role="button" data-transition="slide" data-theme="f">邀请新企业</a>
+	  		<a class="button_b" data-ajax="false" href="BTnewTest.html" data-role="button" data-transition="slide" data-theme="f">新增体检</a>
+	  	</div>
+	  </div>
+	</div>
+	
+	<!-- 我的二维码 -->
+	<div data-role="page" class="djk_page" id="djk_myerweima">
+	  <div data-role="main" class="ui-content">
+	  	<div style="text-align: center;">
+	  		<img src="../../src/images/bodyTest/erweima.jpg" style="width:80%;margin:2.5em 0 2em">
+	  		<h4 style="margin:0">快来关注“都健康”进行企业体检吧</h4>
+	  		<h4 style="margin:.3em;font-weight: normal;">我的企业邀请号：<span class="qiyecode"></span></h4>
+	  	</div>
+	  	<script type="text/javascript">
+	  		$(document).ready(function(){
+	  			var busicode = GetQueryString("busicode");
+	  			var businame = GetQueryString("businame");
+	  			$(".qiyecode").text(busicode);
+	  			$(".myhead h2").text(businame);
+	  		});
+	  		//获取参数
+			function GetQueryString(key){
+			  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+			   	var result = window.location.search.substr(1).match(reg);
+			   	return result?decodeURIComponent(result[2]):null;
+		    }
+	  	</script>
+	  	<!-- <div style="background: #ffffff;padding:1em;margin-top:1em;text-align: center">
+	  		<img src="" width=""/>
+	  	</div> -->
+	  </div>
+	</div>
+  </body>
+</html>

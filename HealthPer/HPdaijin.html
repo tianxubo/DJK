@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    	.quan_list{
+    		margin-top:1rem;
+    		background:url(djquan.png) no-repeat;
+    		background-size:100% 100%;
+    		padding:2rem 0;
+    	}
+    	.quan_list a{
+    		text-decoration: none;
+    	}
+    	.quan_content span:nth-child(1){
+    		font-size:1.5rem;
+    		color:#ffffff;
+    		text-shadow: none;
+    	}
+    	.quan_content span:nth-child(2){
+    		font-size:1rem;
+    		margin:0 0 0 .5rem;
+    		color:#ffffff;
+    		text-shadow: none;
+    	}
+    	.quan_content span:nth-child(3){
+    		font-size:3rem;
+    		margin:0 0 0 .5rem;
+    		color:#ffffff;
+    		text-shadow: none;
+    	}
+    </style>
+  </head>
+  
+  <body>
+  	<script type="text/javascript">
+  		$(document).ready(function(){
+  			var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHjiankangshizhe/showDaijinquan";
+		  	$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+					"openid":localStorage.openID
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null && json != ""){
+						if(json.code == "100" || json.code =="-200"){
+							var dataCon = json.data;
+							var len = dataCon.length;
+							var conHtml = "";
+							for(var i=0;i<len;i++){
+								conHtml += "<div class='quan_list'><a id='"+dataCon[i].id+"' class='fenxiang' data-ajax='false' data-role='none'><div class='quan_content'>"+
+											"<span>体检代金券</span>"+
+	  										"<span>￥</span><span class='quanv'>"+dataCon[i].quanvalue+"</span></div></a></div>";
+							}
+							$(".quan_div").append(conHtml);
+							$(".fenxiang").click(function(){
+								var quanid = $(this).attr("id");
+								localStorage.quanid = quanid;
+								var quanval = $(this).find('.quanv').text();
+								localStorage.quanval = quanval;
+								var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHjiankangshizhe/share";
+				        		$.ajax({
+				        			type: "post",
+									url: URL,
+									//contentType: "application/json",
+									data: {
+										"openid":"dj&&"+localStorage.openID,
+										"action":"ticket"
+									},
+									contentType: "application/x-www-form-urlencoded",
+									async: true,
+									timeout:3000,
+									dataType:'json',  
+									success: function(data) {
+										var json = eval(data);
+										if(json != null){
+											var data1 = json.ticket;
+				        					localStorage.signPackage = JSON.stringify(json.signPackage);
+											var ticket = data1.ticket;
+											location.href = "HPdaijinFen.html?src=https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+ticket;
+										}
+									},
+									complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+									   if(status=='timeout'){//超时,status还有success,error等值的情况
+									      ajaxTimeoutTest.abort();
+									      alert("网络状态不好诶~~");
+									   };
+									},
+									error: function(err) {
+										errormessage = "错啦！";
+										alert(errormessage);	
+									} 
+				        		});
+				        		return false;
+							});
+						}else if(json.code == "-404"){
+							alert("网络错误，请重新刷新页面获取");
+						}else if(json.code == "-401"){
+							alert("登录失效，请返回公众号重新登录");
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      ajaxTimeoutTest.abort();
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+  		});
+  	</script>
+    <div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">领取代金券</h2>
+	  </div>
+	  <div data-role="main" class="ui-content">
+	  	<div class="quan_div">
+	  		<!-- <div class="quan_list">
+	  			<div class="quan_content">
+	  				<span>体检代金券</span>
+	  				<span>￥50</span>
+	  			</div>
+	  		</div> -->
+	  	</div>
+	  </div>
+	  </div>
+  </body>
+</html>

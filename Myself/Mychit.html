@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    @media screen and (min-width:320px) and (max-width:360px){
+		html{
+			font-size:12px;
+		}
+	}
+	 @media screen and (min-width:360px) and (max-width:385px){
+		html{
+			font-size:14px;
+		}
+	}
+    	.menu_item{
+			margin-top: .5em;
+		    border-bottom: 1px solid #cccccc;
+		    border-top: 1px solid #cccccc;
+		    padding:.5em .8em;
+		    background:#ffffff;
+		    color:#000;
+    	}
+    	.quan_list{
+			padding-top: 1.5em;
+    	}
+    	.menu_item img{
+    		width:50%;
+    		vertical-align: middle;
+    	}
+    	.djk_quan{
+    		background:url(djquan.png) no-repeat;
+    		background-size:100% 100%;
+    		display: inline-block;
+    		width:60%;
+    		padding: 1rem;
+    	}
+    	.djk_quan span:nth-child(1){
+    		font-size:1rem;
+    		color:#ffffff;
+    		text-shadow: none;
+    	}
+    	.djk_quan span:nth-child(2){
+    		font-size:1rem;
+    		margin:0 0 0 .5rem;
+    		color:#ffffff;
+    		text-shadow: none;
+    	}
+    	.djk_quan span:nth-child(3){
+    		font-size:3rem;
+    		margin:0 0 0 .5rem;
+    		color:#ffffff;
+    		text-shadow: none;
+    		vertical-align: middle;
+    	}
+    	.harf_item{
+    		display: inline-block;
+    		vertical-align: middle;
+    		text-align: center;
+    		width:30%;
+    	}
+    	.harf_item p{
+    		background:#19AFC7;
+    		color:#ffffff;
+    		text-shadow: none;
+    		padding: .5rem;
+	    	margin: 0 auto;
+	    	width: 50%;
+	   		border-radius: 20px;
+    	}
+    </style>
+  </head>
+  <body>
+    <div data-role="page" class="djk_page" id="djk_team">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">代金券</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="quan_list">
+				<!-- <div class="menu_item">
+					<div class="djk_quan">
+						<span>体检代金券</span>
+						<span>￥</span>
+		  				<span>50</span>
+					</div>
+					<div class="harf_item">
+						<p>转增</p>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+  			var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/getMyGroupQuan";
+		  	//var type = GetQueryString("type");
+		  	//var openid = "oEN_UwCbJgoTlejivtDvU4v8FqSs";
+		  	//alert(type);;
+		  	$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+					"openid":localStorage.openID
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null && json != ""){
+						if(json.code == "100" || json.code =="-200"){
+							var dataCon = json.data;
+							var len = dataCon.length;
+							var conHtml = "";
+							for(var i=0;i<len;i++){
+								conHtml += "<div class='menu_item'>"+
+												"<div class='djk_quan'>"+
+													"<span>体检代金券</span>"+
+													"<span>￥</span>"+
+									  				"<span>"+dataCon[i].value+"</span>"+
+												"</div>"+
+												"<div class='harf_item'>"+
+													"<p id='"+dataCon[i].id+"' class='"+dataCon[i].value+"'>转增</p>"+
+												"</div>"+
+											"</div>";
+							}
+							$(".quan_list").append(conHtml);
+							$(".harf_item p").click(function(){
+								var quanid = $(this).attr("id");
+								localStorage.quanid = quanid;
+								var quanval = $(this).attr("class");
+								localStorage.quanval = quanval;
+								var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHjiankangshizhe/share";
+				        		$.ajax({
+				        			type: "post",
+									url: URL,
+									//contentType: "application/json",
+									data: {
+										"openid":"dj&&"+localStorage.openID,
+										"action":"ticket"
+									},
+									contentType: "application/x-www-form-urlencoded",
+									async: true,
+									timeout:3000,
+									dataType:'json',  
+									success: function(data) {
+										var json = eval(data);
+										if(json != null){
+											var data1 = json.ticket;
+				        					localStorage.signPackage = JSON.stringify(json.signPackage);
+											var ticket = data1.ticket;
+											location.href = "../HealthPer/HPdaijinFen.html?src=https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+ticket;
+										}
+									},
+									complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+									   if(status=='timeout'){//超时,status还有success,error等值的情况
+									      ajaxTimeoutTest.abort();
+									      alert("网络状态不好诶~~");
+									   };
+									},
+									error: function(err) {
+										errormessage = "错啦！";
+										alert(errormessage);	
+									} 
+				        		});
+				        		return false;
+							});
+						}else if(json.code == "-401"){
+							alert("登录失效，请返回公众号重新登录");
+						}else{
+							$(".quan_list").append("<h4>您目前还没有代金券</h4>");
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      ajaxTimeoutTest.abort();
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+  		});
+		</script>
+	</div>
+  </body>
+</html>

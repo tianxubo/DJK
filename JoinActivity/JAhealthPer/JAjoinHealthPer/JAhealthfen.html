@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<title>都健康</title>
+	<link rel="stylesheet" type="text/css" href="../../../src/css/JoinActivity/fenxiao.css">
+  </head>
+  <body>
+  	<div style="overflow: auto;">
+  		<img src="background.png" style="position:absolute;display: block;z-index:-1;width:100%">
+  		<div class="person_meg" style="">
+  			<img class="per_head" src="quan1.png" style="width:20%;border:2px solid #D91871;border-radius:50%">
+  			<div class="join_word">
+  				<p class="first">我是健康使者，我有一份兼职事业</p>
+  				<p class="second">加入我们：首次关注，领取年度体检金最高1199元</p>
+  				<div class="step">
+  					<i></i><span>第一步：拥有健康</span><i style="margin-left:2em"></i><span>第二步：向前看，向厚赚</span>
+  				</div>
+  			</div>
+  			
+  			<!-- 二维码专区 -->
+  			<div class="erweima_div">
+  				<p class="one">都健康&nbsp;&nbsp;&nbsp;一个有趣味的健康平台</p>
+  				<p class="two">送你健康&nbsp;&nbsp;&nbsp;&nbsp;带你赚</p>
+  				<img class="erweima" src=""/>
+  				<p class="one">扫描二维码&nbsp;&nbsp;&nbsp;&nbsp;关注都健康</p>
+  			</div>
+  			<!-- <img class="erweima" src=""> -->
+  		</div>
+  	</div>
+  	<script type="text/javascript">
+  		var _w = window.innerWidth;
+  		var signPackage = localStorage.signPackage;
+  		var json = $.parseJSON(signPackage);
+  		var timestamp = parseInt(json.timestamp);
+  		window.onload = function(){
+  			var imgsrc = GetQueryString("src");
+  			$(".erweima").attr("src",imgsrc);
+  			$(".per_head").attr("src",localStorage.headImg);
+  		};
+  		wx.config({
+	    debug: false,
+	    appId: json.appId,
+	    timestamp: timestamp,
+	    nonceStr: json.nonceStr,
+	    signature: json.signature,
+	    jsApiList: [
+	      // 所有要调用的 API 都要加到这个列表中
+	      'onMenuShareTimeline',
+	      'onMenuShareAppMessage',
+	    ]
+	  });
+	  wx.ready(function () {
+	    // 在这里调用 API
+	    // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+	      wx.onMenuShareAppMessage({
+	        title: '都健康发红包啦',
+	        desc: '关注都健康，都有红包领！',
+	        link: 'http://mndjk.app0351.cn/mndjk/weixin.php/GTHhongbao/showcode?ticket='+ticket,
+	        imgUrl: "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+ticket,
+	        success: function () {
+	        	window.history.go(0);
+	        },
+	        cancel: function () {
+	        	window.history.go(0);
+	        },
+	      });
+
+	    // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+	      wx.onMenuShareTimeline({
+	        title: '关注都健康，都有红包领！',
+	        link: 'http://mndjk.app0351.cn/mndjk/weixin.php/GTHhongbao/showcode?ticket='+ticket,
+	        imgUrl: "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+ticket,
+	        success: function () {
+	        	window.history.go(0);
+	        },
+	        cancel: function () {
+	        	window.history.go(0);
+	        },
+	      });
+	  	});
+	  	
+  		//获取参数
+		function GetQueryString(key){
+	       	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	       	var result = window.location.search.substr(1).match(reg);
+	       	return result?decodeURIComponent(result[2]):null;
+      	}
+      	
+  	</script>
+  </body>
+</html>

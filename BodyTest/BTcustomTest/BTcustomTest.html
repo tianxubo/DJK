@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+	<link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="../../src/js/swiper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../src/css/swiper.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<title>都健康</title>
+	<style type="text/css">
+		.swiper-slide img{
+			width:100%;
+		}
+	</style>
+  </head>
+  <body>
+  	<!-- 私人订制 -->
+  	<div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+		<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">定制体检</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<div class="djk_swiper">
+				<div class="swiper-container">
+			        <div class="swiper-wrapper">
+			        	<div class="swiper-slide"><!-- <img src="chazi.png"> --><img src="../../src/images/bodyTest/BTcustomTest/dztj_pic2.png"></div>
+			            <div class="swiper-slide"><!-- <img src="share.png"> --><img src="../../src/images/bodyTest/BTcustomTest/dztj_pic1.png"></div>
+			        </div>
+    			<!-- Add Pagination -->
+        		<!-- <div class="swiper-pagination"></div> -->
+    			</div>
+    			<script>
+    			var mySwiper = new Swiper ('.swiper-container', {
+    				direction: 'horizontal',
+    				loop: true,
+    				autoplay: 3000
+  				});
+				    /* window.onload = function(){
+			    		alert(localStorage.openID);
+				    }; */
+			    </script>
+		</div>
+	  	<a class="button_a" style="padding: .5em 1.5em;" href="BTSex.html" data-ajax="false" data-role="button" data-theme="f">初级体检</a>
+	  	<a class="button_a" style="padding: .5em 1.5em;" href="BThighTest.html" data-ajax="false" data-role="button" data-transition="slide" data-theme="f">高级体检</a>
+	  </div>
+	</div>
+  </body>
+</html>

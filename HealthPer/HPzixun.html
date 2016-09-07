@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <script type="text/javascript" src="../src/js/swiper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/swiper.min.css">
+    <style type="text/css">
+    	.health_article{
+    		border:1px solid #CCCCCC;
+    		background: #ffffff;
+    		margin-top: 1em;
+    		border-radius: 10px;
+    		padding: .6em;
+    	}
+    	.health_article a{
+    		text-decoration: none;
+    	}
+    	.health_article h4{
+    		color:#000000;
+    	}
+    	.swiper-wrapper img{
+			width:100%
+		}
+    </style>
+  </head>
+  <body>
+  	
+  	<div data-role="page" class="djk_page">
+  	<div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">健康咨询</h2>
+	  </div>
+	    <div data-role="main" class="ui-content">
+	        	<!-- <div class="djk_health_mess" data-theme="f" style="padding:1em;background:#19AFC7;border-radius:10px;color:#fff;box-shadow:0px 5px 0px #078A9E;text-shadow: none;font-family: '微软雅黑'">
+	        		<div>
+	        			<span style="font-size: 1em">健康咨询</span>
+	        			<span style="font-size:.7em">-健康小贴士</span>
+	        		</div>
+	        		<div>
+		        		<img src="../src/images/HealthAsk/djk_jianjieicon.png" style="width:15%;float: left;margin:.8em">
+		        		<p style="font-size: smaller;display: inline;">健康咨询包括生活保健、医疗事故、急救知识、身体养护、营养饮食、运动健身、整形美容等健康知识</p>
+	        		</div>
+	        	</div> -->
+	        	<div class="swiper-container">
+			        <div class="swiper-wrapper">
+			        	<!-- <div class="swiper-slide"><img src="ac_1.png"></div>
+			            <div class="swiper-slide"><img src="ac_2.png"></div> -->
+			        </div>
+    			<!-- Add Pagination -->
+        		<!-- <div class="swiper-pagination"></div> -->
+    			</div>
+	        	<div class="article_list">
+	        	<!-- <div class="health_article">
+	        		<div class="user_article">
+	        			<h4>每天摄入食盐量不应超过4g</h4>
+	        			<article>
+	        				<img src="../src/images/HealthAsk/infomation.png" style="width:40%;">
+	        				<span style="color:#B3B3B3;font-size:smaller;">食盐是人们生活中所不可缺少的。成人体内所含钠离子的总量约为60g，其中80%存在于细胞外液，即在血浆和细胞间液中.....</span>
+	        			</article>
+	        		</div>
+	        	</div>  -->
+	        	</div>
+	      </div>
+       </div>
+       <script type="text/javascript">
+       		$(document).ready(function(){
+       			var URLS= "http://mndjk.app0351.cn/mndjk/weixin.php/GTHlunbo/getLunboImg";
+			 	$.ajax({
+				  		type: "post",
+						url: URLS,
+						//contentType: "application/json",testTable.html?taocanid="+jsonData[i].taocanid+"&type=zt
+						data: {
+							"type":"zx"
+						},
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							if(json!= null){
+								if(json.code == "100"){
+									var imgData = json.data;
+									var len = imgData.length;
+									var imgHtml = "";
+									for(var i=0;i<len;i++){
+										imgHtml += "<div class='swiper-slide'><img src='"+imgData[i]+"'></div>";
+									}
+									$(".swiper-wrapper").append(imgHtml);
+									var mySwiper = new Swiper ('.swiper-container', {
+					    				direction: 'horizontal',
+					    				loop: true,
+					    				autoplay: 3000
+		  							});
+									/* $(".swiper-slide:nth-child(1) img").attr("src",);
+									$(".swiper-slide:nth-child(2) img").attr("src",imgData[1]); */
+								}
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						      alert("您的网络貌似不是很良好");
+						   };
+						   return false;
+						},
+						error: function(err) {
+							errormessage = "您的网络貌似不是很良好";
+							//alert(errormessage);
+							return false;	
+						} 
+				  	});
+       			var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHzixuninfo/getZixun";
+       			//var URL = "http://192.168.0.31/mndjk/weixin.php/GTHzixuninfo/getZixun";
+       			$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code="100"){
+							var jsonData = json.data;
+							var len = jsonData.length;
+							var dataHtml = "";
+							for(var i=0;i<len;i++){
+								dataHtml += "<div class='health_article' id='"+jsonData[i].zixunid+"'>"+
+					        		//"<a data-role='none' data-ajax='false' href=''>"+
+						        		"<div class='user_article' id='"+jsonData[i].link+"'>"+
+						        			"<h4>"+jsonData[i].title+"</h4>"+
+						        			"<article>"+
+						        				"<img src='"+jsonData[i].image+"' style='width:40%;'>"+
+						        				"<span style='color:#B3B3B3;font-size:smaller;'>"+jsonData[i].item+"</span>"+
+						        			"</article>"+
+						        		"</div>"+
+					        		//"</a>"+
+					        	"</div>";
+							}
+							$(".article_list").append(dataHtml);
+							$(".health_article").click(function(){
+								var id = this.attr("id");
+								var link = this.find(".user_article").attr("id");
+								//alert(link);
+								$.ajax({
+							  		type: "post",
+									url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHzixuninfo/share",
+									//contentType: "application/json",
+									data: {
+										"id":id,
+										"openid":localStorage.openID
+									},
+									contentType: "application/x-www-form-urlencoded",
+									async: true,
+									timeout:3000,
+									dataType:'json',  
+									success: function(data) {
+										var json = eval(data);
+										if(json != null){
+											if(json.code="100"){
+												location.href = link;
+											}else{
+												location.href = link;
+											}
+										}else{
+											location.href = link;
+										}
+									},
+									complete:function(XMLHttpRequest,status){//请求完成后最终执行参数
+									   if(status=='timeout'){//超时,status还有success,error等值的情况
+									      ajaxTimeoutTest.abort();
+									      alert("网络状态不好诶~~");
+									   };
+									},
+									error: function(err) {
+										errormessage = "错啦！";
+										alert(errormessage);	
+									} 
+							  	});
+							  	return false;
+							});
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){//请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      ajaxTimeoutTest.abort();
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+       		});
+       </script>
+  </body>
+</html>

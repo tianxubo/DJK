@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <style type="text/css">
+    	.test_package_div{
+    		border-bottom:1px solid #FFE16C;
+    		
+    	}
+    	.test_title{
+    		padding:1rem .5rem;
+    		font-size:0;
+    		background:#FF6060;
+    		color:#ffffff;
+    		text-shadow:none;
+    	}
+    	.test_title .title_name{
+    		display: inline-block;
+    		width:60%;
+    		font-size:1rem;
+    	}
+    	.title_name input{
+    		vertical-align: middle;
+    	}
+    	.test_title .title_price{
+    		display: inline-block;
+    		width:40%;
+    		font-size:1rem
+    	}
+    	.test_title .title_price span{
+    		margin:0;
+    		font-size:1rem;
+    	}
+    	.test_content_group{
+    		font-size:0;
+    		color:#6F5228;
+    		background:#FFE16C;
+    		display: none;
+    	}
+    	.test_content_group .test_content .test_project{
+    		padding: 0.8rem 0.5rem;
+    		border-bottom:1px solid #898989;
+    		margin:0 1.5rem;
+    		position: relative;
+    	}
+    	.test_content_group .test_content:last-child .test_project{
+    		border-bottom:none;
+    	}
+    	.test_content_group .test_project p{
+    		display: inline-block;
+    		font-size:0.8rem;
+    	}
+    	.test_content .test_project_content{
+    		background:#F0F0F0;
+    		font-size:0.8rem;
+    		text-align: center;
+    		padding:0.3rem;
+    		display: none;
+    	}
+    	.test_zlpackage_div{
+    		margin-bottom:4rem;
+    	}
+    	.footer{
+    		font-size: 0;
+    		position: fixed;
+    		bottom:0;
+    		width:100%;
+    	}
+    	.footer div{
+    		display: inline-block;
+    		width: 50%;
+    		font-size:1.1rem;
+    		padding:1rem 0;
+    		text-align: center;
+    	}
+    	.footer #how_mouch{
+    		background:#12B5B0;
+    		color:#FF5E63;
+    		text-shadow: none;
+    	}
+    	.footer #how_mouch span{
+    		margin:0;
+    		font-size:1rem;
+    	}
+    	.footer #go_pay{
+    		background:#179BB0;
+    		color:#ffffff;
+    	}
+    	.sanjiao{    
+	    	position: absolute;
+		    border-bottom: 10px solid #F0F0F0;
+		    border-left: 5px solid transparent;
+		    border-right: 5px solid transparent;
+		    display:none;
+		    bottom: 0;
+    		right: 25%;
+    	}
+    	.load{
+			padding:.5rem;
+			background:#000000;
+			opacity:.6;
+			position: fixed;
+			z-index:10;
+			width: 4rem;
+		    top: 50%;
+		    border-radius: 5px;
+		    left: 50%;
+		    margin-left: -2rem;
+		    text-align: center;
+		    display: none;
+		}
+		.load img{
+			width:60%;
+		}
+		.load p{
+			color:#ffffff;
+			font-size:.8rem;
+		}
+    </style>
+  </head>
+  
+  <body>
+  	 <script type="text/javascript">
+		  $(document).ready(function(){
+		  	localStorage.city = "太原市";
+		  	$(".load").show();
+		  	var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHdingzhi/chujitijian";
+		  	var sex = GetQueryString("sex");
+		  	//alert(sex);
+		  	$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+					"city":localStorage.city,
+					"sex":sex
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code == "100"){
+							var testdata = json.data;
+							//基础包遍历加载
+							var JCcontent = "";
+							var JCpack = "";
+							var JCdata = testdata.jichu;
+							var JCjson = JCdata.content;
+							var len =  JCjson.length;
+							//alert(localStorage.city);
+							for(var i=0;i<len;i++){
+								//alert(JCdata.price);
+								JCcontent += "<div class='test_content'>"+
+		  							"<div class='test_project'>"+
+		  								"<p style='width:70%'>"+JCjson[i].danxiangname+"</p>"+
+		  								"<p style='width:30%'>详情</p>"+
+		  								"<div class='sanjiao'></div>"+
+		  							"</div>"+
+		  							"<div class='test_project_content'>"+
+		  							"<p>"+JCjson[i].remark+"</p>"+
+		  							"</div></div>";
+		  							//alert(JCjson[i].remark);
+							}
+							//$(".load").hide();
+							JCcontent = "<div class='test_content_group'>"+JCcontent+"</div>";
+							JCpack =  "<div class='test_title'>"+
+	  									"<div class='title_name'><p style='margin-left:0.5rem;'>"+JCdata.name+"</p></div>"+
+	  									"<div class='title_price'><p>价格："+JCdata.price+"元</p></div></div>"+JCcontent
+							$(".test_package_div").append(JCpack);
+	  						
+										
+	  						//增量包遍历加载
+	  						var Addcontent = "",
+	  							XQcontent = "",
+	  							ZLcontent = testdata.add,
+								ZLleng =  ZLcontent.length;
+								for(var i=0;i<ZLleng;i++){
+									var XQlen = ZLcontent[i].content.length;
+			  							for(var j=0;j<XQlen;j++){
+			  								if(ZLcontent[i].content[j] == null || ZLcontent[i].content[j]==""){
+			  									XQcontent += "";
+			  								}else{
+			  								XQcontent += "<div class='test_content'>"+
+				  							"<div class='test_project'>"+
+				  								"<p style='width:70%'>"+ZLcontent[i].content[j].danxiangname+"</p>"+
+				  								"<p style='width:30%'>详情</p>"+
+				  								"<div class='sanjiao'></div>"+
+				  							"</div>"+
+				  							"<div class='test_project_content'>"+
+				  							"<p>"+ZLcontent[i].content[j].remark+"</p>"+
+				  							"</div></div>";
+				  							}
+			  							}
+			  							XQcontent = "<div class='test_content_group'>"+XQcontent+"</div>";
+				  				Addcontent += "<div class='test_package_div'><div class='test_title'>"+
+	  									"<div class='title_name'><input value='"+ZLcontent[i].id+"' type='checkbox' data-role='none'><span style='margin-left:0.5rem;font-size:1rem'>"+ZLcontent[i].name+"</span></div>"+
+	  									"<div class='title_price'><p>价格：<span>"+ZLcontent[i].price+"</span>元</p></div></div>"+XQcontent+"</div>";
+			  							
+								}
+							 $(".test_package_div").after(Addcontent);
+							 $(".load").hide();
+							$("#go_pay").click(function(){
+							$(".load p").text("生成订单");
+					            	$(".load").show();
+								 	var str="";
+						            $(".title_name input:checkbox").each(function(){ 
+						                if($(this).is(":checked")==true){
+						                    str += $(this).val()+";";
+						                }
+						            });
+						            $.ajax({
+											type: "post",
+											url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHdingdan/setDingdan",
+											//contentType: "application/json",
+											data: {
+													"openid":localStorage.openID,
+													"type":"cj",
+													"price":$("#how_mouch span").text(),
+													"taocanid":JCdata.id+";"+str
+								                },
+											contentType: "application/x-www-form-urlencoded",
+											async: true,
+											timeout:3000,
+											dataType:'json',  
+											success: function(data) {
+												var json = eval(data);
+												//alert(json);
+												if(json != null){
+													if(json.code == "100"){
+					            						$(".load").hide();
+														location.href = "BTpayfortest.html?dingdanid="+json.data.dingdanid;
+														//"&taocanname=初级体检";
+													}
+												}
+											},
+											complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+											   if(status=='timeout'){//超时,status还有success,error等值的情况
+											      ajaxTimeoutTest.abort();
+											      alert("网络状态不好诶~~");
+											   };
+											},
+											error: function(err) {
+												errormessage = "错啦！";
+												alert(errormessage);	
+											} 
+										});
+										return false;
+					            });
+							
+							$(".test_title").click(function(e){
+								if(e.target==$(this).find("input")[0]){
+									var money = $(this).find(".title_price p span").text();
+									var countM = $("#how_mouch span").text();
+									var numM = parseInt(money);
+									if($(this).find("input[type='checkbox']").is(":checked")==true){
+										var numCount = parseInt(countM) + numM;
+										$("#how_mouch span").html(numCount);
+									}else{
+										var numCount = parseInt(countM) - numM;
+										$("#how_mouch span").html(numCount);
+									}
+								}else{
+						  			$(this).next().slideToggle();
+						  		}
+						  	});
+						  	$(".test_project p:nth-child(2)").click(function(){
+						  		if($(this).parent().next().css("display") == "block"){
+						  			$(this).parent().next().slideUp();
+						  			$(this).parent().find(".sanjiao").css("display","none");
+						  			$(this).parent().css("border-bottom","1px solid #898989");
+						  		}else{
+						  			$(this).parent().next().slideDown();
+						  			$(this).parent().find(".sanjiao").css("display","block");
+						  			$(this).parent().css("border-bottom","none");
+						  		}
+						  	});
+						}else if(json.code == "404"){
+							alert("请求错误！请刷新页面重试");
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      ajaxTimeoutTest.abort();
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+		  });
+		  //获取参数
+		  	function GetQueryString(key){
+	        	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	        	var result = window.location.search.substr(1).match(reg);
+	        	return result?decodeURIComponent(result[2]):null;
+      		}
+      		
+	  </script>
+	  <div class="load">
+		<img src="../../src/images/load.gif">
+		<p>获取中</p>
+	</div>
+    <div data-role="page" class="djk_page" id="djk_basicTest">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">基础体检</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<div class="basic_test_div">
+	  		<div class="test_package_div">
+	  			</div>
+	  		</div>
+	  		<div class="test_zlpackage_div">
+	  		</div>
+	  		
+	  	</div>
+	  </div>
+	  <div class="footer">
+	  	<div id="how_mouch">
+	  		<p>共<span>199</span>元</p>
+	  	</div>
+	  	<div id="go_pay">
+	  		<p>去支付</p>
+	  	</div>
+	  </div>
+	 </div>
+  </body>
+</html>

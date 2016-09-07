@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <script type="text/javascript" src="../../src/js/swiper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../src/css/swiper.min.css">
+	<title>都健康</title>
+	<style type="text/css">
+		.pk_package{
+			background:#ffffff;
+			margin-top:1rem;
+		}
+		.pk_package .pack_pic{
+			width:100%;
+			display: block;
+		}
+		.pk_message{
+			font-size:0;
+			padding:.5rem;
+		}
+		.pk_message div{
+			display: inline-block;
+		}
+		.pk_message .pk_name{
+			width:70%;
+		}
+		.pk_message .pk_btn{
+			width:30%;
+		}
+		.pk_message .pk_name img{
+			width:10%;
+			vertical-align: middle;
+		}
+		.pk_message .pk_name span{
+			font-size:1rem;
+			vertical-align: middle;
+			margin:0 0 0 .5rem;
+			color:#19AFC7;
+		}
+		.pk_message .pk_btn a{
+			display: inline-block;
+			padding:0 1rem;
+			font-size:1rem;
+			background:#ffffff;
+			border:1px solid #19AFC7;
+			border-radius:20px;
+			color:#19AFC7;
+			text-decoration:none;
+			font-weight: normal;
+			vertical-align: middle;
+			text-shadow: none;
+		}
+		.pk_message .pk_btn a:active{
+			background:#19AFC7;
+			color:#ffffff;
+			font-weight: normal;
+			text-shadow: none
+		}
+		.swiper-wrapper img{
+			width:100%
+		}
+		.swiper-pagination-bullet-active {
+		    opacity: 1;
+		    background: #19AFC7;
+		}
+	</style>
+  </head>
+  <body>
+    <div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">全网健康pk</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0">
+	  	<div class="swiper-container">
+			        <div class="swiper-wrapper">
+			        	<!-- <div class="swiper-slide"><img src="ac_1.png"></div>
+			            <div class="swiper-slide"><img src="ac_2.png"></div> -->
+			        </div>
+    			<!-- Add Pagination -->
+        		<div class="swiper-pagination"></div>
+    			</div>
+	  	<div class="pk_list">
+	  	<!-- <div class="pk_package">
+	  		<img class="pack_pic" src="ac_1.png">
+	  		<div class="pk_message">
+	  			<div class="pk_name">
+	  				<img src="xin.png">
+	  				<span>A套餐</span>
+	  			</div>
+	  			<div class="pk_btn">
+	  				<a href="#" data-ajax="false" data-role="none">加入</a>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<div class="pk_package">
+	  		<img class="pack_pic" src="ac_2.png">
+	  		<div class="pk_message">
+	  			<div class="pk_name">
+	  				<img src="xin.png">
+	  				<span>B套餐(已加入)</span>
+	  			</div>
+	  			<div class="pk_btn">
+	  				<a href="#" data-ajax="false" data-role="none">详情</a>
+	  			</div>
+	  		</div>
+	  	</div> -->
+	  	</div>
+	  	<a class="button_a" href="JAmyPK.html" data-ajax="false" data-role="button" data-theme="f">我的PK</a>
+	  </div>
+	 </div>
+	 <script type="text/javascript">
+	 	$(document).ready(function(){
+	 	var URLS= "http://192.168.0.31/mndjk/weixin.php/GTHlunbo/getLunboImg";
+	 	$.ajax({
+		  		type: "post",
+				url: URLS,
+				//contentType: "application/json",testTable.html?taocanid="+jsonData[i].taocanid+"&type=zt
+				data: {
+					"type":"pk"
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json!= null){
+						if(json.code == "100"){
+							var imgData = json.data;
+							var len = imgData.length;
+							var imgHtml = "";
+							for(var i=0;i<len;i++){
+								imgHtml += "<div class='swiper-slide'><img src='"+imgData[i]+"'></div>";
+							}
+							$(".swiper-wrapper").append(imgHtml);
+							if(len > 1){
+								var mySwiper = new Swiper ('.swiper-container', {
+									pagination : '.swiper-pagination',
+				    				direction: 'horizontal',
+				    				loop: true,
+				    				autoplay: 3000
+	  							});
+  							}
+							/* $(".swiper-slide:nth-child(1) img").attr("src",);
+							$(".swiper-slide:nth-child(2) img").attr("src",imgData[1]); */
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      alert("您的网络貌似不是很良好");
+				   };
+				   return false;
+				},
+				error: function(err) {
+					errormessage = "您的网络貌似不是很良好";
+					//alert(errormessage);
+					return false;	
+				} 
+		  	});
+	 		var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHpk/getTaocanList";
+	 		//var URL = "http://192.168.0.31/mndjk/weixin.php/GTHpk/getTaocanList";
+	 		//localStorage.city="太原市";
+  			$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",testTable.html?taocanid="+jsonData[i].taocanid+"&type=zt
+				data: {
+					"city":localStorage.city
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null && json != ""){
+						if(json.code == "100"){
+						  var jsonData = json.data;
+						  var len = jsonData.length;
+						  var jsonHtml = "";
+						  for(var i=0;i<len;i++){
+						  	jsonHtml += "<div class='pk_package'><img class='pack_pic' src='"+jsonData[i].img+"'>"+
+								  		"<div class='pk_message'>"+
+								  			"<div class='pk_name'>"+
+								  				"<img src='xin.png'>"+
+								  				"<span>"+jsonData[i].taocanname+"</span>"+
+								  			"</div>"+
+								  			"<div class='pk_btn'>"+
+								  				"<a class='join_pk' id='"+jsonData[i].taocanid+"' data-ajax='false' data-role='none'>加入</a>"+
+								  			"</div>"+
+								  		"</div>"+
+								  	"</div>";
+						  }
+						$(".pk_list").append(jsonHtml);
+						$(".join_pk").click(function(){
+							var taocanid = $(this).attr("id");
+							$.ajax({
+						  		type: "post",
+								url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHpk/setpk",
+								//contentType: "application/json",testTable.html?taocanid="+jsonData[i].taocanid+"&type=zt
+								data: {
+									"openid":localStorage.openID,//localStorage.city
+									"taocanid":taocanid
+								},
+								contentType: "application/x-www-form-urlencoded",
+								async: true,
+								timeout:3000,
+								dataType:'json',  
+								success: function(data) {
+									var json = eval(data);
+									if(json != null && json != ""){
+										if(json.code == "100"){
+											location.href = "testTable.html?taocanid="+taocanid+"&type=pk";
+										}else{
+											alert("您已经加入该pk，请去我的pk中查看详情");
+										}
+									}
+								},
+								complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+								   if(status=='timeout'){//超时,status还有success,error等值的情况
+								      alert("网络状态不好诶~~");
+								   };
+								},
+								error: function(err) {
+									errormessage = "错啦！";
+									alert(errormessage);	
+								} 
+						  	});
+						  	return false;
+						});
+						}else if(json.code == "-404"){
+							$(".pk_list").append("<h4>本市健康pk套餐即将上线，尽请期待！</h4>");
+							$(".button_a").hide();
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      alert("您的网络貌似不是很良好");
+				   };
+				   return false;
+				},
+				error: function(err) {
+					errormessage = "您的网络貌似不是很良好";
+					//alert(errormessage);
+					return false;	
+				} 
+		  	});
+		  	return false;
+	 	});
+	 </script>
+  </body>
+</html>

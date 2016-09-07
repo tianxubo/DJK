@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../../src/css/djk-main.css">
+    <style type="text/css">
+    	#phoneNum{
+    		width: 95%;
+		    border-radius: 5px;
+		    border: none;
+		    outline: none;
+		    padding:.3rem 0rem .3rem .5rem;
+		    box-shadow: 1px 1px 1px #bfbfbf;
+		    font-size:1.2rem;
+    	}
+    	.check_btn{
+    		width:30%;
+    		padding:.3rem .5rem;
+    		background:#19AFC7;
+    		color:#ffffff;
+    		margin:2rem auto;
+    		text-align: center;
+    		border-radius:20px;
+    	}
+    	.check_btn:active{
+    		background: #0C8DA2;
+    	}
+    	.check_btn p{
+    		font-size:1rem;
+    		text-shadow: none;
+    	}
+    </style>
+  </head>
+  <body>
+  	<div data-role="page" style="background:#F6F5F5;">
+	  <div data-role="header" data-theme="f">
+	  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../../src/images/Home/back.png"></a>
+	    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">检后提示</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:.8rem">
+	  	 <input id="phoneNum" type="text" data-role="none" placeholder="请留下您的手机号">
+	  	 <div style="width:90%;margin:.5rem auto;color:red;font-size:.8rem;">
+	  	 	<p>请您耐心等候，我们会在收到您的定制需求后的第一时间联系您</p>
+	  	 </div>
+	  	 <div class="check_btn">
+	  	 	<p>确认提交</p>
+	  	 </div>
+	  </div>
+	 </div>
+	 <script type="text/javascript">
+	 	$(".check_btn").click(function(){
+	 		var phonenum = $("#phoneNum").val();
+	 		var checknum = GetQueryString("checknum");
+	 		if(phonenum == ""){
+	 			alert("请填写您的手机号码");
+	 		}else{
+	 			$.ajax({
+					type: "post",
+					url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/askAction",
+					//contentType: "application/json",
+					data: {
+							"checknum":checknum,
+							"tel":phonenum
+					      },
+					contentType: "application/x-www-form-urlencoded",
+					async: true,
+					timeout:8000,
+					dataType:'json',  
+					success: function(data) {
+						var json = eval(data);
+						if(json != null){
+							if(json.code == "100"){
+								alert("提交成功");
+							}
+						}
+					},
+					complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					  if(status=='timeout'){//超时,status还有success,error等值的情况
+					     // ajaxTimeoutTest.abort();
+					     alert("网络状态不好诶~~");
+					  };
+					},
+					error: function(err) {
+						errormessage = "错啦！";
+						//alert(errormessage);	
+					} 	
+				});
+			return false;
+	 		}
+	 	});
+	 	
+	 	//获取参数
+		function GetQueryString(key){
+		  	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		   	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+	 </script>
+  </body>
+</html>

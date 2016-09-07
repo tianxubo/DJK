@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+	<script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <style type="text/css">
+    	.taocan{
+    		float:left;
+    		width:50%;
+    		text-align: center;
+    	}
+    	.taocan img{
+    		width:80%;
+    	}
+    </style>
+  </head>
+  
+  <body>
+  <script type="text/javascript">
+	  		$(document).ready(function(){
+	  			var info = GetQueryString("info"),
+	  				tc = GetQueryString("tc");
+	  			if(tc == "y"){
+		  			var	taocanid1=GetQueryString("taocanid1"),
+		  				taocanid2=GetQueryString("taocanid2"),
+		  				taocanname1=GetQueryString("taocanname1"),
+		  				taocanname2=GetQueryString("taocanname2"),
+		  				img1=localStorage.img1,
+		  				img2=localStorage.img2;
+		  				//alert(myimg1+","+myimg2);
+		  			$("#taocan1").append(
+		  				"<a data-role='none' data-ajax='false' href='../testTable.html?taocanid="
+		  				+taocanid1+"&type=tc'><img src='"+img1+"'></a>"+
+		  				"<p>"+taocanname1+"</p>"
+		  			);
+		  			$("#taocan2").append(
+		  				"<a data-role='none' data-ajax='false' href='../testTable.html?taocanid="
+		  				+taocanid2+"&type=tc'><img src='"+img2+"'></a>"+
+		  				"<p>"+taocanname2+"</p>"
+		  			);
+	  				$(".djk_testpoint h3").text(info);
+	  			}else if(tc == "n"){
+	  				$(".djk_testpoint h3").text(info);
+	  				$(".djk_recommend").hide();
+	  			}
+	  		});
+	  		//获取参数
+		  	function GetQueryString(key){
+	        	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	        	var result = window.location.search.substr(1).match(reg);
+	        	return result?decodeURIComponent(result[2]):null;
+      		}
+	  	</script>
+  	<!-- 检测结果 -->
+  	<div data-role="page" class="djk_page">
+	  <div data-role="header" data-theme="f">
+		<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">健康检测结果</h2>
+	  </div>
+	  <div data-role="main" class="ui-content">
+	  	<img src="../../src/images/bodyTest/BThealthTest/jkjc.png" style="width:100%">
+	  	<div class="djk_testpoint">
+	  		<article style="padding:0 2.4em">
+	  			根据您所填写的，您的检测结果为：
+	  		</article>
+	  		<h3 style="text-align: center;font-size: 1.5em;color:#19AFC7">75分</h3>
+	  	</div>
+	  	
+	  	<div class="djk_recommend">
+	  		<h2 style="font-size: .8em; margin: 1em;">都健康为你推荐</h2>
+	  		<div class="taocan" id="taocan1">
+	  			<!-- <img src="banner.png" style="width:80%">
+	  			<p>心脏体检</p> -->
+	  		</div>
+	  		<div class="taocan" id="taocan2">
+	  			<!-- <img src="banner.png" style="width:80%">
+	  			<p>心脏体检</p> -->
+	  		</div>
+	  	</div>
+	  </div>
+	</div>
+  </body>
+</html>

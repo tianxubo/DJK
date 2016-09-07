@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <style>
+    	*{
+    		margin:0;
+    		padding:0;
+    		font-family: '微软雅黑';
+    	}
+    	.member_div{
+    		width:100%
+    	}
+    	.member_div .huiyuan{
+    		display: block;
+    		width:30%;
+    		margin:0 auto;
+    	}
+    	.member_div .huiyuan img{
+    		width:100%;
+    	}
+    	.member_div .head_img{
+    		width:100%;
+    	}
+    	.member_test_list{
+    		font-size:0
+    	}
+    	.member_test{
+    		display:inline-block;
+    		width:50%;
+    		text-align: center;
+    		margin-top:.5rem;
+    	}
+    	.member_test img{
+    		width:90%;
+    	}
+    </style>
+	<title>都健康</title>
+  </head>
+  <body style="background:#FD486C">
+  	<!-- 加入会员页面 -->
+	  <div class="member_div">
+	  <img class="head_img" src="">
+	  	 <a class="huiyuan" href=""><img src="tobe.png" ></a>
+	  	 <div class="member_test_list">
+	  	 	<!-- <a class="member_test">
+	  	 		<img src="taocan.png">
+	  	 	</a>
+	  	 	<a class="member_test">
+	  	 		<img src="taocan2.png">
+	  	 	</a> -->	
+	  	 </div>	
+	  </div>
+	<script type="text/javascript">
+  		$(document).ready(function(){
+  			localStorage.vip = "0";
+  			localStorage.city = "太原市";
+  			var URL = "http://192.168.0.31/mndjk/weixin.php/GTHvip/getTaocanList";
+  			//var URL = "http://192.168.0.31/mndjk/weixin.php/GTHvip/getTaocanList";
+  			var isvip = localStorage.vip;
+  			if(isvip == "1"){
+  				$(".huiyuan").hide();
+  			}else if(isvip == "0"){
+  				$(".huiyuan").attr("href","http://192.168.0.31/mndjk/weixin.php/GTHvip/vipPay?openid="+localStorage.openID);
+  			}
+  			$.ajax({
+		  		type: "post",
+				url: URL,
+				//contentType: "application/json",
+				data: {
+					"city":localStorage.city
+				},
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null && json != ""){
+						var testcontent = "";
+						var vipdata = json.data;
+						if(json.code == "100"){
+							if(vipdata.taocan != null){
+								var len = vipdata.taocan.length;
+								for(var i=0;i<len;i++){
+									testcontent += "<a class='member_test' data-ajax='false' href='../../BodyTest/testTable.html?taocanid="+vipdata.taocan[i].taocanid+"'>"+
+						  	 		"<img src='"+vipdata.taocan[i].img+"'>"+
+						  	 		"</a>";
+								}
+								$(".member_test_list").append(testcontent);
+							}else{
+								$(".member_test_list").append("<h3>目前还没有会员套餐，尽请期待</h3>");
+							}
+							if(vipdata.mould != null){
+								$("body").css("background",vipdata.mould.color);
+								$(".head_img").attr("src",vipdata.mould.image);
+							}
+							
+						}
+						
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				   if(status=='timeout'){//超时,status还有success,error等值的情况
+				      //ajaxTimeoutTest.abort();
+				      alert("网络状态不好诶~~");
+				   };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					//alert(errormessage);	
+				} 
+		  	});
+		  	return false;
+  		});
+  		
+  	</script>
+  </body>
+</html>

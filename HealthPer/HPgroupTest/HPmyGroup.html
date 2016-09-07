@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <!--<link rel="stylesheet" type ="text/css" href="./styles.css">-->
+	<title>都健康</title>
+	<style type="text/css">
+	
+		.group_body{
+			background:#3DF8EC;
+			padding: .3rem;
+		}
+		.group_body .test_msg{
+			background:#ffffff;
+			padding:.3rem;
+		}
+		.group_body .test_msg .group_test_msg{
+			width:50%;
+			display: table-cell;
+			border:1px dotted #3DF8EC;
+			border-top-right-radius:5px;
+			border-bottom-right-radius:5px;
+			vertical-align: middle;
+			padding:.3rem;
+		}
+		.group_body .test_msg .group_test_msg .test_name{
+			background:url(word_back.png) no-repeat;
+			background-size:100% 100%;
+			padding:.1rem .5rem;
+			color:#ffffff;
+			font-size:1rem;
+			text-shadow: none;
+    		text-align: center;
+		}
+		.group_test_msg span{
+			font-size:.6rem;
+			margin:0;
+			color:#19AFC7
+		}
+		.test_price{
+			font-size:0;
+			text-align: center;
+		}
+		.test_price span:nth-child(1){
+			font-size:1rem;
+			font-weight: bold;
+			margin-right:.6rem;
+		}
+		.test_price span:nth-child(2){
+			color:#3DF8EC
+		}
+		.test_price span:nth-child(3){
+			font-size:.8rem;
+			font-weight: bold;
+		}
+		.test_relprice{
+			text-align: center;
+		}
+		.test_relprice span:nth-child(1){
+			color:#F3398D;
+		}
+		.test_relprice span:nth-child(2){
+			color:#F3398D;
+			font-size:1.3rem;
+		}
+		.group_test_msg .zhuangtai{
+			color:#19AFC7;
+    		margin: 0 auto;
+    		text-align: center
+		}
+		.group_test_msg a{
+			background:#19AFC7;
+			color:#ffffff;
+			text-shadow: none;
+			font-size:.8rem;
+			border-radius:20px;
+			padding:0 .3rem;
+			text-decoration: none;
+			display: block;
+    		text-align: center;
+   			width: 50%;
+    		margin: 0 auto;
+		}
+		.group_test_msg a:visited{
+			color:#ffffff;
+		}
+		.person_msg{
+			background:#3DF8EC;
+			border-bottom:1px dotted #ffffff;
+			border-left:1px dotted #ffffff;
+			border-right:1px dotted #ffffff;
+			border-bottom-right-radius:5px;
+			border-bottom-left-radius:5px;
+			padding:.3rem;
+		}
+		.person_msg img{
+			width:10%;
+			vertical-align: middle;
+			border-radius:50%;
+			margin:0 .3rem;
+		}
+		.person_msg span{
+			color:#1EB8CB;
+			font-size:.6rem;
+			vertical-align: middle;
+			text-shadow: none;
+		}
+    .load{
+			padding:.5rem;
+			background:#000000;
+			opacity:.6;
+			position: fixed;
+			z-index:10;
+			width: 4rem;
+		    top: 50%;
+		    border-radius: 5px;
+		    left: 50%;
+		    margin-left: -2rem;
+		    text-align: center;
+		    display: none;
+		}
+		.load img{
+			width:60%;
+		}
+		.load p{
+			color:#ffffff;
+		}
+		
+	</style>
+	</head>
+  <body>
+  <div class="load">
+		<img src="../../src/images/load.gif">
+		<p>获取中</p>
+	</div>
+    <div data-role="page" class="djk_page" id="">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">我的团队</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="background:#EAEAEA;">
+			<div class="group_list_div">
+				
+			</div>
+		</div>
+	</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			$(".load").show();
+				//var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHzutuan/getMyList";
+				var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHzutuanshizhe/getMyList";
+        		$.ajax({
+						type: "post",
+						url: URL,
+						//contentType: "application/json",
+						data: {
+							"openid":localStorage.openID,
+							"tag":"add"
+						},
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							if(json != null){
+								if(json.code == "100"){
+									var dataContent = json.data;
+									var lenCon = dataContent.length;
+									var groupHtml = "";
+									for(var i=0;i<lenCon;i++){
+										//var headArrey = ;
+										var zhuangtai = "";
+										if(dataContent[i].own == "0"){
+											zhuangtai = "<p class='zhuangtai'>未完成</p>";
+										}else if(dataContent[i].own == "1"){
+											zhuangtai = "<p class='zhuangtai'>已完成</p>";
+										}else if(dataContent[i].own == "2"){
+											zhuangtai = "<p class='zhuangtai'>失败(已返现)</p>";
+										}else{
+											zhuangtai = "<p class='zhuangtai'>失败(未返现)</p>";
+										}
+										
+										var headImg = "";
+										if(dataContent[i].mem != null){
+											var headlen = dataContent[i].mem.length;
+											for(var j=0;j<headlen;j++){
+												headImg += "<img src='"+dataContent[i].mem[j]+"'>";
+											}
+											headImg = "<div class='person_msg'>"+headImg+"<span>已有"+dataContent[i].num+"人，最后时间："+dataContent[i].endtime+"</span></div>";
+										}else{
+											headImg = "<div class='person_msg'><span>目前没有人加入，嘿嘿</span></div>";
+										}
+										groupHtml += "<div class='group_message'>"+
+									"<img src='group_title.png' style='width:100%;display:block;'>"+
+										"<div class='group_body'>"+
+											"<div class='test_msg'>"+
+											"<div style='display: table-cell;width:50%;vertical-align: middle;'>"+
+											"<img src='"+dataContent[i].taocanimg+"' style='width:100%;display:block;vertical-align: middle;'>"+
+										"</div>"+
+										"<div class='group_test_msg'>"+
+											"<div class='test_name'>"+
+												"<p>"+dataContent[i].taocanname+"</p>"+
+											"</div>"+
+											"<div class='test_price'>"+
+												"<span>6人团</span>"+
+												"<span>原价：￥</span>"+
+												"<span>"+dataContent[i].price+"</span>"+
+											"</div>"+
+											"<div class='test_relprice'>"+
+												"<span>组团价:￥</span>"+
+												"<span>"+dataContent[i].shijiprice+"</span></div>"+zhuangtai+"</div></div>"
+												 + headImg + "</div></div>";
+									}
+									$(".group_list_div").append(groupHtml);
+									$(".load").hide();
+								}else if(json.code == "-404"){
+									$(".group_list_div").append("<h3>您还没有建团，赶快建一个吧！</h3>");
+									$(".load").hide();
+								}
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						      ajaxTimeoutTest.abort();
+						      alert("网络状态不好诶~~");
+						   };
+						},
+						error: function(err) {
+							errormessage = "错啦！";
+							alert(errormessage);	
+						} 
+					});
+					return false;
+			});
+		</script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+	<script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <style type="text/css">
+    	.shadow_border{
+    		background:#FFFEFE;
+    		box-shadow:1px 2px 1px #BAB9B9;
+    	}
+    	.margin_border{
+    		margin-top:.5rem;
+    	}
+    	.bottom_border{
+    		border-bottom: 1px solid #c1c0c0;
+    		padding:.7rem;
+    		font-size:1rem;
+    	}
+    	.after_btn_word{
+    		display: inline-block;
+    		vertical-align: middle;
+    	}
+    	.bottom_border img{
+    		vertical-align: middle;
+    		width:15%;
+    	}
+    </style>
+  </head>
+  <body>
+  	<div data-role="page" class="djk_page" style="background:#F5F4F4">
+	  <div data-role="header" data-theme="f">
+		<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		<h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">比价区</h2>
+	  </div>
+	  <div data-role="main" class="ui-content" style="padding:0.8rem;">
+	  	<div class="bijia_list">
+	  		<!-- <div class="margin_border shadow_border bottom_border">
+	  	  		<img src="">
+	  	  		<div class="after_btn_word">
+	  	  			<p>原价：1655</p>
+	  	  			<p>建议价：1522</p>
+	  	  		</div>
+	  	  	</div> -->
+	  	</div>
+	  </div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajax({
+				type: "post",
+				url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcompare/compareList",
+				//contentType: "application/json",
+				data: {
+						"openid":localStorage.openID
+				      },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:8000,
+				dataType:'json',  
+				success: function(data) {
+					var json = eval(data);
+					if(json != null){
+						if(json.code == "100"){
+							//当返回data不为空时，进行处理
+							if(json.data != null){
+								var bjdata = json.data;
+								var len = bjdata.length;
+								var bjHtml = "";
+								for(var i=0;i<len;i++){
+									bjHtml += "<div class='margin_border shadow_border bottom_border'>"+
+									  	  		"<img src='"+bjdata[i].img+"'>"+
+									  	  		"<div class='after_btn_word'>"+
+									  	  			"<p>原价："+bjdata[i].now+"</p>"+
+									  	  			"<p>建议价："+bjdata[i].advice+"</p>"+
+									  	  		"</div>";
+								}
+								$(".bijia_list").append(bjHtml);
+							}
+						}else{
+							$(".bijia_list").append("<h4>请您再等等吧</h4>");
+						}
+					}
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				  if(status=='timeout'){//超时,status还有success,error等值的情况
+				     // ajaxTimeoutTest.abort();
+				     alert("网络状态不好诶~~");
+				  };
+				},
+				error: function(err) {
+					errormessage = "错啦！";
+					//alert(errormessage);	
+				} 	
+			});
+			return false;
+		});
+	</script>
+  </body>
+</html>

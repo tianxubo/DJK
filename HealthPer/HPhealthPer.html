@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+	    <script src="../src/js/jquery.min.js"></script>
+	    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+	    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+	    <script>
+			$(function(){
+				$(":jqmData(role='page')").attr("data-title", document.title);
+			});
+		</script>
+	    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+	    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+		<title>都健康</title>
+		<style type="text/css">
+		 @media screen and (min-width:320px) and (max-width:360px){
+			html{
+				font-size:12px;
+			}
+		}
+		 @media screen and (min-width:360px) and (max-width:385px){
+			html{
+				font-size:14px;
+			}
+		}
+			.test_list{
+	    		font-size:0;
+	    		padding-top:1rem;
+	    		overflow: hidden;
+	    	}
+	    	.test_type{
+	    		display: inline-block;
+	    		width:50%;
+	    		font-size:.8rem;
+	    		color:#b8b5b5;
+	    		text-align: center;
+	    	}
+	    	.test_type a{
+	    		text-decoration: none;
+	    		color:#b8b5b5;
+	    		font-weight:normal;
+	    		display: block;
+	    	}
+	    	.test_type a:visited{
+	    		color:#b8b5b5;
+	    		text-decoration: none;
+	    		font-weight:normal;
+	    		display: block;
+	    	}
+	    	.test_border{
+	    		width:90%;
+	    		margin:0 auto;
+	    		border-left:1px solid #b8b5b5;
+	    		border-right:1px solid #b8b5b5;
+	    		border-bottom:1px solid #b8b5b5;
+	    		border-top:1px solid #ffffff;
+	    		border-radius:5px;
+	    		margin-bottom:1px;
+	    		box-shadow: 1px 3px 5px #b8b5b5;    
+	    		background-image: url(../src/images/HealthPer/test_back.png);
+	    		background-repeat:no-repeat;
+			    background-position: 100% 100%;
+			    background-size: 50%;
+			    background-color: #ffffff;
+	    	}
+	    	.test_border img{
+	    		width:45%
+	    	}
+	    	.test_border .test_message{
+	    		margin: 2rem 0;
+	    	}
+	    	.test_border .test_message p{
+	    		color:#7f7f7f;
+	    	}
+	    	.test_border .test_message .p2{
+	    		font-size:1.1rem;
+	    		color:#eb4208
+	    	}
+	    	.border-line{
+	    		border-bottom: 1px dotted #b8b5b5;
+			    width: 60%;
+			    margin: .3rem auto;
+	    	}
+		</style>
+	</head>
+	<body>
+		<div data-role="page" class="djk_page" style="background:#FEEFCE">
+		    <div data-role="header" data-theme="f">
+			  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+			    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">健康使者</h2>
+		    </div>
+	  	    <div data-role="main" class="ui-content" style="padding:0">
+	  	    	<img src="../src/images/HealthPer/title.png" style="width:100%;">
+	  	    	<div class="health_body" style="margin-bottom:20px">
+		  	    	<div class="test_list">
+		  	    		<div class="test_type">
+							<div class="test_border" id="health_group">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/health_group.png">
+									<p>组团</p>
+									<div class="border-line"></div>
+									<p class="p2">6人成组</p>
+								</div>
+							</div>
+						</div>
+						<div class="test_type">
+							<div class="test_border" id="join_healthper">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/join_healthper.png">
+									<p>申请</p>
+									<div class="border-line"></div>
+									<p class="p2">加入健康使者</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="test_list">
+		  	    		<div class="test_type">
+							<div class="test_border" id="get_chit">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/daijin.png">
+									<p>代金券</p>
+									<div class="border-line"></div>
+									<p class="p2">领取好友代金券</p>
+								</div>
+							</div>
+						</div>
+						<div class="test_type">
+							<div class="test_border" id="fenxiao">
+								<div class="test_message">
+									<img src="../src/images/HealthPer/health_coin.png">
+									<p>健康币</p>
+									<div class="border-line"></div>
+									<p class="p2">查看健康知识</p>
+								</div>
+							</div>
+						</div>
+					</div>
+	  	    	</div>
+	  	    </div>
+	  	</div>
+	  	<script type="text/javascript">
+        	window.onload = function(){
+	        var status = localStorage.healPer;
+	        	//加入健康使者;
+	        	$("#join_healthper").click(function(){
+	        		if(status == "0"){
+	        			location.href="HPjoinHealthPer/HPjoinhealPer.html";
+	        		}else{
+	        			location.href="HPjoinHealthPer/HPjoinsuccess.html";
+	        		}
+	        	});
+	        	
+	        	//六人团
+	        	$("#health_group").click(function(){
+	        		if(status == "0"){
+	        			alert("您还不是健康使者,请先是申请成为健康使者");
+	        		}else{
+	        			location.href="HPgroupTest/HPgroupTest.html";
+	        		}
+	        	});
+	        	
+	        	//领代金券；
+	        	$("#get_chit").click(function(){
+	        		if(status == "0"){
+	        			alert("您还不是健康使者,请先是申请成为健康使者");
+	        		}else{
+	        			location.href="HPdaijin.html";
+	        		}
+	        	});
+	        	
+	        	//三级分销
+	        	$("#fenxiao").click(function(){
+	        		location.href="HPzixun.html";
+	        	});
+        	};
+        	</script>
+	</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <title>都健康</title>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+    <style type="text/css">
+    @media screen and (min-width:320px) and (max-width:360px){
+		html{
+			font-size:12px;
+		}
+	}
+	 @media screen and (min-width:360px) and (max-width:385px){
+		html{
+			font-size:14px;
+		}
+	}
+    .score_back{
+    	background:#ffffff;
+    	margin:1rem;
+    	text-align: center;
+    	padding:1rem 0;
+    	border-radius:10px;
+    }
+    .score_back h4{
+    	font-size:3rem;
+    	color:#19AFC7
+    }
+    .score_back h3{
+    color:#19AFC7}
+    </style>
+  </head>
+  <script type="text/javascript">
+	  	$(document).ready(function(){
+	  	var dingdanid = GetQueryString("dingdanid");
+		var url = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/getFinish";
+		 	$.ajax({
+				type: "post",
+				url: url,
+				//contentType: "application/json",
+				data: {
+						"dingdanid":dingdanid//localStorage.openID
+				  },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+				var json = eval(data);
+				if(json != null){
+					if(json.code == "100"){
+						var jsonData = json.data;
+						if(jsonData.pass == "合格"){
+							$(".score_back h4").text(jsonData.score);
+							$(".score_back .ispass").text("体检"+jsonData.pass);
+							$(".score_back .words").text("点击领取20元红包");
+							$("#get_btn").click(function(){
+								$.ajax({
+									type: "post",
+									url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/getHongbao",
+									//contentType: "application/json",
+									data: {
+										"dingdanid":dingdanid,//localStorage.openID
+										"openid":localStorage.openID
+									  },
+									contentType: "application/x-www-form-urlencoded",
+									async: true,
+									timeout:3000,
+									dataType:'json',  
+									success: function(data) {
+									var json = eval(data);
+									if(json != null){
+										alert(json.info);
+										}							
+									},
+									complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+										if(status=='timeout'){//超时,status还有success,error等值的情况
+										ajaxTimeoutTest.abort();
+									alert("网络状态不好诶~~");
+									};
+								},
+								error: function(err) {
+									errormessage = "错啦！";
+									alert(errormessage);	
+								} 
+								});
+								return false;	
+							});
+						}else if(jsonData.pass == "不合格"){
+							$(".score_back h4").text(jsonData.score);
+							$(".score_back .ispass").text("体检"+jsonData.pass);
+							$(".score_back .words").text("您没有体检合格，不能领红包");
+							$("#get_btn").hide();
+						}else{
+							$(".score_back").html(
+								"<h4>您稍等等，成绩还没出来呢</h4>"
+							);
+							$("#get_btn").hide();
+						}
+					}else if(json.code == "-404"){
+						
+					}
+					}							
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					if(status=='timeout'){//超时,status还有success,error等值的情况
+					ajaxTimeoutTest.abort();
+				alert("网络状态不好诶~~");
+				};
+			},
+			error: function(err) {
+				errormessage = "错啦！";
+				alert(errormessage);	
+			} 
+			});
+			return false;	
+		});
+		
+		//获取参数
+		function GetQueryString(key){
+		 	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+		  	var result = window.location.search.substr(1).match(reg);
+		   	return result?decodeURIComponent(result[2]):null;
+	    }
+  </script>
+  <body>
+  	<div data-role="page" class="djk_page">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">我的成绩</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<img src="bg_img.png" style="width:100%">
+			<div class="score_back">
+				<p>我的成绩</p>
+				<h4></h4>
+				<h3 class="ispass"></h3>
+				<h3 class="words"></h3>
+			</div>
+			<a id="get_btn" class="button_a" href="#" data-role="button" data-ajax="false" data-theme="f">领取红包</a>
+		</div>
+	</div>
+  </body>
+</html>

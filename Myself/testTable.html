@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+	<style>
+		.table_body{
+		 text-align: center;
+		}
+		td,th{
+    		width: 33%;
+    		text-align: center;
+    		padding:.4em 0;
+    		font-size:1em;
+    		border:none;
+    	}
+    	table{
+    		width:100%;
+    		border:3px solid #ffffff;
+    	}
+    	table tbody tr:nth-child(odd) {
+		background-color: #f4f4f4;
+		}
+		table tbody tr:nth-child(even) {
+		  background-color: #ffffff;
+		}
+		.djk_test_body .table_head{
+			text-align: center;
+			background:#fff
+		}
+		.djk_test_body .table_head span{
+			font-size: 1em;
+			margin: 0;
+			display: inline-block;
+		}
+		#tBody_tao .hclick{
+			background:#19AFC7;
+			color:#ffffff;
+		}
+		#dialogBG{
+			background:#000;
+			opacity: 0.5;
+			position: fixed;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;  
+			display:none;
+			z-index: 999
+		}
+		#dialog{
+			position: fixed;
+			left:50%;
+			top:50%;
+			text-align:center;
+			display:none;
+			overflow:auto;
+			z-index: 1000;
+			background:#fff;
+			border-radius:5px;
+			border:5px solid #19AFC7
+		}
+		.inner_border{
+			margin:.5em .5em 1.9em .5em;
+		}
+	</style>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+	<title>都健康</title>
+  </head>
+  <body>
+	  <div data-role="page" class="djk_page" id="djk_bodytest_page">
+		  <div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">套餐详情</h2>
+		  </div>
+		  <div data-role="main" class="ui-content">
+		  	<div class="djk_test_body">
+		  		<div class="table_head">
+		  			<h3></h3>
+		  			<div>
+		  			<!-- <span style="margin-right:2em"><s>原价：123</s></span>
+		  			<span style="margin-left:2em">现价：93</span> -->
+		  			</div>
+		  		</div>
+		  		<div class="table_body">
+		  			<table>
+		  				<thead>
+		  					<tr>
+		  					<th>单项名称</th>
+		    				<th>价格(元)</th>
+		    				<th>单项体检详情</th>
+		    				</tr>
+		  				</thead>
+		  				<tbody id="tBody_tao">
+		  				</tbody>
+		  			</table>
+		  			<a id="check_order" class="button_a" data-role="button" data-transition="slide" data-theme="f">下单</a>
+		  		</div>
+		  	</div>
+		  <div id="dialogBG"></div>
+		  <div id="dialog">
+		  	<div class="inner_border">
+			  	<h4>日常体检</h4>
+			  	<div class="xiangqingp">
+			  	</div>
+		  	</div>
+			<a id="closeB" class="button_a" data-role="button" data-transition="slide" data-theme="f">关闭</a>
+	  		</div>
+		  </div> 
+		  <script type="text/javascript">
+		  	$(document).ready(function(){
+		  		getSrceenWH();
+		  		var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHcheckout/getDiyContent";
+		  		//var URL = "http://192.168.0.31/Source/DJK_2/mndjk/weixin.php/GTHcheckout/getDiyContent";
+		  		var taocanid = GetQueryString("taocanid");
+		  		//localStorage.openID = "123456789";
+		  		//alert(taocanid);
+					$.ajax({
+						type: "post",
+						url: URL,
+						//contentType: "application/json",
+						data: {
+								"taocanid":taocanid
+			                },
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:8000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							var html = "";
+							if(json != null && json != ""){
+								if(json.code == "100"){
+									var mydata = json.data;
+									//var img = mydata.img;
+									//$(".table_head img").attr("src",img);
+									var content =mydata.content,
+										len = content.length,
+										xiangqing = "";
+									for(var i=0;i<len;i++){
+										if(content[i].remark == ""){
+											xiangqing = "<td class='wu'>无</td>";
+										}else{
+											xiangqing = "<td class='canclick'>详情</td>";
+										}
+										html += "<tr><td>"+content[i].danxiangname+"</td>"+
+										"<td>"+content[i].price+"</td>"+
+										xiangqing+"<td class='xiangq' style='display:none'>"+content[i].remark+"</tr>";
+									}
+									$(".table_head h3").html(mydata.taocanname);
+									//$(".table_head img").src(mydata.taocanimage);
+									$(".table_head div").append("<span style='margin-right:2em'>价格："+mydata.price+"</span>");
+									$("#tBody_tao").append(html);
+									$("#check_order").click(function(){
+										var type = GetQueryString("type");
+										$.ajax({
+											type: "post",
+											url: "http://mndjk.app0351.cn/mndjk/weixin.php/GTHdingdan/setDingdan",
+											//contentType: "application/json",
+											data: {
+													"openid":localStorage.openID,
+													"type":type,
+													"price":mydata.realprice,
+													"taocanid":taocanid
+								                },
+											contentType: "application/x-www-form-urlencoded",
+											async: true,
+											timeout:3000,
+											dataType:'json',  
+											success: function(data) {
+												var json = eval(data);
+												//alert(json);
+												if(json != null){
+													if(json.code == "100"){
+													var mydata = json.data;
+													location.href = "../BodyTest/ptpayfortest.html?dingdanid="+mydata.dingdanid;
+													}
+												}
+											},
+											complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+											   if(status=='timeout'){//超时,status还有success,error等值的情况
+											      ajaxTimeoutTest.abort();
+											      alert("网络状态不好诶~~");
+											   };
+											},
+											error: function(err) {
+												errormessage = "错啦！";
+												alert(errormessage);	
+											} 
+										});
+										return false;
+									});
+								}else{
+									alert("错误。请重新获取");
+								}
+							}
+							$(".canclick").click(function(){
+								$(this).parent().addClass("hclick").siblings().removeClass("hclick"); 
+								var remarkC = $(this).next().text();
+								var remarkH = $(this).parent().find("td").first().text();
+								//alert(remarkH);
+								$("#dialog h4").html(remarkH);
+								$("#dialog .xiangqingp").html(remarkC);
+								$("#dialog").fadeIn();
+								$("#dialogBG").show();
+								
+							});
+							$(".wu").click(function(){
+								alert("没有！！！");
+							});
+							$("#closeB").click(function(){
+								$("#dialog").hide();
+								$("#dialogBG").hide();
+								$("#dialog h4").empty();
+								$("#dialog .xiangqingp").empty();
+							});
+							//alert(JSON.stringify(json));
+							//$(".table_body").append("<div>"+JSON.stringify(json)+"</div>");
+							//alert(JSON.stringify(json.content));
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						     // ajaxTimeoutTest.abort();
+						      alert("网络状态不好诶~~");
+						   };
+						},
+						error: function(err) {
+							errormessage = "错啦！";
+							//alert(errormessage);	
+						} 
+					});
+					return false;
+		  	});
+		  	
+		  	//获取参数
+		  	function GetQueryString(key){
+	        	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	        	var result = window.location.search.substr(1).match(reg);
+	        	return result?decodeURIComponent(result[2]):null;
+      		}
+      		
+      		//为弹窗背景设置宽高
+      		function getSrceenWH(){
+				w = $(window).width();
+				h = $(window).height();
+				$('#dialogBG').width(w).height(h);
+				$('#dialog').width(2*w/3).height(2*w/3);
+				$('#dialog').css({"margin-top":-w/3 +"px","margin-left":-w/3+"px"});
+			}
+		  </script>
+	</div>
+  </body>
+</html>

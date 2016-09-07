@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+		
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		
+		});
+	</script>
+    <script src="../src/js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/djk-main.css">
+	<title>都健康</title>
+    <style type="text/css">
+    	.menu_item{
+			margin-top: .5em;
+		    border-bottom: 1px solid #cccccc;
+		    border-top: 1px solid #cccccc;
+		    padding:.5em .8em;
+		    background:#ffffff;
+		    color:#000;
+    	}
+    	.income_list{
+    		padding-top: 1.5em;
+    	}
+    	.first_item{
+			margin-top: 1.5em;
+    	}
+    	.menu_item .income_detail .income_name{
+    		color: #000;
+    		font-size: 1em;
+    	}
+    	.menu_item .income_detail{
+    		margin-top: .2em
+    	}
+    	.menu_item .income_detail .income_price{
+    		color:#1AB0C9;
+    		font-size: 1em;
+    	}
+    	.menu_item .income_detail span:last-child{
+    		float:right;
+    	}
+    	.menu_item .income_detail span{
+    		color:#888888;
+    		font-size: .8em;
+    		margin:0;
+    		text-shadow:none
+    	}
+    </style>
+  </head>
+  <body>
+  	<div data-role="page" class="djk_page" id="djk_team">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">收入明细</h2>
+	  	</div>
+		<div data-role="main" class="ui-content" style="padding:0">
+			<div class="income_list">
+				<!-- <div class="menu_item">
+					<div class="income_detail">
+						<span class="income_name">推荐好友</span>
+						<span class="income_price">+20</span>
+					</div>
+					<div class="income_detail">
+						<span>2015.12.25</span>
+						<span>余额:2000</span>
+					</div>
+				</div>
+				<div class="menu_item">
+					<div class="income_detail">
+						<span class="income_name">二级推荐好友</span>
+						<span class="income_price">+15</span>
+					</div>
+					<div class="income_detail">
+						<span>2015.12.11</span>
+						<span>余额:2015</span>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		var url = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHuser/getMyGroupAcount";
+		 	$.ajax({
+				type: "post",
+				url: url,
+				//contentType: "application/json",
+				data: {
+						"openid":localStorage.openID
+				  },
+				contentType: "application/x-www-form-urlencoded",
+				async: true,
+				timeout:3000,
+				dataType:'json',  
+				success: function(data) {
+				var json = eval(data);
+				if(json != null){
+					if(json.code == "100"){
+						if(json.data.list != null);
+						var incomeList =  json.data.list;
+						var len = incomeList.length;
+						var incomeHtml = "";
+						for(var i=0;i<len;i++){
+							incomeHtml += "<div class='menu_item'>"+
+												"<div class='income_detail'>"+
+													"<span class='income_name'>"+incomeList[i].nickname+"</span>"+
+													"<span class='income_price'>"+incomeList[i].commision+"</span>"+
+												"</div>"+
+												"<div class='income_detail'>"+
+													"<span>"+incomeList[i].datetime.substr(0, 10)+"</span>"+
+													"<span></span>"+
+												"</div>"+
+											"</div>";
+							//alert(incomeHtml);
+						}
+							$(".income_list").append(incomeHtml);
+						}else{
+							$(".income_list").append("<h4>您暂时还未收入</h4>");
+						}
+					}							
+				},
+				complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+					if(status=='timeout'){//超时,status还有success,error等值的情况
+					ajaxTimeoutTest.abort();
+				alert("网络状态不好诶~~");
+				};
+			},
+			error: function(err) {
+				errormessage = "错啦！";
+				alert(errormessage);	
+			} 
+			});
+			return false;	
+		});
+	</script>
+  </body>
+</html>

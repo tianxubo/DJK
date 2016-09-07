@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+   <!--  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" /> -->
+    <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="../../src/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../src/css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="../../src/css/jquery.mobile.theme-f.css">
+    <script>
+		$(function(){
+			$(":jqmData(role='page')").attr("data-title", document.title);
+		});
+	</script>
+    <script src="../../src/js/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../src/css/djk-main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../src/css/taocanList.css"> -->
+	<title>都健康</title>
+	<style type="text/css">
+		.taocan_list{
+			position: relative;
+			margin-top:1rem;
+			font-size:0;
+		}
+		.taocan_title{
+			background: -ms-linear-gradient(top,  #97D6DC,#5BB9C1);        /* IE 10 */
+			background:-moz-linear-gradient(top, #97D6DC,#5BB9C1);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#97D6DC), to(#5BB9C1));/*谷歌*/ 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#97D6DC), to(#5BB9C1));      /* Safari 4-5, Chrome 1-9*/
+			background: -webkit-linear-gradient(top, #97D6DC,#5BB9C1);   /*Safari5.1 Chrome 10+*/
+			background: -o-linear-gradient(top, #97D6DC,#5BB9C1);  /*Opera 11.10+*/
+			padding:.6rem .5rem .3rem;
+			text-align: right;
+			color:#ffffff;
+			border-bottom:2px solid #2C6B70;
+			border-top:2px solid #5BB9C1;
+			border-left:2px solid #5BB9C1;
+			border-right:2px solid #5BB9C1;
+    		border-top-left-radius: 20px;
+    		border-top-right-radius: 20px;
+		}
+		.taocan_title span{
+			margin:0;
+			text-shadow: none;
+			font-size:.7rem
+		}
+		.taocan_body{
+			background:#F5F5F5;
+			border:2px solid #F5F5F5;
+			border-bottom-left-radius:20px;
+			border-bottom-right-radius:20px;
+			box-shadow: 2px 5px 9px #cccccc;
+		}
+		.taocan_money{
+			padding:0 1rem;
+			text-align: right
+		}
+		.taocan_money span:nth-child(1){
+			margin:0;
+			font-size:.7rem;
+			color:#10ABC7;
+		}
+		.taocan_money span:nth-child(2){
+			margin:0;
+			font-size:.9rem;
+			color:#10ABC7;
+		}
+		
+		.taocan_money span:nth-child(3){
+			margin-left:.5rem;
+			font-size:.7rem;
+			color:#F13A8C;
+		}
+		.taocan_money span:nth-child(4){
+			margin:0;
+			font-size:1.8rem;
+			color:#F13A8C;
+    		font-weight: bold;
+		}
+		.taocan_btn{
+			text-align: right;
+   			padding: .5rem 1rem;
+		}
+		.taocan_btn a{
+			text-decoration: none;
+		    color: #ffffff;
+		    background: #10ABC7;
+		    text-shadow: none;
+		    padding: .3rem .5rem;
+		    border-radius: 15px;
+		    font-size: 1rem;
+		}
+		.taocan_footer{
+			padding-right:1rem;
+		}
+		.taocan_footer span{
+			color:#10ABC7;
+			margin:0;
+			display: inline-block;
+		}
+		.taocan_footer span:nth-child(1){
+			width:30%;
+			text-align: center;
+			font-size:1rem;
+			font-weight: bold;
+			
+		}
+		.taocan_footer span:nth-child(2){
+			width:70%;
+			text-align: right;
+			font-size: .7rem;
+		}
+	.load{
+			padding:.5rem;
+			background:#000000;
+			opacity:.6;
+			position: fixed;
+			z-index:10;
+			width: 4rem;
+		    top: 50%;
+		    border-radius: 5px;
+		    left: 50%;
+		    margin-left: -2rem;
+		    text-align: center;
+		    display: none;
+		}
+		.load img{
+			width:60%;
+		}
+		.load p{
+			color:#ffffff;
+		}
+		.taocanimg_div{
+			position: absolute;
+			width:27%;
+			top:10%;
+			left:3%;
+			border-radius:50%;
+			background: -ms-linear-gradient(top,  #ffffff,#D2D5D8);        /* IE 10 */
+			background:-moz-linear-gradient(top, #ffffff,#D2D5D8);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#ffffff), to(#D2D5D8));/*谷歌*/ 
+			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#ffffff), to(#D2D5D8));      /* Safari 4-5, Chrome 1-9*/
+			background: -webkit-linear-gradient(top, #ffffff,#D2D5D8);   /*Safari5.1 Chrome 10+*/
+			background: -o-linear-gradient(top, #ffffff,#D2D5D8);  /*Opera 11.10+*/ 
+			text-align: center;
+		}
+		.taocanimg_div img{
+			max-width: 100%;
+			max-height: 100%;
+			vertical-align: middle;
+			 border-radius: 5px;
+		}
+		.taocanimg_div span{
+			vertical-align: middle;
+			height: 100%;
+			overflow: hidden;
+			display: inline-block;
+		}
+	</style>
+	</head>
+  <body>
+  <div class="load">
+		<img src="../../src/images/load.gif">
+		<p>获取中</p>
+	</div>
+  	<!-- 申请建团，至少3人成团 -->
+  	<div data-role="page" class="djk_page" id="">
+	  	<div data-role="header" data-theme="f">
+		  	<a class="back_a" data-rel="back" data-transition="slide" data-direction="reverse"><img src="../../src/images/Home/back.png"></a>
+		    <h2 style="font-size:1.5em;font-weight: normal;text-shadow: none">组团体检</h2>
+	  	</div>
+		<div data-role="main" class="ui-content">
+			<img src="back_title.png" style="width:100%">
+			<div class="djk_list_box">
+				<!-- <div class="taocan_list">
+					<div class="taocan_title">
+						<span>组团体检套餐:</span><span style="font-size:1rem">女性常见肿瘤筛查</span>
+					</div>
+					<div class="taocan_body">
+						<div class="taocan_money">
+							<span>原价：￥</span>
+							<span><s>85</s></span>
+							<span>组团价：￥</span>
+							<span>60</span>
+						</div>
+						<div class="taocan_btn">
+							<a class="xiangqing" data-role="none" data-ajax="false">查看详情</a>
+						</div>
+						<div class="taocan_footer">
+							<span>3人团</span>
+							<span>最后时间：2016年4月21日</span>
+						</div>
+					</div>
+					<img src="center.png" style="position: absolute;width:27%;top:10%;left:3%">
+					<div class="taocanimg_div">
+						<img src="taocan.png">
+						<span></span>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<script type="text/javascript">
+		/* $(document).ready(function(){
+		}); */
+			$(document).ready(function(){
+				$(".load").show();
+				var URL = "http://mndjk.app0351.cn/mndjk/weixin.php/GTHzutuan/getTaocanList";
+					$.ajax({
+						type: "post",
+						url: URL,
+						//contentType: "application/json",
+						data: {
+								"city":localStorage.city
+			                },
+						contentType: "application/x-www-form-urlencoded",
+						async: true,
+						timeout:3000,
+						dataType:'json',  
+						success: function(data) {
+							var json = eval(data);
+							if(json != null){
+								if(json.code =="100"){
+									var groupTest = json.data;
+									var len = groupTest.length;
+									var groupHtml = "";
+									for(var i=0;i<len;i++){
+										groupHtml += "<div class='taocan_list'>"+
+										"<div class='taocan_title'>"+
+										"<span>组团体检套餐:</span><span style='font-size:1rem'>"+groupTest[i].taocanname+"</span>"+
+									"</div>"+
+									"<div class='taocan_body'>"+
+										"<div class='taocan_money'>"+
+											"<span>原价：￥</span>"+
+											"<span><s>"+groupTest[i].price+"</s></span>"+
+											"<span>组团价：￥</span>"+
+											"<span>"+groupTest[i].realprice+"</span>"+
+										"</div>"+
+										"<div class='taocan_btn'>"+
+											"<a href='BTgroupTable.html?taocanid="+groupTest[i].taocanid+"' class='xiangqing' data-role='none' data-ajax='false'>查看详情</a>"+
+										"</div>"+
+										"<div class='taocan_footer'>"+
+											"<span>3人团</span>"+
+										"</div></div>"+
+									"<div class='taocanimg_div'>"+
+										"<img src='"+groupTest[i].img+"'>"+
+										"<span></span>"+
+									"</div></div>";										
+									}
+									$(".djk_list_box").append(groupHtml);
+									var imgW = $(".taocanimg_div").width();
+									$(".taocanimg_div").css("height",imgW+"px");
+									$(".taocanimg_div img").css("border-radius",imgW/2+"px");
+									$(".load").hide();
+								}else{
+									$(".djk_list_box").append("<h4>组团套餐，马上上线，尽请期待</h4>");
+									$(".load").hide();
+								}
+							}
+						},
+						complete:function(XMLHttpRequest,status){ //请求完成后最终执行参数
+						   if(status=='timeout'){//超时,status还有success,error等值的情况
+						      ajaxTimeoutTest.abort();
+						      alert("网络状态不好诶~~");
+						   };
+						},
+						error: function(err) {
+							errormessage = "错啦！";
+							alert(errormessage);	
+						} 
+					});
+					return false;
+			});
+		</script>
+	</div>
+  </body>
+</html>

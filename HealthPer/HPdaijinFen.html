@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <script src="../src/js/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<title>分享代金券</title>
+	<style type="text/css">
+	@media screen and (min-width:320px) and (max-width:360px){
+		html{
+			font-size:12px;
+		}
+	}
+	 @media screen and (min-width:360px) and (max-width:385px){
+		html{
+			font-size:14px;
+		}
+	}
+		*{
+			margin:0;
+			padding:0;
+			font-family: '微软雅黑'
+		}
+		.background_img{
+			overflow: hidden;
+		}
+		.head_title{
+		    margin-top: 7rem;
+			text-align: center;
+		}
+		.head_title img{
+			width:15%;
+			border-radius:50%;
+		}
+		.head_words{
+			width:80%;
+			margin:0 auto;
+			background:#E6B573;
+			color:#ffffff;
+			font-size:1rem;
+			border-radius:10px;
+			padding:.5rem;
+		}
+		.content_money{
+			text-align: right;
+			color:#E61B53;
+			width:80%;
+			margin: 2rem auto 0;
+		}
+		.content_money .money_back{
+			background: url(fxquan.png) no-repeat;
+			background-size:100% 100%;
+			overflow:hidden;
+			padding:2rem .5rem;
+			margin:0 auto;
+			text-align:right;
+			width:100%;
+			font-size:4.5rem;
+			color:#ffffff;
+		}
+		.erweima{
+			text-align: center;
+		    margin-top: 2rem;
+		}
+		.erweima img{
+			width:35%;
+		}
+		.my_header{
+			border-radius:50%;
+		}
+	</style>
+  </head>
+  <body>
+  	<div class="background_img">
+  		<img src="fxbg1.png" style="width:100%;display: block;position: absolute;z-index:-1">
+  		<div class="head_title">
+  			<img class="my_header" src="quan1.png">
+  			<div class="head_words">
+  				<p>送你定制体检代金券，只能送3人，我选择了你。</p>
+  				<p style="font-weight: bold;">关心常在，情谊长存</p>
+  			</div>
+  		</div>
+  		<div class="content_money">
+  			<div class="money_back">
+  				<span class="daival">100</span>
+  				<span style="font-size:1rem">￥</span>
+  			</div>
+  			<p>记得去查哦！</p>
+  		</div>
+  		<div class="erweima">
+  			<p>扫描关注&nbsp;&nbsp;即可领取</p>
+  			<img class="myerweima" src="">
+  		</div>
+  	</div>
+  	<script type="text/javascript">
+  		$(document).ready(function(){
+  			$(".my_header").attr("src",localStorage.headImg);
+  			var daijival = localStorage.quanval;
+  			var src = GetQueryString("src");
+  			$(".myerweima").attr("src",src);
+  			$(".daival").text(daijival);
+  		});
+  		
+  		//获取参数
+		function GetQueryString(key){
+	       	var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");
+	       	var result = window.location.search.substr(1).match(reg);
+	       	return result?decodeURIComponent(result[2]):null;
+      	}
+  	</script>
+  </body>
+</html>
